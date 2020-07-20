@@ -1,0 +1,50 @@
+﻿@page
+@model MyFirstRazorWebPage.Pages.BrowsePicture.IndexModel
+@{
+    ViewData["Title"] = "Admin Page - Upload Picture";
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Upload Picture</title>
+</head>
+<body>
+
+    <h1>Upload User Picture</h1>
+
+
+    <form method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="form-group">
+            <label for="img">Select image:</label>
+            <input type="file" id="img" name="img" accept="image/*" asp-for="@Model.PicPath" />
+            <span asp-validation-for="@Model.PicPath" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Upload" class="btn btn-primary" onclick="myFunction()"/>
+        </div>
+
+    </form>
+
+    <img src="@Model.PicPath" alt="User Picture" style="width:auto;">
+    <p id="demo"></p>
+
+    <p><strong>Note:</strong> Please upload picture that less than 10MB.</p>
+
+
+    <script>
+        function myFunction() {
+            var x = document.getElementById("img").value;
+            document.getElementById("demo").innerHTML = x;
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+﻿@page
+@model MyFirstRazorWebPage.Pages.UserLoggedIn.SuccessLogInModel
+
+
+@{
+    ViewData["Title"] = "User Page";
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>User Page</title>
+</head>
+
+<body>
+
+    <h1 style="text-align:center">Welcome @Model.UserName</h1>
+
+    <div>
+        <a asp-page="/Users/UserLogin" asp-page-handler="OnGetLogout">Logout</a>
+    </div>
+
+</body>
+
+</html>

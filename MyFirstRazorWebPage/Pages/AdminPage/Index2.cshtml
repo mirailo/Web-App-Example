@@ -1,0 +1,43 @@
+﻿@page
+@model MyFirstRazorWebPage.Pages.AdminPage.Index2Model
+@{
+    ViewData["Title"] = "Admin Page";
+}
+
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <h1 style="text-align:center">Welcome to the Admin Page</h1>
+
+    <div class="row">
+        <div class="col-md-4">
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="AdminUser.StaffNo" class="control-label">Staff No.</label>
+                    <input asp-for="AdminUser.StaffNo" class="form-control" />
+                    <span asp-validation-for="AdminUser.StaffNo" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="AdminUser.AdminPassword" class="control-label">Insert Password</label>
+                    <input type="password" asp-for="AdminUser.AdminPassword" class="form-control" />
+                    <span asp-validation-for="AdminUser.AdminPassword" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Login" class="btn btn-primary" />
+                </div>
+
+                <div class="form-group">
+                    <p style="color: red">@Model.Msg</p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

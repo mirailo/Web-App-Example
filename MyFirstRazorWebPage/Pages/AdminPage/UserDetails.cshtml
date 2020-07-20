@@ -1,0 +1,67 @@
+﻿@page
+@model MyFirstRazorWebPage.Pages.AdminPage.UserDetailsModel
+@{
+    ViewData["Title"] = "Admin Page - List of Users";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+
+    <h1 style="text-align:center">Admin Page : List of Users</h1>
+    
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    <!--@Html.DisplayNameFor(model => model.User[0].FirstName)-->
+                    First Name
+                </th>
+                <th>
+                    <!--@Html.DisplayNameFor(model => model.User[0].EmailAdd)-->
+                    Email Address
+                </th>
+                <th>
+                    <!--@Html.DisplayNameFor(model => model.User[0].Password)-->
+                    Password
+                </th>
+                <th>
+                    Actions
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.User)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmailAdd)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Password)
+                    </td>
+                    <td>
+                        <a asp-page="./EditUser" asp-route-id="@item.ID">Edit</a> |
+                        <a asp-page="./UserProfile" asp-route-id="@item.ID">Details</a> |
+                        <a asp-page="./DeleteUser" asp-route-id="@item.ID">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div>
+        <a asp-page="./UserCreation">Create User</a> |
+        <a asp-page="/BrowsePicture/Index">Upload User Picture</a> |
+        <a asp-page="/AdminPage/Index2" asp-page-handler="OnGetLogout">Logout</a>
+    </div>
+</body>
+</html>
