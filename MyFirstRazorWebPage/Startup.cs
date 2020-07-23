@@ -29,9 +29,22 @@ namespace MyFirstRazorWebPage
             services.AddDbContext<RazorPagesMovieContext>(options =>
                     options.UseSqlite(Configuration.GetConnectionString("RazorPagesMovieContext")));
 
-            services.AddSession(o=> { o.IdleTimeout = TimeSpan.FromSeconds(10); });
-            
-          
+            services.AddDistributedMemoryCache();
+
+            services.AddSession(o=> {
+                o.IdleTimeout = TimeSpan.FromSeconds(10);
+                o.Cookie.HttpOnly = true;
+                o.Cookie.IsEssential = true;
+
+            });
+
+            services.AddSession(options =>
+            {
+                //options.Cookie.Name = ".AdventureWorks.Session";
+                options.IdleTimeout = TimeSpan.FromSeconds(10);
+                options.Cookie.IsEssential = true;
+            });
+
 
         }
 

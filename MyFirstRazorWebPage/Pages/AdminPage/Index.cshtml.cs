@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -24,14 +25,31 @@ namespace MyFirstRazorWebPage.Pages.AdminPage
 
 
         public string UserName;
+        public const string SessionKeyName = "username";
 
         public IList<AdminUser> AdminUser { get; set; }
 
-        public async Task OnGetAsync()
+      
+        public async Task<IActionResult> OnGetAsync()
         {
             AdminUser = await _context.AdminUser.ToListAsync();
-            UserName = HttpContext.Session.GetString("username");
+
+           
+            try
+            {
+                Console.WriteLine("Hello Session2");
+                UserName = JsonSerializer.Deserialize<string>(HttpContext.Session.GetString(SessionKeyName));
+                return Page();
+            }
+            catch
+            {
+                // Call a custom error logging procedure.
+                return RedirectToPage("/AdminPage/Index2");
+                throw;
+            }
+
         }
 
+        
     }
 }

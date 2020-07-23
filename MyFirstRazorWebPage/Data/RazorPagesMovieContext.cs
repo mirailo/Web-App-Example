@@ -12,11 +12,16 @@ using MyFirstRazorWebPage.Models;
         {
         }
 
-        public DbSet<MyFirstRazorWebPage.Models.Movie> Movie { get; set; }
+        
 
         public DbSet<MyFirstRazorWebPage.Models.User> User { get; set; }
 
-        public DbSet<MyFirstRazorWebPage.Models.Promotion> Promotion { get; set; }
+      
 
         public DbSet<MyFirstRazorWebPage.Models.AdminUser> AdminUser { get; set; }
+
+        public DbSet<MyFirstRazorWebPage.Models.UserAccessData> UserAccessData { get; set; }
+
+        public DbSet<MyFirstRazorWebPage.Models.Module> Module { get; set; }
+
     }

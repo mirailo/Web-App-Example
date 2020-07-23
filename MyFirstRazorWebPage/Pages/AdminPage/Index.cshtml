@@ -1,5 +1,6 @@
 @page
 @model MyFirstRazorWebPage.Pages.AdminPage.IndexModel
+
 @{
     ViewData["Title"] = "User Page";
 }
@@ -63,6 +64,7 @@
 
     <div>
         <a asp-page="/AdminPage/UserDetails">Manage User</a> |
+        <a asp-page="/AdminPage/Create">Create Admin User</a> |
         <a asp-page="/AdminPage/Index2" asp-page-handler="OnGetLogout">Logout</a>
 
     </div>

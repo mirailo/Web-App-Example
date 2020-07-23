@@ -14,37 +14,42 @@
 </head>
 <body>
 
-    <h1>Upload User Picture</h1>
+    <h1>Upload Picture for @Model.EmailAddress (@Model.FName)</h1>
 
 
-    <form method="post">
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <form method="post" enctype="multipart/form-data">
+        <div class="text-danger"></div> <!--asp-validation-summary="ModelOnly" -->
 
         <div class="form-group">
             <label for="img">Select image:</label>
-            <input type="file" id="img" name="img" accept="image/*" asp-for="@Model.PicPath" />
-            <span asp-validation-for="@Model.PicPath" class="text-danger"></span>
+            <input type="file" asp-for="UploadFile" onchange="readURL(this);" />
+            <span class="text-danger"></span>
         </div>
 
         <div class="form-group">
-            <input type="submit" value="Upload" class="btn btn-primary" onclick="myFunction()"/>
+            <input type="submit" value="Upload" class="btn btn-primary" />
         </div>
-
     </form>
 
-    <img src="@Model.PicPath" alt="User Picture" style="width:auto;">
+    <img id="displayImg" src="" alt="User Picture" style=" max-width:180px;">
     <p id="demo"></p>
 
     <p><strong>Note:</strong> Please upload picture that less than 10MB.</p>
+    <p>@ViewData["Message"]</p>
 
 
-    <script>
-        function myFunction() {
-            var x = document.getElementById("img").value;
-            document.getElementById("demo").innerHTML = x;
-        }
-    </script>
+    <script>function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+
+                    document.getElementById("displayImg").setAttribute("src", e.target.result);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }</script>
 
 </body>
-
 </html>

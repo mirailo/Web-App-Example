@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -38,6 +39,7 @@ namespace MyFirstRazorWebPage.Pages.AdminPage
         [BindProperty]
         public AdminUser AdminUser { get; set; }
 
+
         [BindProperty]
         public string UserName { get; set; }
 
@@ -47,52 +49,62 @@ namespace MyFirstRazorWebPage.Pages.AdminPage
         
         public IActionResult OnPost()
         {
+            /*
             //This if statement to check the form is valid -> [Required] fields.
             if (!ModelState.IsValid)
             {
                 return Page();
             }
-
-
-            var connectionStringBuilder = new SqliteConnectionStringBuilder();
-            connectionStringBuilder.DataSource = "/Users/zairulmazwan/Projects/MyFirstRazorWebPage/MyFirstRazorWebPage/RazorPagesMovieContext-4626ba78-c68f-4200-bc79-dd49c8d85ee3.db";
-            var connection = new SqliteConnection(connectionStringBuilder.ConnectionString);
-
-            connection.Open();
-
-            var selectCmd = connection.CreateCommand();
-            selectCmd.CommandText = @"SELECT AdminPassword FROM AdminUser WHERE StaffNo=$StaffNo";
-            selectCmd.Parameters.AddWithValue("$StaffNo", AdminUser.StaffNo);
-
-            var reader = selectCmd.ExecuteReader();
-            var Pwd = "";
-            while (reader.Read())
+            */
+            if (string.IsNullOrEmpty(AdminUser.StaffNo) || string.IsNullOrEmpty(AdminUser.AdminPassword))
             {
-                Pwd = reader.GetString(0);
-            }
-
-            Console.WriteLine(Pwd);
-
-            if (AdminUser.AdminPassword.Equals(Pwd))
-            {
-                selectCmd = connection.CreateCommand();
-                selectCmd.CommandText = @"SELECT FirstName FROM AdminUser WHERE AdminPassword=$StaffNo";
-                selectCmd.Parameters.AddWithValue("$StaffNo", AdminUser.StaffNo);
-                var reader2 = selectCmd.ExecuteReader();
-
-                while (reader2.Read())
-                {
-                    UserName = reader2.GetString(0);
-                }
-
-                HttpContext.Session.SetString("username", UserName);
-                return RedirectToPage("/AdminPage/Index");
+                Msg = "Please input Staff No and Password";
+                return Page();
             }
             else
             {
-                Msg = "Incorrect ID and PWD!";
-                return Page();
+                var connectionStringBuilder = new SqliteConnectionStringBuilder();
+                connectionStringBuilder.DataSource = "/Users/zairulmazwan/Projects/MyFirstRazorWebPage/MyFirstRazorWebPage/RazorPagesMovieContext-4626ba78-c68f-4200-bc79-dd49c8d85ee3.db";
+                var connection = new SqliteConnection(connectionStringBuilder.ConnectionString);
+
+                connection.Open();
+
+                var selectCmd = connection.CreateCommand();
+                selectCmd.CommandText = @"SELECT AdminPassword FROM AdminUser WHERE StaffNo=$StaffNo";
+                selectCmd.Parameters.AddWithValue("$StaffNo", AdminUser.StaffNo);
+
+                var reader = selectCmd.ExecuteReader();
+                var Pwd = "";
+                while (reader.Read())
+                {
+                    Pwd = reader.GetString(0);
+                }
+
+                Console.WriteLine(Pwd);
+
+                if (AdminUser.AdminPassword.Equals(Pwd))
+                {
+                    selectCmd = connection.CreateCommand();
+                    selectCmd.CommandText = @"SELECT FirstName FROM AdminUser WHERE StaffNo=$StaffNo";
+                    selectCmd.Parameters.AddWithValue("$StaffNo", AdminUser.StaffNo);
+                    var reader2 = selectCmd.ExecuteReader();
+
+                    while (reader2.Read())
+                    {
+                        UserName = reader2.GetString(0);
+                    }
+
+                    HttpContext.Session.SetString("username", JsonSerializer.Serialize(UserName));
+                   
+                    return RedirectToPage("/AdminPage/Index");
+                }
+                else
+                {
+                    Msg = "Incorrect ID and PWD!";
+                    return Page();
+                }
             }
+
 
         }
 
@@ -103,60 +115,7 @@ namespace MyFirstRazorWebPage.Pages.AdminPage
             return Page();
         }
 
-        /*
-
-        public IActionResult OnPost()
-        {
-            //This if statement to check the form is valid -> [Required] fields.
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
-
-
-            var connectionStringBuilder = new SqliteConnectionStringBuilder();
-            connectionStringBuilder.DataSource = "/Users/zairulmazwan/Projects/MyFirstRazorWebPage/MyFirstRazorWebPage/RazorPagesMovieContext-4626ba78-c68f-4200-bc79-dd49c8d85ee3.db";
-            var connection = new SqliteConnection(connectionStringBuilder.ConnectionString);
-
-            connection.Open();
-
-            var selectCmd = connection.CreateCommand();
-            selectCmd.CommandText = @"SELECT Password FROM User WHERE EmailAdd=$EmailAdd";
-            selectCmd.Parameters.AddWithValue("$EmailAdd", User.EmailAdd);
-
-            var reader = selectCmd.ExecuteReader();
-            var Pwd = "";
-            while (reader.Read())
-            {
-                Pwd = reader.GetString(0);
-            }
-
-            Console.Write(Pwd);
-
-
-            if (User.Password.Equals(Pwd))
-            {
-                selectCmd = connection.CreateCommand();
-                selectCmd.CommandText = @"SELECT FirstName FROM User WHERE EmailAdd=$EmailAdd";
-                selectCmd.Parameters.AddWithValue("$EmailAdd", User.EmailAdd);
-                var reader2 = selectCmd.ExecuteReader();
-
-                while (reader2.Read())
-                {
-                    UserName = reader2.GetString(0);
-                }
-
-                HttpContext.Session.SetString("username", UserName);
-                return RedirectToPage("/AdminPage/Index");
-            }
-            else
-            {
-                Msg = "Incorrect ID and PWD!";
-                return Page();
-            }
-
-        }*/
-
+        
 
     }
 

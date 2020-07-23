@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc;
 
 namespace MyFirstRazorWebPage.Models
 {
@@ -8,9 +9,11 @@ namespace MyFirstRazorWebPage.Models
         public int ID { get; set; }
 
         [Required]
+        [Display(Name = "Staff No")]
         public string StaffNo { get; set; }
 
         [Required]
+        [Display(Name = "First Name")]
         public string FirstName { get; set; }
 
         [Required]

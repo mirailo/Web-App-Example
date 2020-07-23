@@ -17,16 +17,17 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
-    <Folder Include="Pages\Movies\" />
     <Folder Include="Pages\Users\" />
-    <Folder Include="Pages\Login\" />
-    <Folder Include="Pages\Promotions\" />
     <Folder Include="Pages\AdminPage\" />
     <Folder Include="Pages\UserLoggedIn\" />
     <Folder Include="Pages\BrowsePicture\" />
+    <Folder Include="Pages\UsersAccessData\" />
+    <Folder Include="Pages\Modules\" />
+    <Folder Include="ImageData\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="Pages\Login\Login.cshtml" />
     <Content Remove="Pages\Promotions\Delete.cshtml" />
+    <Content Remove="Pages\UsersAccessData\Edit.cshtml" />
   </ItemGroup>
 </Project>
