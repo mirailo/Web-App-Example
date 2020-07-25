@@ -1,6 +1,5 @@
 ﻿@page
 @model MyFirstRazorWebPage.Pages.AdminPage.EditUserModel
-
 @{
     ViewData["Title"] = "Admin Page - Edit User";
 }
@@ -12,6 +11,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Edit</title>
+
 </head>
 <body>
 
@@ -45,12 +45,54 @@
     </div>
 
     <div>
-        <a asp-page="./UserDetails">Back to List</a>
+        <img id="displayImg" asp-for="~/ImageData/@Model.pathPicture" alt="User Picture" style=" max-width:180px;" />
+    </div>
+
+    <p>
+        @Model.pathPicture
+    </p>
+
+  
+    <div>
+        <a asp-page="./UserDetails">Back to List</a>|
+        <a asp-page="/AdminPage/DeletePicture" asp-route-id="@Model.User.ID">Delete Picture</a>
     </div>
 
     @section Scripts {
         @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
     }
+
+
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+
+                    document.getElementById("displayImg").setAttribute("src", e.target.result);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function delFunction() {
+            var txt;
+            if (confirm("Are you sure want to delete the picture?")) {
+                var value = "@Model.pathPicture";
+                txt = "Picture deleted";
+                location.replace("AdminPage/ManagePicture") + value;
+            } else {
+                txt = "Picture not deleted";
+            }
+
+        }
+
+    </script>
+
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
 </body>
 </html>
 

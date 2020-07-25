@@ -11,6 +11,9 @@ using System.IO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Data.Sqlite;
+using MyFirstRazorWebPage.Pages.BrowsePicture;
+
+
 
 namespace MyFirstRazorWebPage.Pages.BrowsePicture
 {
@@ -32,16 +35,19 @@ namespace MyFirstRazorWebPage.Pages.BrowsePicture
         public IFormFile UploadFile { get; set; }
 
         [BindProperty]
-        public string EmailAddress { get; set; }
-        [BindProperty]
-        public string FName { get; set; }
+        public Picture PicData { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(string? id)
+        [BindProperty]
+        public User UserRec { get; set; }
+
+
+
+        public async Task<IActionResult> OnGetAsync(int? id)
         {
-            EmailAddress = id;
+            UserRec = await _context.User.FirstOrDefaultAsync(m => m.ID == id);
 
             //Console.WriteLine(EmailAddress);
-            
+
             var connectionStringBuilder = new SqliteConnectionStringBuilder();
             connectionStringBuilder.DataSource = "/Users/zairulmazwan/Projects/MyFirstRazorWebPage/MyFirstRazorWebPage/RazorPagesMovieContext-4626ba78-c68f-4200-bc79-dd49c8d85ee3.db";
             var connection = new SqliteConnection(connectionStringBuilder.ConnectionString);
@@ -50,17 +56,17 @@ namespace MyFirstRazorWebPage.Pages.BrowsePicture
 
             var selectCmd = connection.CreateCommand();
             selectCmd.CommandText = @"SELECT FirstName FROM User WHERE EmailAdd=$email";
-            selectCmd.Parameters.AddWithValue("$email", EmailAddress);
+            selectCmd.Parameters.AddWithValue("$email", UserRec.EmailAdd);
 
             var reader = selectCmd.ExecuteReader();
             
            
             while (reader.Read())
             {
-                FName = reader.GetString(0);
+                UserRec.FirstName = reader.GetString(0);
             }
 
-            if (FName == null)
+            if (UserRec.FirstName == null)
             {
                 return NotFound();
             }
@@ -70,22 +76,59 @@ namespace MyFirstRazorWebPage.Pages.BrowsePicture
 
 
 
-        public async Task<IActionResult> OnPostAsync ()
+        public async Task<IActionResult> OnPostAsync (int? id)
         {
+            UserRec = await _context.User.FirstOrDefaultAsync(m => m.ID == id);
 
-            var Fileupload = Path.Combine(_env.ContentRootPath, "ImageData", UploadFile.FileName);
-           
-            using(var Fstream = new FileStream(Fileupload, FileMode.Create))
+            Boolean check = CheckPic(UserRec.FirstName, UserRec.EmailAdd);
+
+            if (!check)
             {
-                await UploadFile.CopyToAsync(Fstream);
-                ViewData["Message"] = "File Uploaded to Image Data folder";
-               
+
+                var Fileupload = Path.Combine(_env.ContentRootPath, "ImageData", UploadFile.FileName);
+                Console.WriteLine(Fileupload);
+                using (var Fstream = new FileStream(Fileupload, FileMode.Create))
+                {
+                    await UploadFile.CopyToAsync(Fstream); 
+                    ViewData["Message"] = "File Uploaded to Image Data folder";
+
+                }
+
+                Console.WriteLine("Email is -->" + UserRec.EmailAdd);
+                Console.WriteLine("File Name is -->" + UploadFile.FileName);
+                Console.WriteLine("First Name is -->" + UserRec.FirstName);
+
+                var connectionStringBuilder = new SqliteConnectionStringBuilder();
+                connectionStringBuilder.DataSource = "/Users/zairulmazwan/Projects/MyFirstRazorWebPage/MyFirstRazorWebPage/RazorPagesMovieContext-4626ba78-c68f-4200-bc79-dd49c8d85ee3.db";
+                var connection = new SqliteConnection(connectionStringBuilder.ConnectionString);
+
+                connection.Open();
+
+                var selectCmd2 = connection.CreateCommand();
+                selectCmd2.CommandText = @"INSERT INTO Picture (Email, PicName, FirstName) VALUES ($email, $PicName, $firstName)";
+                selectCmd2.Parameters.AddWithValue("$email", UserRec.EmailAdd);
+                selectCmd2.Parameters.AddWithValue("$PicName", UploadFile.FileName);
+                selectCmd2.Parameters.AddWithValue("$firstName", UserRec.FirstName);
+
+                selectCmd2.Prepare();
+                selectCmd2.ExecuteNonQuery();
+
+                return RedirectToPage("/AdminPage/UserDetails");
+
+            }
+            else
+            {
+                ViewData["Message"] = "The user already has a picture. Go to update profile.";
+                return Page();
             }
 
+          
 
-            Console.WriteLine("Email is -->"+EmailAddress);
-            Console.WriteLine("File Name is -->"+UploadFile.FileName);
-            Console.WriteLine("First Name is -->"+ FName);
+        }
+
+        public Boolean CheckPic (string FName, string Email)
+        {
+            Boolean status = false;
 
             var connectionStringBuilder = new SqliteConnectionStringBuilder();
             connectionStringBuilder.DataSource = "/Users/zairulmazwan/Projects/MyFirstRazorWebPage/MyFirstRazorWebPage/RazorPagesMovieContext-4626ba78-c68f-4200-bc79-dd49c8d85ee3.db";
@@ -94,18 +137,28 @@ namespace MyFirstRazorWebPage.Pages.BrowsePicture
             connection.Open();
 
             var selectCmd = connection.CreateCommand();
-            selectCmd.CommandText = @"INSERT INTO Picture (Email, PicName, FirstName) VALUES ($email, $PicName, $firstName)";
-            selectCmd.Parameters.AddWithValue("$email", EmailAddress);
-            selectCmd.Parameters.AddWithValue("$PicName", UploadFile.FileName);
-            selectCmd.Parameters.AddWithValue("$firstName", FName);
+            selectCmd.CommandText = @"SELECT FirstName FROM Picture WHERE Email=$email";
+            selectCmd.Parameters.AddWithValue("$email", Email);
 
-            selectCmd.Prepare();
-            selectCmd.ExecuteNonQuery();
+            var reader = selectCmd.ExecuteReader();
+            var Name = "";
 
-            return RedirectToPage("/AdminPage/Index");
+            while (reader.Read())
+            {
+                Name = reader.GetString(0);
+            }
 
+            if (FName==Name)
+            {
+                status = true;
+            }
+
+            return status;
         }
 
-      
+       
+
     }
+
+
 }

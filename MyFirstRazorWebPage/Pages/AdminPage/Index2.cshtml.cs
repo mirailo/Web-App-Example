@@ -45,8 +45,8 @@ namespace MyFirstRazorWebPage.Pages.AdminPage
 
         public string Msg { get; set; }
 
+        public const string SessionKeyName = "username";
 
-        
         public IActionResult OnPost()
         {
             /*
@@ -56,6 +56,9 @@ namespace MyFirstRazorWebPage.Pages.AdminPage
                 return Page();
             }
             */
+
+           
+        
             if (string.IsNullOrEmpty(AdminUser.StaffNo) || string.IsNullOrEmpty(AdminUser.AdminPassword))
             {
                 Msg = "Please input Staff No and Password";
@@ -94,8 +97,8 @@ namespace MyFirstRazorWebPage.Pages.AdminPage
                         UserName = reader2.GetString(0);
                     }
 
-                    HttpContext.Session.SetString("username", JsonSerializer.Serialize(UserName));
-                   
+                    //HttpContext.Session.SetString("username", JsonSerializer.Serialize(UserName));
+                    HttpContext.Session.SetString("username", UserName);
                     return RedirectToPage("/AdminPage/Index");
                 }
                 else

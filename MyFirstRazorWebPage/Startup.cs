@@ -37,7 +37,7 @@ namespace MyFirstRazorWebPage
                 o.Cookie.IsEssential = true;
 
             });
-
+          
             services.AddSession(options =>
             {
                 //options.Cookie.Name = ".AdventureWorks.Session";
@@ -70,8 +70,7 @@ namespace MyFirstRazorWebPage
             app.UseAuthorization();
 
             app.UseSession();
-
-
+            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();

@@ -5,7 +5,7 @@ namespace MyFirstRazorWebPage.Models
 {
     public class Picture
     {
-        [Required]
+        
         public int Id { get; set; }
 
         [Required]

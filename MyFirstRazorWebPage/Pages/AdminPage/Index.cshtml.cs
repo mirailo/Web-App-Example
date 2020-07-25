@@ -34,20 +34,17 @@ namespace MyFirstRazorWebPage.Pages.AdminPage
         {
             AdminUser = await _context.AdminUser.ToListAsync();
 
-           
-            try
-            {
                 Console.WriteLine("Hello Session2");
-                UserName = JsonSerializer.Deserialize<string>(HttpContext.Session.GetString(SessionKeyName));
-                return Page();
-            }
-            catch
-            {
-                // Call a custom error logging procedure.
-                return RedirectToPage("/AdminPage/Index2");
-                throw;
-            }
-
+                //UserName = JsonSerializer.Deserialize<string>(HttpContext.Session.GetString(SessionKeyName));
+                UserName = HttpContext.Session.GetString(SessionKeyName);
+                if (string.IsNullOrEmpty(UserName))
+                {
+                    return RedirectToPage("/AdminPage/Index2");
+                }
+                else
+                {
+                    return Page();
+                }
         }
 
         

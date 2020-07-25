@@ -7,7 +7,9 @@ using MyFirstRazorWebPage.Models;
 
     public class RazorPagesMovieContext : DbContext
     {
-        public RazorPagesMovieContext (DbContextOptions<RazorPagesMovieContext> options)
+    internal object Picture;
+
+    public RazorPagesMovieContext (DbContextOptions<RazorPagesMovieContext> options)
             : base(options)
         {
         }
