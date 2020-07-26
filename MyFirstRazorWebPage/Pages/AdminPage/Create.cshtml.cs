@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -18,9 +19,22 @@ namespace MyFirstRazorWebPage.Pages.AdminPage
             _context = context;
         }
 
+        public string UserName;
+        public const string SessionKeyName = "username";
+
         public IActionResult OnGet()
         {
-            return Page();
+            UserName = HttpContext.Session.GetString(SessionKeyName);
+            Console.WriteLine("Current session: " + UserName);
+            if (string.IsNullOrEmpty(UserName))
+            {
+                Console.WriteLine("Session ended");
+                return RedirectToPage("/AdminPage/Index2");
+            }
+            else
+            {
+                return Page();
+            }
         }
 
         [BindProperty]
@@ -37,6 +51,9 @@ namespace MyFirstRazorWebPage.Pages.AdminPage
 
             _context.AdminUser.Add(AdminUser);
             await _context.SaveChangesAsync();
+
+           
+
 
             return RedirectToPage("./Index");
         }

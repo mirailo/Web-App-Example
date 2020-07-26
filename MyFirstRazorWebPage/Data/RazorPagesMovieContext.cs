@@ -22,7 +22,7 @@ using MyFirstRazorWebPage.Models;
 
         public DbSet<MyFirstRazorWebPage.Models.AdminUser> AdminUser { get; set; }
 
-        public DbSet<MyFirstRazorWebPage.Models.UserAccessData> UserAccessData { get; set; }
+        //public DbSet<MyFirstRazorWebPage.Models.UserAccessData> UserAccessData { get; set; }
 
         
 

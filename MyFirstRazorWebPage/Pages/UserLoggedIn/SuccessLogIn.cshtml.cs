@@ -20,13 +20,23 @@ namespace MyFirstRazorWebPage.Pages.UserLoggedIn
         }
 
         public string UserName;
+        public const string SessionKeyName = "username";
 
-
-        public void OnGet()
+        public IActionResult OnGet()
         {
 
-            UserName = HttpContext.Session.GetString("username");
-           
+            UserName = HttpContext.Session.GetString(SessionKeyName);
+            Console.WriteLine("Current session: " + UserName);
+            if (string.IsNullOrEmpty(UserName))
+            {
+                Console.WriteLine("Session ended");
+                return RedirectToPage("/Users/UserLogin");
+            }
+            else
+            {
+                return Page();
+            }
+
         }
 
 

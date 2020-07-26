@@ -128,6 +128,7 @@ namespace MyFirstRazorWebPage.Pages.AdminPage
 
         private bool UserExists(int id)
         {
+
             return _context.User.Any(e => e.ID == id);
         }
 
