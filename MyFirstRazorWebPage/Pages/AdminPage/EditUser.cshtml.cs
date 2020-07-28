@@ -37,6 +37,9 @@ namespace MyFirstRazorWebPage.Pages.AdminPage
         [BindProperty]
         public string pathPicture { get; set; }
 
+        [BindProperty]
+        public string FileName { get; set; }
+
         public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
@@ -84,14 +87,13 @@ namespace MyFirstRazorWebPage.Pages.AdminPage
             Console.WriteLine(fileName);
             pathPicture = fileName;
 
-            var RetrieveImage = Path.Combine(_env.ContentRootPath, "ImageData", fileName);
-           
-           
-            //pathPicture = "~/ImageData/";
-            //pathPicture = Convert.ToString(RetrieveImage);
-            //pathPicture += fileName;
-            //Console.WriteLine(pathPicture);
+            //var RetrieveImage = Path.Combine(_env.WebRootPath, "Images", fileName);
 
+            if (pathPicture=="")
+            {
+                pathPicture = "The user has not uploaded a picture yet";
+            }
+          
 
             return Page();
         }

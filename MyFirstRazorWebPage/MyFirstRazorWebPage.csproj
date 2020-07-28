@@ -24,6 +24,7 @@
     <Folder Include="Pages\UsersAccessData\" />
     <Folder Include="ImageData\" />
     <Folder Include="TxtFiles\" />
+    <Folder Include="wwwroot\Images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="Pages\Login\Login.cshtml" />

@@ -17,6 +17,15 @@
 
     <h1 style="text-align:center">Admin Page : Update User</h1>
     <hr />
+
+    <div>
+        <img id="displayImg" src="~/Images/@Model.pathPicture" alt="User Picture" style=" max-width:180px;" /><br>
+        <p>
+            File Name : @Model.pathPicture
+        </p>
+    </div>
+
+
     <div class="row">
         <div class="col-md-4">
             <form method="post">
@@ -44,15 +53,9 @@
         </div>
     </div>
 
-    <div>
-        <img id="displayImg" asp-for="~/ImageData/@Model.pathPicture" alt="User Picture" style=" max-width:180px;" />
-    </div>
 
-    <p>
-        @Model.pathPicture
-    </p>
 
-  
+
     <div>
         <a asp-page="./UserDetails">Back to List</a>|
         <a asp-page="/AdminPage/DeletePicture" asp-route-id="@Model.User.ID">Delete Picture</a>
