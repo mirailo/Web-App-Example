@@ -67,7 +67,7 @@ namespace MyFirstRazorWebPage.Pages.AdminPage
                 PictureID = reader.GetInt32(1);
 
             }
-
+            Console.WriteLine("Pic name delete pic page : "+ PicName);
            return Page();
         }
 
