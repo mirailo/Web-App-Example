@@ -85,7 +85,7 @@ namespace MyFirstRazorWebPage.Pages.BrowsePicture
             if (!check)
             {
 
-                var Fileupload = Path.Combine(_env.ContentRootPath, "ImageData", UploadFile.FileName);
+                var Fileupload = Path.Combine(_env.WebRootPath, "Images", UploadFile.FileName);
                 Console.WriteLine(Fileupload);
                 using (var Fstream = new FileStream(Fileupload, FileMode.Create))
                 {
