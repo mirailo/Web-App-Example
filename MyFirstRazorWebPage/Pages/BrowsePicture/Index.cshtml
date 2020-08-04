@@ -39,6 +39,11 @@
         <a asp-page="/AdminPage/Edit" asp-route-id="@Model.UserRec.ID" style="color: red;">@ViewData["Message"]</a>
     </p>
 
+    <div>
+         <a asp-page="/AdminPage/UserDetails">Back to List</a>
+
+    </div>
+
     <script>function readURL(input) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
