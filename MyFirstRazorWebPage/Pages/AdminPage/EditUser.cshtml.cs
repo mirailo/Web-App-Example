@@ -74,26 +74,17 @@ namespace MyFirstRazorWebPage.Pages.AdminPage
 
             if (string.IsNullOrEmpty(fileName))
             {
-                
+                pathPicture = "DefaulPic.jpeg";
+                Console.WriteLine("Default pic : " + pathPicture);
                 return Page();
             }
 
             pathPicture = fileName;
 
-            //ManagePicture x = new ManagePicture(_env);
-            //x.DeletePic(fileName);
-
-
-            Console.WriteLine(fileName);
+            Console.WriteLine("File name is : "+fileName);
             pathPicture = fileName;
 
-            //var RetrieveImage = Path.Combine(_env.WebRootPath, "Images", fileName);
-
-            if (pathPicture=="")
-            {
-                pathPicture = "The user has not uploaded a picture yet";
-            }
-          
+     
 
             return Page();
         }

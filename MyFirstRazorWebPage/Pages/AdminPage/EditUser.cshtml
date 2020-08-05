@@ -23,15 +23,18 @@
         <p>
             File Name : @{
 
-                if (!string.IsNullOrEmpty(Model.pathPicture))
+                if (Model.pathPicture != "DefaulPic.jpeg")
                 {
                     @Model.pathPicture
                 }
                 else
                 {
-                    Model.pathPicture = "The user does not have a picture yet";
-                    Console.WriteLine(Model.pathPicture);
-                    @: @Model.pathPicture 
+                    var text = "The user does not have a picture yet. Please upload a picture.";
+                    Console.WriteLine(text);
+                    @: @text
+
+                    Model.pathPicture = "DefaulPic.jpeg";
+                    Console.WriteLine("After defaultted : "+ Model.pathPicture);
                 }
 
 
@@ -72,7 +75,22 @@
 
     <div>
         <a asp-page="./UserDetails">Back to List</a>|
-        <a asp-page="/AdminPage/DeletePicture" asp-route-id="@Model.User.ID">Delete Picture</a>
+
+        @{
+            
+            if (Model.pathPicture == "DefaulPic.jpeg")
+            {
+                
+                <a asp-page="/BrowsePicture/Index" asp-route-id="@Model.User.ID">Upload Picture</a>
+            }
+            else
+            {
+                <a asp-page="/AdminPage/DeletePicture" asp-route-id="@Model.User.ID">Delete Picture</a>
+            }
+
+
+        }
+
     </div>
 
     @section Scripts {
