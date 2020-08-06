@@ -22,6 +22,10 @@ using MyFirstRazorWebPage.Models;
 
         public DbSet<MyFirstRazorWebPage.Models.AdminUser> AdminUser { get; set; }
 
+        //public DbSet<MyFirstRazorWebPage.Models.Picture> Picture { get; set; }
+
+        public DbSet<MyFirstRazorWebPage.Models.Modules> Modules { get; set; }
+
         //public DbSet<MyFirstRazorWebPage.Models.UserAccessData> UserAccessData { get; set; }
 
         

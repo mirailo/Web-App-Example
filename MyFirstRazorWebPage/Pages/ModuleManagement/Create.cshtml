@@ -1,0 +1,71 @@
+@page
+@model MyFirstRazorWebPage.Pages.ModuleManagement.CreateModel
+
+@{
+    ViewData["Title"] = "Admin Page - Create Module";
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+</head>
+<body>
+
+    <h1 style="text-align:center">Admin Page : Create Module</h1>
+    <hr />
+
+    <div class="row">
+        <div class="col-md-4">
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Modules.ModCode" class="control-label"></label>
+                    <input asp-for="Modules.ModCode" class="form-control" />
+                    <span asp-validation-for="Modules.ModCode" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Modules.ModName" class="control-label"></label>
+                    <input asp-for="Modules.ModName" class="form-control" />
+                    <span asp-validation-for="Modules.ModName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Modules.ModLevel" class="control-label"></label>
+
+
+                        @Html.DropDownListFor(m => m.Modules.ModLevel, new SelectList(Model.Levels), "Select Level", new { @class = "form-control" })
+
+                    <span asp-validation-for="Modules.ModLevel" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Modules.ModSemester" class="control-label"></label>
+
+                    @Html.DropDownListFor(m => m.Modules.ModSemester, new SelectList(Model.Sem), "Select Semester", new { @class = "form-control" })
+
+
+                    <span asp-validation-for="Modules.ModSemester" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-page="Index">Back to List</a> |
+        <a asp-page="/AdminPage/Index" asp-page-handler="OnGetLogout">Admin Homepage</a>|
+        <a asp-page="/AdminPage/Index2" asp-page-handler="OnGetLogout">Logout</a>
+    </div>
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
+
+
+
+</body>
+</html>

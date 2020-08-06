@@ -21,10 +21,10 @@
     <Folder Include="Pages\AdminPage\" />
     <Folder Include="Pages\UserLoggedIn\" />
     <Folder Include="Pages\BrowsePicture\" />
-    <Folder Include="Pages\UsersAccessData\" />
     <Folder Include="ImageData\" />
     <Folder Include="TxtFiles\" />
     <Folder Include="wwwroot\Images\" />
+    <Folder Include="Pages\ModuleManagement\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="Pages\Login\Login.cshtml" />

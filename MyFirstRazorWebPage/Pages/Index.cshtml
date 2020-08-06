@@ -3,13 +3,24 @@
 @{
     ViewData["Title"] = "Index";
 }
+    
+   
+        <h1 style="text-align:center">Welcome to User Management System</h1>
+        <hr>
 
-<h1 style="text-align:center">Welcome to User Management System</h1>
-<hr>
+        <div>
+            <p asp-for="@Model.Message" style="word-wrap: break-word; text-align: justify;
+            text-justify: inter-word; padding-left: 60px; padding-right: 60px " class="control-label">@Model.Message</p>
+            <br />
 
-<div>
-    <p asp-for="@Model.Message" style="word-wrap: break-word; text-align: justify;
-  text-justify: inter-word; padding-left: 60px; padding-right: 60px " class="control-label">@Model.Message</p>
-</div>
 
+            <iframe width="560"
+                    height="315"
+                    src="http://www.youtube.com/embed/fxCEcPxUbYA"
+                    frameborder="0"
+                    allowfullscreen>
+            </iframe>
+        </div>
+
+   
 

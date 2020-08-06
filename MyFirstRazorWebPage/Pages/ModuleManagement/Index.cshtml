@@ -1,0 +1,72 @@
+@page
+@model MyFirstRazorWebPage.Pages.ModuleManagement.IndexModel
+
+@{
+    ViewData["Title"] = "Admin Page - Module List";
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+
+    <h1 style="text-align:center">Admin Page : List of Modules</h1>
+    <hr />
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Modules[0].ModCode)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Modules[0].ModName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Modules[0].ModLevel)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Modules[0].ModSemester)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Modules)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ModCode)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ModName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ModLevel)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ModSemester)
+                    </td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                        <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                        <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <p>
+        <a asp-page="Create">Create New</a> |
+        <a asp-page="/AdminPage/Index" asp-page-handler="OnGetLogout">Admin Homepage</a>|
+        <a asp-page="/AdminPage/Index2" asp-page-handler="OnGetLogout">Logout</a>
+    </p>
+</body>
+</html>
