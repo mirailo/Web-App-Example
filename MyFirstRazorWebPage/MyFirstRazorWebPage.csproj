@@ -25,6 +25,7 @@
     <Folder Include="TxtFiles\" />
     <Folder Include="wwwroot\Images\" />
     <Folder Include="Pages\ModuleManagement\" />
+    <Folder Include="Pages\UserModules\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="Pages\Login\Login.cshtml" />

@@ -20,12 +20,16 @@ namespace MyFirstRazorWebPage.Pages.UserLoggedIn
         }
 
         public string UserName;
-        public const string SessionKeyName = "username";
+        public const string SessionKeyName1 = "username";
+
+        public string UserEmail;
+        public const string SessionKeyName2 = "email";
 
         public IActionResult OnGet()
         {
 
-            UserName = HttpContext.Session.GetString(SessionKeyName);
+            UserName = HttpContext.Session.GetString(SessionKeyName1);
+            UserEmail = HttpContext.Session.GetString(SessionKeyName2);
             Console.WriteLine("Current session: " + UserName);
             if (string.IsNullOrEmpty(UserName))
             {

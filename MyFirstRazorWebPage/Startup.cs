@@ -32,7 +32,7 @@ namespace MyFirstRazorWebPage
             services.AddDistributedMemoryCache();
 
             services.AddSession(o=> {
-                o.IdleTimeout = TimeSpan.FromSeconds(10);
+                o.IdleTimeout = TimeSpan.FromSeconds(20);
                 o.Cookie.HttpOnly = true;
                 o.Cookie.IsEssential = true;
 
@@ -41,7 +41,7 @@ namespace MyFirstRazorWebPage
             services.AddSession(options =>
             {
                 //options.Cookie.Name = ".AdventureWorks.Session";
-                options.IdleTimeout = TimeSpan.FromSeconds(10);
+                options.IdleTimeout = TimeSpan.FromSeconds(20);
                 options.Cookie.IsEssential = true;
             });
 

@@ -2,9 +2,8 @@
 @model MyFirstRazorWebPage.Pages.ModuleManagement.DetailsModel
 
 @{
-    Layout = null;
+    ViewData["Title"] = "Admin Page - Module Detail";
 }
-
 <!DOCTYPE html>
 
 <html>
@@ -14,39 +13,42 @@
 </head>
 <body>
 
-<div>
-    <h4>Modules</h4>
+    <h1 style="text-align:center">Admin Page : Module Detail</h1>
     <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Modules.ModCode)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Modules.ModCode)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Modules.ModName)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Modules.ModName)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Modules.ModLevel)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Modules.ModLevel)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Modules.ModSemester)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Modules.ModSemester)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-page="./Edit" asp-route-id="@Model.Modules.ID">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
-</div>
+
+    <div>
+        <h4>Modules</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Modules.ModCode)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Modules.ModCode)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Modules.ModName)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Modules.ModName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Modules.ModLevel)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Modules.ModLevel)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Modules.ModSemester)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Modules.ModSemester)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <a asp-page="./Edit" asp-route-id="@Model.Modules.ID">Edit</a> |
+        <a asp-page="./Index">Back to Module List</a>
+    </div>
 </body>
 </html>

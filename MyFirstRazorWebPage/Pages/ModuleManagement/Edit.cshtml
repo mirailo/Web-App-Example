@@ -2,8 +2,9 @@
 @model MyFirstRazorWebPage.Pages.ModuleManagement.EditModel
 
 @{
-    Layout = null;
+    ViewData["Title"] = "Admin Page - Edit Module";
 }
+
 
 <!DOCTYPE html>
 
@@ -14,46 +15,49 @@
 </head>
 <body>
 
-<h4>Modules</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Modules.ID" />
-            <div class="form-group">
-                <label asp-for="Modules.ModCode" class="control-label"></label>
-                <input asp-for="Modules.ModCode" class="form-control" />
-                <span asp-validation-for="Modules.ModCode" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Modules.ModName" class="control-label"></label>
-                <input asp-for="Modules.ModName" class="form-control" />
-                <span asp-validation-for="Modules.ModName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Modules.ModLevel" class="control-label"></label>
-                <input asp-for="Modules.ModLevel" class="form-control" />
-                <span asp-validation-for="Modules.ModLevel" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Modules.ModSemester" class="control-label"></label>
-                <input asp-for="Modules.ModSemester" class="form-control" />
-                <span asp-validation-for="Modules.ModSemester" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+    <h1 style="text-align:center">Admin Page : Edit Module</h1>
+    <hr />
+
+    <h4>Modules</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Modules.ID" />
+                <div class="form-group">
+                    <label asp-for="Modules.ModCode" class="control-label"></label>
+                    <input asp-for="Modules.ModCode" class="form-control" />
+                    <span asp-validation-for="Modules.ModCode" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Modules.ModName" class="control-label"></label>
+                    <input asp-for="Modules.ModName" class="form-control" />
+                    <span asp-validation-for="Modules.ModName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Modules.ModLevel" class="control-label"></label>
+                    <input asp-for="Modules.ModLevel" class="form-control" />
+                    <span asp-validation-for="Modules.ModLevel" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Modules.ModSemester" class="control-label"></label>
+                    <input asp-for="Modules.ModSemester" class="form-control" />
+                    <span asp-validation-for="Modules.ModSemester" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
     </div>
-</div>
 
-<div>
-    <a asp-page="./Index">Back to List</a>
-</div>
+    <div>
+        <a asp-page="./Index">Back to Module List</a>
+    </div>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
 </body>
 </html>

@@ -23,7 +23,7 @@ namespace MyFirstRazorWebPage.Pages.ModuleManagement
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            Console.WriteLine("Delete Page!");
+            
             if (id == null)
             {
                 return NotFound();

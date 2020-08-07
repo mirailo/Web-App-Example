@@ -35,7 +35,6 @@
                 <div class="form-group">
                     <label asp-for="Modules.ModLevel" class="control-label"></label>
 
-
                         @Html.DropDownListFor(m => m.Modules.ModLevel, new SelectList(Model.Levels), "Select Level", new { @class = "form-control" })
 
                     <span asp-validation-for="Modules.ModLevel" class="text-danger"></span>

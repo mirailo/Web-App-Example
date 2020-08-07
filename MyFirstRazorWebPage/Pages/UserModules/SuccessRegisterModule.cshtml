@@ -1,0 +1,81 @@
+﻿@page
+@model MyFirstRazorWebPage.Pages.UserModules.SuccessRegisterModuleModel
+@{
+    ViewData["Title"] = "Success Register Module";
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Register Modules</title>
+</head>
+<body>
+
+    <div>
+        <h4>Modules Registration Successful</h4>
+        <hr />
+    </div>
+
+    <div>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.RegMod[0].ModCode)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.RegMod[0].ModName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.RegMod[0].ModLevel)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.RegMod[0].ModSemester)
+                    </th>
+                    
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.RegMod.Count(); i++)
+                {
+                    <tr>
+                        <td>
+                        
+                            @Model.RegMod[0].ModCode
+                        </td>
+                        <td>
+                           
+                            @Model.RegMod[0].ModName
+
+                        </td>
+                        <td>
+                           
+                            @Model.RegMod[0].ModLevel
+                        </td>
+                        <td>
+                           
+                            @Model.RegMod[0].ModSemester
+                        </td>
+                       
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+   
+
+
+    <div>
+
+        <a asp-page="/UserLoggedIn/SuccessLogIn">User Homepage</a>|
+        <a asp-page="/Users/UserLogin" asp-page-handler="OnGetLogout">View Registered Modules</a>|
+        <a asp-page="/Users/UserLogin" asp-page-handler="OnGetLogout">Logout</a>
+    </div>
+</body>
+</html>

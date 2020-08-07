@@ -1,0 +1,89 @@
+﻿@page
+@model MyFirstRazorWebPage.Pages.UserModules.RegisterModulesModel
+@{
+    ViewData["Title"] = "Register Module";
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Register Modules</title>
+</head>
+<body>
+
+    <div>
+        <h4>Register Modules</h4>
+        <hr />
+    </div>
+
+    <div>
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ModRecords[0].ModCode)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ModRecords[0].ModName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ModRecords[0].ModLevel)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ModRecords[0].ModSemester)
+                        </th>
+                        <th>
+                            Select Module
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < Model.ModRecords.Count(); i++)
+                    {
+                        <tr>
+                            <td>
+                                <input type="hidden" asp-for="@Model.ModRecords[i].ModCode" class="control-label"/>
+                                @Model.ModRecords[i].ModCode
+                            </td>
+                            <td>
+                                <input type="hidden" asp-for="@Model.ModRecords[i].ModName" class="control-label" />
+                                @Model.ModRecords[i].ModName
+
+                            </td>
+                            <td>
+                                <input type="hidden" asp-for=" @Model.ModRecords[i].ModLevel" class="control-label" />
+                                @Model.ModRecords[i].ModLevel
+                            </td>
+                            <td>
+                                <input type="hidden" asp-for="@Model.ModRecords[i].ModSemester" class="control-label" />
+                                @Model.ModRecords[i].ModSemester
+                            </td>
+                            <td>
+                                @Html.CheckBoxFor(model => model.IsSelect[i], new { @class = "form-control" })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <div class="form-group">
+                <input type="submit" value="Register" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+
+
+
+    <div>
+
+        <a asp-page="/UserLoggedIn/SuccessLogIn">User Homepage</a>|
+        <a asp-page="/Users/UserLogin" asp-page-handler="OnGetLogout">View Registered Modules</a>|
+        <a asp-page="/Users/UserLogin" asp-page-handler="OnGetLogout">Logout</a>
+    </div>
+</body>
+</html>

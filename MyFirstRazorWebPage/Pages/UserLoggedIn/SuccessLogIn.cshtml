@@ -20,6 +20,9 @@
     <h1 style="text-align:center">Welcome @Model.UserName</h1>
 
     <div>
+        <a asp-page="/UserModules/UserProfile">View/Update Profile</a>|
+        <a asp-page="/Users/UserLogin" asp-page-handler="OnGetLogout">View Registered Modules</a>|
+        <a asp-page="/UserModules/RegisterModules">Register Modules</a>|
         <a asp-page="/Users/UserLogin" asp-page-handler="OnGetLogout">Logout</a>
     </div>
 

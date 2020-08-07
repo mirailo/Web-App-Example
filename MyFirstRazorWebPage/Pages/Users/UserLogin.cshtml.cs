@@ -35,7 +35,10 @@ namespace MyFirstRazorWebPage.Pages.Users
         [BindProperty]
         public string UserName { get; set; }
 
-     
+        [BindProperty]
+        public string UserEmail { get; set; }
+
+
         [BindProperty]
         public string Msg { get; set; }
         
@@ -84,6 +87,7 @@ namespace MyFirstRazorWebPage.Pages.Users
                         }
 
                         HttpContext.Session.SetString("username", UserName);
+                        HttpContext.Session.SetString("email", User.EmailAdd);
                         return RedirectToPage("/UserLoggedIn/SuccessLogin");
                     }
                     else
