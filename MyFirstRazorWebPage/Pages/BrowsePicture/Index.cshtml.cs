@@ -12,8 +12,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Data.Sqlite;
 using MyFirstRazorWebPage.Pages.BrowsePicture;
-
-
+using MyFirstRazorWebPage.Pages.DatabaseConnection;
 
 namespace MyFirstRazorWebPage.Pages.BrowsePicture
 {
@@ -49,7 +48,10 @@ namespace MyFirstRazorWebPage.Pages.BrowsePicture
             //Console.WriteLine(EmailAddress);
 
             var connectionStringBuilder = new SqliteConnectionStringBuilder();
-            connectionStringBuilder.DataSource = "/Users/zairulmazwan/Projects/MyFirstRazorWebPage/MyFirstRazorWebPage/RazorPagesMovieContext-4626ba78-c68f-4200-bc79-dd49c8d85ee3.db";
+            DatabaseConnect DBCon = new DatabaseConnect(); // your own class and method in DatabaseConnection folder
+            string dbStringConnection = DBCon.DBStringConnection();
+
+            connectionStringBuilder.DataSource = dbStringConnection;
             var connection = new SqliteConnection(connectionStringBuilder.ConnectionString);
 
             connection.Open();
@@ -99,7 +101,10 @@ namespace MyFirstRazorWebPage.Pages.BrowsePicture
                 Console.WriteLine("First Name is -->" + UserRec.FirstName);
 
                 var connectionStringBuilder = new SqliteConnectionStringBuilder();
-                connectionStringBuilder.DataSource = "/Users/zairulmazwan/Projects/MyFirstRazorWebPage/MyFirstRazorWebPage/RazorPagesMovieContext-4626ba78-c68f-4200-bc79-dd49c8d85ee3.db";
+                DatabaseConnect DBCon = new DatabaseConnect(); // your own class and method in DatabaseConnection folder
+                string dbStringConnection = DBCon.DBStringConnection();
+
+                connectionStringBuilder.DataSource = dbStringConnection;
                 var connection = new SqliteConnection(connectionStringBuilder.ConnectionString);
 
                 connection.Open();
@@ -131,7 +136,10 @@ namespace MyFirstRazorWebPage.Pages.BrowsePicture
             Boolean status = false;
 
             var connectionStringBuilder = new SqliteConnectionStringBuilder();
-            connectionStringBuilder.DataSource = "/Users/zairulmazwan/Projects/MyFirstRazorWebPage/MyFirstRazorWebPage/RazorPagesMovieContext-4626ba78-c68f-4200-bc79-dd49c8d85ee3.db";
+            DatabaseConnect DBCon = new DatabaseConnect(); // your own class and method in DatabaseConnection folder
+            string dbStringConnection = DBCon.DBStringConnection();
+
+            connectionStringBuilder.DataSource = dbStringConnection;
             var connection = new SqliteConnection(connectionStringBuilder.ConnectionString);
 
             connection.Open();

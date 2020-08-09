@@ -5,8 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Data.Sqlite;
 using Microsoft.Extensions.Logging;
 using MyFirstRazorWebPage.Models;
+using MyFirstRazorWebPage.Pages.DatabaseConnection;
 
 namespace MyFirstRazorWebPage.Pages.UserLoggedIn
 {
@@ -25,21 +27,66 @@ namespace MyFirstRazorWebPage.Pages.UserLoggedIn
         public string UserEmail;
         public const string SessionKeyName2 = "email";
 
+        [BindProperty]
+        public string pathPicture { get; set; }
+
+        [BindProperty]
+        public string FileName { get; set; }
+
         public IActionResult OnGet()
         {
 
             UserName = HttpContext.Session.GetString(SessionKeyName1);
             UserEmail = HttpContext.Session.GetString(SessionKeyName2);
             Console.WriteLine("Current session: " + UserName);
+
             if (string.IsNullOrEmpty(UserName))
             {
                 Console.WriteLine("Session ended");
                 return RedirectToPage("/Users/UserLogin");
+
             }
             else
             {
+                var connectionStringBuilder = new SqliteConnectionStringBuilder();
+                DatabaseConnect DBCon = new DatabaseConnect();
+                string dbStringConnection = DBCon.DBStringConnection();
+
+
+                connectionStringBuilder.DataSource = dbStringConnection;
+                var connection = new SqliteConnection(connectionStringBuilder.ConnectionString);
+
+                connection.Open();
+
+                var selectCmd = connection.CreateCommand();
+                selectCmd.CommandText = @"SELECT PicName FROM Picture WHERE Email=$email";
+                selectCmd.Parameters.AddWithValue("$email", UserEmail);
+
+                var reader = selectCmd.ExecuteReader();
+                var fileName = "";
+
+                while (reader.Read())
+                {
+                    fileName = reader.GetString(0);
+                }
+
+                if (string.IsNullOrEmpty(fileName))
+                {
+                    pathPicture = "DefaulPic.jpeg";
+                    Console.WriteLine("Default pic : " + pathPicture);
+                    return Page();
+                }
+
+                pathPicture = fileName;
+
+                Console.WriteLine("File name is : " + fileName);
+                pathPicture = fileName;
+
                 return Page();
             }
+
+
+            
 
         }
 

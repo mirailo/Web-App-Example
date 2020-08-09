@@ -1,0 +1,88 @@
+﻿@page
+@model MyFirstRazorWebPage.Pages.UserModules.ViewRegisteredModuleModel
+@{
+    ViewData["Title"] = "View Module";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>View Modules</title>
+</head>
+<body>
+
+    <div>
+        <h4>View Module for @Model.UserName</h4>
+        <hr />
+    </div>
+
+    <div>
+       
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Modules[0].ModCode)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Modules[0].ModName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Modules[0].ModLevel)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Modules[0].ModSemester)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < Model.Modules.Count(); i++)
+                    {
+                        <tr>
+                            <td>
+                                
+                                @Model.Modules[i].ModCode
+                            </td>
+                            <td>
+                             
+                                @Model.Modules[i].ModName
+
+                            </td>
+                            <td>
+                             
+                                @Model.Modules[i].ModLevel
+                            </td>
+                            <td>
+                                
+                                @Model.Modules[i].ModSemester
+                            </td>
+                           
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            
+    </div>
+
+    <div>
+        @{
+            if (Model.Modules.Count==0)
+            {
+                @: The student does not have any module registered.
+            }
+        }
+
+    </div>
+
+    <div>
+        <a asp-page="/UserLoggedIn/SuccessLogIn">User Homepage</a>|
+        <a asp-page="/UserModules/RegisterModules">Register Modules</a>|
+        <a asp-page="/UserModules/DeregisteredModules">De-Register Modules</a>|
+        <a asp-page="/Users/UserLogin" asp-page-handler="OnGetLogout">Logout</a>
+    </div>
+</body>
+</html>

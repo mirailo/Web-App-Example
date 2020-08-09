@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore.Storage;
 using MyFirstRazorWebPage.Models;
+using MyFirstRazorWebPage.Pages.DatabaseConnection;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Model;
 
 namespace MyFirstRazorWebPage.Pages.Users
@@ -55,7 +56,10 @@ namespace MyFirstRazorWebPage.Pages.Users
 
 
             var connectionStringBuilder = new SqliteConnectionStringBuilder();
-            connectionStringBuilder.DataSource = "/Users/zairulmazwan/Projects/MyFirstRazorWebPage/MyFirstRazorWebPage/RazorPagesMovieContext-4626ba78-c68f-4200-bc79-dd49c8d85ee3.db";
+            DatabaseConnect DBCon = new DatabaseConnect(); // your own class and method in DatabaseConnection folder
+            string dbStringConnection = DBCon.DBStringConnection();
+
+            connectionStringBuilder.DataSource = dbStringConnection;
             var connection = new SqliteConnection(connectionStringBuilder.ConnectionString);
 
             connection.Open();

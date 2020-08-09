@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore.Storage;
 using MyFirstRazorWebPage.Models;
+using MyFirstRazorWebPage.Pages.DatabaseConnection;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Model;
 
 namespace MyFirstRazorWebPage.Pages.AdminPage
@@ -20,6 +21,21 @@ namespace MyFirstRazorWebPage.Pages.AdminPage
 
         private readonly RazorPagesMovieContext _context;
 
+        public string UserName;
+        public const string SessionKeyName1 = "username";
+
+        public string UserEmail;
+        public const string SessionKeyName2 = "email";
+
+        [Required]
+        [BindProperty]
+        public AdminUser AdminUser { get; set; }
+
+        public string Msg { get; set; }
+
+        public const string SessionKeyName = "username";
+
+
         public Index2Model(RazorPagesMovieContext context)
         {
             _context = context;
@@ -27,7 +43,22 @@ namespace MyFirstRazorWebPage.Pages.AdminPage
 
         public IActionResult OnGet()
         {
-            return Page();
+            UserName = HttpContext.Session.GetString(SessionKeyName1);
+            UserEmail = HttpContext.Session.GetString(SessionKeyName2);
+            Console.WriteLine("Current session: " + UserName);
+
+            if (string.IsNullOrEmpty(UserName))
+            {
+                Console.WriteLine("Session ended");
+                return Page();
+               
+
+            }
+            else
+            {
+                return RedirectToPage("/AdminPage/Index");
+            }
+
         }
 
 
@@ -35,18 +66,7 @@ namespace MyFirstRazorWebPage.Pages.AdminPage
         //[BindProperty]
         //public User User { get; set; }
 
-        [Required]
-        [BindProperty]
-        public AdminUser AdminUser { get; set; }
-
-
-        [BindProperty]
-        public string UserName { get; set; }
-
-        public string Msg { get; set; }
-
-        public const string SessionKeyName = "username";
-
+       
         public IActionResult OnPost()
         {
             /*
@@ -67,7 +87,9 @@ namespace MyFirstRazorWebPage.Pages.AdminPage
             else
             {
                 var connectionStringBuilder = new SqliteConnectionStringBuilder();
-                connectionStringBuilder.DataSource = "/Users/zairulmazwan/Projects/MyFirstRazorWebPage/MyFirstRazorWebPage/RazorPagesMovieContext-4626ba78-c68f-4200-bc79-dd49c8d85ee3.db";
+                DatabaseConnect DBCon = new DatabaseConnect();
+                string dbStringConnection = DBCon.DBStringConnection();
+                connectionStringBuilder.DataSource = dbStringConnection;
                 var connection = new SqliteConnection(connectionStringBuilder.ConnectionString);
 
                 connection.Open();

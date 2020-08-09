@@ -20,9 +20,29 @@
     <h1 style="text-align:center">Welcome @Model.UserName</h1>
 
     <div>
+        <img id="displayImg" src="~/Images/@Model.pathPicture" alt="Image not found" style=" max-width:180px;" /><br>
+        <p>
+           @{
+
+                if (Model.pathPicture == "DefaulPic.jpeg")
+                {
+                    var text = "The user does not have a picture yet. Please upload a picture.";
+                   Console.WriteLine(text);
+                   @: @text
+
+                   Model.pathPicture = "DefaulPic.jpeg";
+                   Console.WriteLine("After defaultted : " + Model.pathPicture);
+                }
+                 
+           }
+        </p>
+    </div>
+
+    <div>
         <a asp-page="/UserModules/UserProfile">View/Update Profile</a>|
-        <a asp-page="/Users/UserLogin" asp-page-handler="OnGetLogout">View Registered Modules</a>|
+        <a asp-page="/UserModules/ViewRegisteredModule">View Registered Modules</a>|
         <a asp-page="/UserModules/RegisterModules">Register Modules</a>|
+        <a asp-page="/UserModules/DeregisteredModules">De-Register Modules</a>|
         <a asp-page="/Users/UserLogin" asp-page-handler="OnGetLogout">Logout</a>
     </div>
 

@@ -1,7 +1,7 @@
 ﻿@page
-@model MyFirstRazorWebPage.Pages.UserModules.RegisterModulesModel
+@model MyFirstRazorWebPage.Pages.UserModules.DeregisteredModulesModel
 @{
-    ViewData["Title"] = "Register Module";
+    ViewData["Title"] = "De-Registered Module";
 }
 
 
@@ -15,7 +15,7 @@
 <body>
 
     <div>
-        <h4>Register Modules for @Model.UserEmail</h4>
+        <h4>De-Register Modules for @Model.UserEmail</h4>
         <hr />
     </div>
 
@@ -77,7 +77,7 @@
                 </tbody>
             </table>
             <div class="form-group">
-                <input type="submit" value="Register" class="btn btn-primary" />
+                <input type="submit" value="De-Register" class="btn btn-primary" />
             </div>
         </form>
     </div>
@@ -87,7 +87,7 @@
     <div>
 
         <a asp-page="/UserLoggedIn/SuccessLogIn">User Homepage</a>|
-        <a asp-page="/UserModules/ViewRegisteredModule" asp-page-handler="OnGetLogout">View Registered Modules</a>|
+        <a asp-page="/UserModules/ViewRegisteredModule">View Registered Modules</a>|
         <a asp-page="/Users/UserLogin" asp-page-handler="OnGetLogout">Logout</a>
     </div>
 </body>
