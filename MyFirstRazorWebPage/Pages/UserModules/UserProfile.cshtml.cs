@@ -26,18 +26,25 @@ namespace MyFirstRazorWebPage.Pages.UserModules
         public string UserName;
         public const string SessionKeyName1 = "username";
 
+        public string SessionID;
+        public const string SessionKeyName3 = "sessionID";
+
         public string UserEmail;
         public const string SessionKeyName2 = "email";
 
         public string Pwd { get; set; }
-        public string FName { get; set; }
+        public string EmailAdd { get; set; }
+        public string getUserNameFromSession { get; set; }
 
         public async Task<IActionResult> OnGetAsync()
         {
             UserName = HttpContext.Session.GetString(SessionKeyName1);
             UserEmail = HttpContext.Session.GetString(SessionKeyName2);
 
-            Console.WriteLine("Current session: " + UserName);
+            SessionID = HttpContext.Session.GetString(SessionKeyName3);
+
+
+            Console.WriteLine("Current session ID: " + SessionID);
             if (string.IsNullOrEmpty(UserName))
             {
                 Console.WriteLine("Session ended");
@@ -45,6 +52,8 @@ namespace MyFirstRazorWebPage.Pages.UserModules
             }
             else
             {
+                
+
                 var connectionStringBuilder = new SqliteConnectionStringBuilder();
                 DatabaseConnect DBCon = new DatabaseConnect();
                 string dbStringConnection = DBCon.DBStringConnection();
@@ -55,18 +64,18 @@ namespace MyFirstRazorWebPage.Pages.UserModules
                 connection.Open();
 
                 var selectCmd = connection.CreateCommand();
-                selectCmd.CommandText = @"SELECT FirstName, Password FROM User WHERE EmailAdd=$EmailAdd";
-                selectCmd.Parameters.AddWithValue("$EmailAdd", UserEmail);
+                selectCmd.CommandText = @"SELECT EmailAdd, Password FROM User WHERE FirstName=$userName";
+                selectCmd.Parameters.AddWithValue("$userName", UserName);
 
                 var reader = selectCmd.ExecuteReader();
                
                 while (reader.Read())
                 {
-                    FName = reader.GetString(0);
+                    EmailAdd = reader.GetString(0);
                     Pwd = reader.GetString(1);
                 }
 
-                Console.WriteLine("Retrieved first name : "+ FName);
+                Console.WriteLine("Retrieved first name : "+ EmailAdd);
                 Console.WriteLine("Retrieved password : " + Pwd);
                 return Page();
             }

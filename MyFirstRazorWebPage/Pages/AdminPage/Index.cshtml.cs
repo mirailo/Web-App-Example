@@ -27,6 +27,9 @@ namespace MyFirstRazorWebPage.Pages.AdminPage
         public string UserName;
         public const string SessionKeyName = "username";
 
+        public string SessionID;
+        public const string SessionKeyID = "sessionID";
+
         public IList<AdminUser> AdminUser { get; set; }
 
       
@@ -37,7 +40,15 @@ namespace MyFirstRazorWebPage.Pages.AdminPage
                 Console.WriteLine("Hello Session2");
                 //UserName = JsonSerializer.Deserialize<string>(HttpContext.Session.GetString(SessionKeyName));
                 UserName = HttpContext.Session.GetString(SessionKeyName);
-                if (string.IsNullOrEmpty(UserName))
+                SessionID = HttpContext.Session.GetString(SessionKeyID);
+
+                //UserName = HttpContext.Request.Cookies[SessionKeyName];
+
+                Console.WriteLine("User session : "+UserName);
+                Console.WriteLine("User session ID : "+ SessionID);
+
+
+            if (string.IsNullOrEmpty(UserName))
                 {
                     return RedirectToPage("/AdminPage/Index2");
                 }

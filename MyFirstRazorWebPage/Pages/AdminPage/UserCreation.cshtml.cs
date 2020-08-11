@@ -28,6 +28,8 @@ namespace MyFirstRazorWebPage.Pages.AdminPage
 
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://aka.ms/RazorPagesCRUD.
+
+
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
@@ -38,7 +40,7 @@ namespace MyFirstRazorWebPage.Pages.AdminPage
             _context.User.Add(User);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("UserDetails");
+            return RedirectToPage("/AdminPage/UserDetails");
         }
     }
     

@@ -24,8 +24,12 @@ namespace MyFirstRazorWebPage.Pages.UserLoggedIn
         public string UserName;
         public const string SessionKeyName1 = "username";
 
+        
         public string UserEmail;
         public const string SessionKeyName2 = "email";
+
+        public string SessionID;
+        public const string SessionKeyName3 = "sessionID";
 
         [BindProperty]
         public string pathPicture { get; set; }
@@ -38,7 +42,11 @@ namespace MyFirstRazorWebPage.Pages.UserLoggedIn
 
             UserName = HttpContext.Session.GetString(SessionKeyName1);
             UserEmail = HttpContext.Session.GetString(SessionKeyName2);
+            SessionID = HttpContext.Session.GetString(SessionKeyName3);
+
+            
             Console.WriteLine("Current session: " + UserName);
+            Console.WriteLine("Current session ID: " + SessionID);
 
             if (string.IsNullOrEmpty(UserName))
             {
@@ -85,11 +93,7 @@ namespace MyFirstRazorWebPage.Pages.UserLoggedIn
                 return Page();
             }
 
-
-            
-
         }
-
 
 
     }

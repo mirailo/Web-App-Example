@@ -25,13 +25,13 @@
                 First Name :
             </dt>
             <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.FName)
+                @Html.DisplayFor(model => model.UserName)
             </dd>
             <dt class="col-sm-2">
                 Email Address :
             </dt>
             <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.UserEmail)
+                @Html.DisplayFor(model => model.EmailAdd)
             </dd>
             <dt class="col-sm-2">
                 Password :
@@ -51,7 +51,7 @@
         <a asp-page="/UserModules/ViewRegisteredModule">View Registered Modules</a>|
         <a asp-page="/UserModules/RegisterModules">Register Modules</a>|
         <a asp-page="/UserModules/DeregisteredModules">De-Register Modules</a>|
-        <a asp-page="/Users/UserLogin" asp-page-handler="OnGetLogout">Logout</a>
+        <a asp-page="/UserLoggedIn/UserLogout">Logout</a>
     </div>
 </body>
 </html>

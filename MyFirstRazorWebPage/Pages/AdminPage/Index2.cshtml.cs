@@ -24,6 +24,9 @@ namespace MyFirstRazorWebPage.Pages.AdminPage
         public string UserName;
         public const string SessionKeyName1 = "username";
 
+        public string SessionID;
+        public const string SessionKeyID = "sessionID";
+
         public string UserEmail;
         public const string SessionKeyName2 = "email";
 
@@ -33,9 +36,7 @@ namespace MyFirstRazorWebPage.Pages.AdminPage
 
         public string Msg { get; set; }
 
-        public const string SessionKeyName = "username";
-
-
+      
         public Index2Model(RazorPagesMovieContext context)
         {
             _context = context;
@@ -51,22 +52,17 @@ namespace MyFirstRazorWebPage.Pages.AdminPage
             {
                 Console.WriteLine("Session ended");
                 return Page();
-               
+
 
             }
             else
             {
                 return RedirectToPage("/AdminPage/Index");
+                
             }
 
         }
 
-
-        //[Required]
-        //[BindProperty]
-        //public User User { get; set; }
-
-       
         public IActionResult OnPost()
         {
             /*
@@ -120,7 +116,17 @@ namespace MyFirstRazorWebPage.Pages.AdminPage
                     }
 
                     //HttpContext.Session.SetString("username", JsonSerializer.Serialize(UserName));
+                   
                     HttpContext.Session.SetString("username", UserName);
+                    SessionID = HttpContext.Session.Id;
+                    HttpContext.Session.SetString("sessionID", SessionID);
+
+                    //HttpContext.Response.Cookies.Append("username", UserName);
+
+
+
+
+                    Console.WriteLine("Session ID : "+ SessionID);
                     return RedirectToPage("/AdminPage/Index");
                 }
                 else

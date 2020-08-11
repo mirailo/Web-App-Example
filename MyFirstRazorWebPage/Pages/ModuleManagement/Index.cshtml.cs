@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -18,11 +19,16 @@ namespace MyFirstRazorWebPage.Pages.ModuleManagement
             _context = context;
         }
 
+        public string UserName;
+        public const string SessionKeyName1 = "username";
+
         public IList<Modules> Modules { get;set; }
 
         public async Task OnGetAsync()
         {
             Modules = await _context.Modules.ToListAsync();
+            UserName = HttpContext.Session.GetString(SessionKeyName1);
+            UserName = HttpContext.Session.Id;
         }
     }
 }

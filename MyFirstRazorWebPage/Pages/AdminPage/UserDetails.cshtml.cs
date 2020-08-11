@@ -29,6 +29,7 @@ namespace MyFirstRazorWebPage.Pages.AdminPage
             User = await _context.User.ToListAsync();
 
             UserName = HttpContext.Session.GetString(SessionKeyName);
+            UserName = HttpContext.Session.Id;
             Console.WriteLine("Current session: " + UserName);
 
             if (string.IsNullOrEmpty(UserName))
