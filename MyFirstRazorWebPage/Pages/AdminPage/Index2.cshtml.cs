@@ -44,7 +44,7 @@ namespace MyFirstRazorWebPage.Pages.AdminPage
 
         public IActionResult OnGet()
         {
-            UserName = HttpContext.Session.GetString(SessionKeyName1);
+            /*UserName = HttpContext.Session.GetString(SessionKeyName1);
             UserEmail = HttpContext.Session.GetString(SessionKeyName2);
             Console.WriteLine("Current session: " + UserName);
 
@@ -59,7 +59,9 @@ namespace MyFirstRazorWebPage.Pages.AdminPage
             {
                 return RedirectToPage("/AdminPage/Index");
                 
-            }
+            }*/
+
+            return Page();
 
         }
 

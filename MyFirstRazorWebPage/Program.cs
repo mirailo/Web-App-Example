@@ -21,6 +21,7 @@ namespace MyFirstRazorWebPage
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+                    webBuilder.UseUrls("http://localhost:5001", "http://192.168.1.104:5001");
                 });
     }
 }
