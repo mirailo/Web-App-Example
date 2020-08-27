@@ -41,7 +41,7 @@ namespace MyFirstRazorWebPage.Pages.AdminPage
 
 
             string WelcomeFile = "Welcome.txt";
-            var FileLocation = Path.Combine(_env.ContentRootPath, "TxtFiles", WelcomeFile);
+            var FileLocation = Path.Combine(_env.WebRootPath, "WelcomeMessage", WelcomeFile);
 
             try
             {   // Open the text file using a stream reader.
@@ -71,7 +71,7 @@ namespace MyFirstRazorWebPage.Pages.AdminPage
         {
             // Set a variable to the Documents path.
             string WelcomeFile = "Welcome.txt";
-            var FileLocation = Path.Combine(_env.ContentRootPath, "TxtFiles", WelcomeFile);
+            var FileLocation = Path.Combine(_env.WebRootPath, "WelcomeMessage", WelcomeFile);
 
 
             // Write the specified text asynchronously to a new file named "WriteTextAsync.txt".

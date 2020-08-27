@@ -27,7 +27,7 @@ namespace MyFirstRazorWebPage.Pages.AdminPage
             if (picName != null)
             {
 
-                string RetrieveImage = Path.Combine(_env.ContentRootPath, "ImageData", picName);
+                string RetrieveImage = Path.Combine(_env.WebRootPath, "Images", picName);
                 System.IO.File.Delete(RetrieveImage);
 
             }

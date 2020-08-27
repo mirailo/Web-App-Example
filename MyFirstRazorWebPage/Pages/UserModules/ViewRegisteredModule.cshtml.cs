@@ -56,8 +56,6 @@ namespace MyFirstRazorWebPage.Pages.UserModules
 
             while (reader.Read())
             {
-              
-              
                 string modCode = reader.GetString(0); //temporary variable used to get the module codes
                 Console.WriteLine("Module found : "+ modCode);
                 ModCode.Add(modCode); //keep it to the list for future use

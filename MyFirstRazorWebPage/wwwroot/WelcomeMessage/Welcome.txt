@@ -1,0 +1,7 @@
+Welcome to this ASP.NET Core MVC tutorial, currently consisting of 73 articles, where you'll learn to make your own web applications using ASP.NET Core and the MVC framework. If you're brand new to ASP.NET and/or the MVC concept, then we recommend that you start from the first chapter and then read your way through all of it.
+
+Have a look at the Table of contents to the right, where all the chapters and articles are listed and be sure to come back regularly, as we will keep adding new articles to it. We hope that this tutorial will get you started properly on ASP.NET MVC.
+
+When creating web applications with ASP.NET MVC, you will need to know a .NET programming language like C# or VB.NET. In this tutorial, we use C# and I therefore recommend that you have at least a basic knowledge of C#. Luckily, we have a complete C# tutorial for you right here on the site, so go check that out if you neeed to: C# tutorial. Since we are creating web applications, you will also benefit from a proper understanding of HTML and CSS.
+
+We hope you like this tutorial and if you do, please help us by linking to it from your website and share it with your friends on social media like Facebook and Twitter. Enjoy!

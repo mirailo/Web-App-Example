@@ -31,7 +31,8 @@ namespace MyFirstRazorWebPage.Pages
         public IActionResult OnGet()
         {
             string WelcomeFile = "Welcome.txt";
-            var FileLocation = Path.Combine(_env.ContentRootPath, "TxtFiles", WelcomeFile);
+            var FileLocation = Path.Combine(_env.WebRootPath, "WelcomeMessage", WelcomeFile);
+            Console.WriteLine("Message file location : "+FileLocation);
 
             try
             {   // Open the text file using a stream reader.

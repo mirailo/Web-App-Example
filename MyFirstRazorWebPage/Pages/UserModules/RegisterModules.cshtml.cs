@@ -65,11 +65,7 @@ namespace MyFirstRazorWebPage.Pages.UserModules
                
                 while (reader.Read())
                 {
-                    //MCode = reader.GetString(1);
-                    //MName = reader.GetString(2);
-                    //MLevel = reader.GetString(3);
-                    //MSemester = reader.GetString(4);
-
+                   
                     Modules mod = new Modules();
                     mod.ModCode = reader.GetString(1);
                     mod.ModName = reader.GetString(2);
@@ -80,17 +76,6 @@ namespace MyFirstRazorWebPage.Pages.UserModules
                     ModRecords.Add(mod);
                     IsSelect.Add(false);
                    
-
-                    //Console.WriteLine(mod.ModCode);
-                    //Console.WriteLine(mod.ModName);
-                    //Console.WriteLine(mod.ModLevel);
-                    //Console.WriteLine(mod.ModSemester);
-
-                    /*
-                    Console.WriteLine(reader.GetString(1));
-                    Console.WriteLine(reader.GetString(2));
-                    Console.WriteLine(reader.GetInt32(3));
-                    Console.WriteLine(reader.GetInt32(4));*/
                 }
 
                 return Page();
@@ -101,10 +86,7 @@ namespace MyFirstRazorWebPage.Pages.UserModules
         public async Task<IActionResult> OnPostAsync()
         {
             Console.WriteLine("Registering Module");
-            Console.WriteLine("IsSelect : "+IsSelect[3]);
-           
-
-
+         
             for (int i=0; i<ModRecords.Count(); i++)
             {
                 if (IsSelect[i] == true)
