@@ -52,9 +52,7 @@ namespace MyFirstRazorWebPage.Pages.AdminPage
                     //Console.WriteLine(line);
                     CurMsg = line;
                     Console.WriteLine("The current text before update is : "+CurMsg);
-                    //but when i want to assign the value to the model
-                    //WPage.Message = CurMsg; //this does not work.
-
+                   
 
                  }
             }

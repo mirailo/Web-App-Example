@@ -71,7 +71,10 @@ namespace MyFirstRazorWebPage.Pages.Users
             selectCmd.Parameters.AddWithValue("$EmailAdd", User.EmailAdd);
 
             var reader = selectCmd.ExecuteReader();
+            Console.WriteLine("Before Password");
             var Pwd = "";
+            Console.WriteLine("Password is " + Pwd);
+
             while (reader.Read())
             {
                 Pwd = reader.GetString(0);

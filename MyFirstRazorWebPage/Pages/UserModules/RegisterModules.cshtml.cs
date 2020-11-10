@@ -61,8 +61,6 @@ namespace MyFirstRazorWebPage.Pages.UserModules
                 selectCmd.CommandText = @"SELECT * FROM Modules ORDER BY ModLevel";
                 var reader = selectCmd.ExecuteReader();
 
-
-               
                 while (reader.Read())
                 {
                    
@@ -72,12 +70,11 @@ namespace MyFirstRazorWebPage.Pages.UserModules
                     mod.ModLevel = reader.GetInt32(3);
                     mod.ModSemester = reader.GetInt32(4);
 
-                
                     ModRecords.Add(mod);
                     IsSelect.Add(false);
                    
                 }
-
+                connection.Close();
                 return Page();
             }
 
@@ -146,7 +143,7 @@ namespace MyFirstRazorWebPage.Pages.UserModules
                     Console.WriteLine("A record saved");
                 }
             }
-            else
+            else //some modules already registered. Only new modules will be registered
             {
                 for (int i = 0; i < GetRegMod.Count; i++)
                 {
@@ -174,10 +171,10 @@ namespace MyFirstRazorWebPage.Pages.UserModules
                         selectCmd2.ExecuteNonQuery();
                         Console.WriteLine("A record saved");
                     }
-
+                    
                 }
             }
-
+            connection.Close();
             return RedirectToPage("/UserModules/ViewRegisteredModule", GetRegMod);
         }
     }

@@ -1,26 +1,60 @@
 ﻿@page
 @model MyFirstRazorWebPage.Pages.IndexModel
-@{
-    ViewData["Title"] = "Index";
-}
-    
-   
-        <h1 style="text-align:center">Welcome to Module Management System</h1>
-        <hr>
+@{ ViewData["Title"] = "Index"; }
 
-        <div>
-            <p asp-for="@Model.Message" style="word-wrap: break-word; text-align: justify;
+
+<style>
+
+    #map {
+        width: 650px;
+        height: 650px;
+        background-color: grey;
+        margin: auto;
+    }
+</style>
+
+
+<link href="~/js/site.js" />
+<script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNS6tsvRWNeCkHyvMc7I4gFkEsILPdLE4"></script>
+
+<h1 style="text-align:center">Welcome to Module Management System</h1>
+<hr>
+
+<div>
+    <p asp-for="@Model.Message" style="word-wrap: break-word; text-align: justify;
             text-justify: inter-word; padding-left: 60px; padding-right: 60px " class="control-label">@Model.Message</p>
             <br />
 
-
+    <!--
             <iframe width="560"
                     height="315"
-                    src="http://www.youtube.com/embed/fxCEcPxUbYA"
+                    src="https://www.youtube.com/embed/1tVF9rSA1m0"
+                    frameborder="0"
+                    allowfullscreen
+                    style="padding-left: 60px;">
+            </iframe>
+        </div>
+
+        <div style="padding-left: 60px;">
+            <iframe width="560"
+                    height="315"
+                    src="~/Videos/VideoExample.mp4"
                     frameborder="0"
                     allowfullscreen>
             </iframe>
         </div>
 
-   
+        -->
+
+       
+        <div>
+            Goole Map
+            <div id="map"></div>
+
+            <p id="location"></p>
+        </div>
+
+
+
 

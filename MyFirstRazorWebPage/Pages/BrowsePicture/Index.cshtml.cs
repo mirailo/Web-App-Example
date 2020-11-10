@@ -87,6 +87,7 @@ namespace MyFirstRazorWebPage.Pages.BrowsePicture
             if (!check)
             {
 
+                //Saving the file to the server
                 var Fileupload = Path.Combine(_env.WebRootPath, "Images", UploadFile.FileName);
                 Console.WriteLine(Fileupload);
                 using (var Fstream = new FileStream(Fileupload, FileMode.Create))

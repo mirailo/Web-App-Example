@@ -60,7 +60,7 @@ namespace MyFirstRazorWebPage.Pages.AdminPage
                 return RedirectToPage("/AdminPage/Index");
                 
             }*/
-
+            Console.WriteLine("onget");
             return Page();
 
         }

@@ -58,7 +58,7 @@ namespace MyFirstRazorWebPage.Pages.UserLoggedIn
             {
                 var connectionStringBuilder = new SqliteConnectionStringBuilder();
                 DatabaseConnect DBCon = new DatabaseConnect();
-                string dbStringConnection = DBCon.DBStringConnection();
+                string dbStringConnection = DBCon.DBStringConnection(); //getting the connection string from this class
 
 
                 connectionStringBuilder.DataSource = dbStringConnection;

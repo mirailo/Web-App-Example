@@ -70,7 +70,7 @@
                                 @Model.ModRecords[i].ModSemester
                             </td>
                             <td>
-                                @Html.CheckBoxFor(model => model.IsSelect[i], new { @class = "form-control" })
+                                @Html.CheckBoxFor(checkbox => checkbox.IsSelect[i], new { @class = "form-control" })
                             </td>
                         </tr>
                     }
