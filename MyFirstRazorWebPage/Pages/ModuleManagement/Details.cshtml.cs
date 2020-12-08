@@ -18,7 +18,7 @@ namespace MyFirstRazorWebPage.Pages.ModuleManagement
             _context = context;
         }
 
-        public Modules Modules { get; set; }
+        public Services Services { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -28,9 +28,9 @@ namespace MyFirstRazorWebPage.Pages.ModuleManagement
                 return NotFound();
             }
 
-            Modules = await _context.Modules.FirstOrDefaultAsync(m => m.ID == id);
+            Services = await _context.Services.FirstOrDefaultAsync(m => m.ID == id);
 
-            if (Modules == null)
+            if (Services == null)
             {
                 return NotFound();
             }

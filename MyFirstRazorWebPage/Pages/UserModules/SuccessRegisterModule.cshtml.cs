@@ -6,14 +6,14 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using MyFirstRazorWebPage.Models;
 
-namespace MyFirstRazorWebPage.Pages.UserModules
+namespace MyFirstRazorWebPage.Pages.UserServices
 {
     public class SuccessRegisterModuleModel : PageModel
     {
-        public List<Modules> RegMod { get; set; } = new List<Modules>();
+        public List<Services> RegMod { get; set; } = new List<Services>();
 
    
-        public async Task<IActionResult> OnGetAsync(List<Modules> GetRegMod)
+        public async Task<IActionResult> OnGetAsync(List<Services> GetRegMod)
         {
 
             //RegMod = ModRecords;

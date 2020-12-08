@@ -22,11 +22,11 @@ namespace MyFirstRazorWebPage.Pages.ModuleManagement
         public string UserName;
         public const string SessionKeyName1 = "username";
 
-        public IList<Modules> Modules { get;set; }
+        public IList<Services> Services { get;set; }
 
         public async Task OnGetAsync()
         {
-            Modules = await _context.Modules.ToListAsync();
+            Services = await _context.Services.ToListAsync();
             UserName = HttpContext.Session.GetString(SessionKeyName1);
             UserName = HttpContext.Session.Id;
         }

@@ -1,7 +1,7 @@
 ﻿@page
-@model MyFirstRazorWebPage.Pages.UserModules.RegisterModulesModel
+@model MyFirstRazorWebPage.Pages.UserServices.RegisterServicesModel
 @{
-    ViewData["Title"] = "Register Module";
+    ViewData["Title"] = "Book Appointment";
 }
 
 
@@ -10,12 +10,12 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Register Modules</title>
+    <title>Book Appointment</title>
 </head>
 <body>
 
     <div>
-        <h4>Register Modules for @Model.UserEmail</h4>
+        <h4>Book Appointment for @Model.UserEmail</h4>
         <hr />
     </div>
 
@@ -26,19 +26,19 @@
                 <thead>
                     <tr>
                         <th>
-                            @Html.DisplayNameFor(model => model.ModRecords[0].ModCode)
+                            @Html.DisplayNameFor(model => model.ModRecords[0].ServiceCode)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.ModRecords[0].ModName)
+                            @Html.DisplayNameFor(model => model.ModRecords[0].ServiceName)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.ModRecords[0].ModLevel)
+                            @Html.DisplayNameFor(model => model.ModRecords[0].ServiceDuration)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.ModRecords[0].ModSemester)
+                            @Html.DisplayNameFor(model => model.ModRecords[0].ServicePrice)
                         </th>
                         <th>
-                            Select Module
+                            Select Service
                         </th>
                         <th></th>
                     </tr>
@@ -53,21 +53,21 @@
                     {
                         <tr>
                             <td>
-                                <input type="hidden" asp-for="@Model.ModRecords[i].ModCode" class="control-label" />
-                                @Model.ModRecords[i].ModCode
+                                <input type="hidden" asp-for="@Model.ModRecords[i].ServiceCode" class="control-label" />
+                                @Model.ModRecords[i].ServiceCode
                             </td>
                             <td>
-                                <input type="hidden" asp-for="@Model.ModRecords[i].ModName" class="control-label" />
-                                @Model.ModRecords[i].ModName
+                                <input type="hidden" asp-for="@Model.ModRecords[i].ServiceName" class="control-label" />
+                                @Model.ModRecords[i].ServiceName
 
                             </td>
                             <td>
-                                <input type="hidden" asp-for=" @Model.ModRecords[i].ModLevel" class="control-label" />
-                                @Model.ModRecords[i].ModLevel
+                                <input type="hidden" asp-for=" @Model.ModRecords[i].ServiceDuration" class="control-label" />
+                                @Model.ModRecords[i].ServiceDuration
                             </td>
                             <td>
-                                <input type="hidden" asp-for="@Model.ModRecords[i].ModSemester" class="control-label" />
-                                @Model.ModRecords[i].ModSemester
+                                <input type="hidden" asp-for="@Model.ModRecords[i].ServicePrice" class="control-label" />
+                                @Model.ModRecords[i].ServicePrice
                             </td>
                             <td>
                                 @Html.CheckBoxFor(checkbox => checkbox.IsSelect[i], new { @class = "form-control" })
@@ -77,7 +77,7 @@
                 </tbody>
             </table>
             <div class="form-group">
-                <input type="submit" value="Register" class="btn btn-primary" />
+                <input type="submit" value="Book Appointment" class="btn btn-primary" />
             </div>
         </form>
     </div>
@@ -86,8 +86,8 @@
 
     <div>
 
-        <a asp-page="/UserLoggedIn/SuccessLogIn">User Homepage</a>|
-        <a asp-page="/UserModules/ViewRegisteredModule" asp-page-handler="OnGetLogout">View Registered Modules</a>|
+        <a asp-page="/UserLoggedIn/SuccessLogIn">Customer Homepage</a>|
+        <a asp-page="/UserServices/ViewRegisteredModule" asp-page-handler="OnGetLogout">View Booked Appointments</a>|
         <a asp-page="/UserLoggedIn/UserLogout">Logout</a>
     </div>
 </body>

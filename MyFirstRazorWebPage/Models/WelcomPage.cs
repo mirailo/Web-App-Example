@@ -17,6 +17,6 @@ namespace MyFirstRazorWebPage.Models
         [Display(Name = "Welcome Message")]
         public string Message { get; set; }
 
-        //this is the Welcome Page model. I wish to save in db later. 
+        
     }
 }

@@ -2,7 +2,7 @@
 @model MyFirstRazorWebPage.Pages.ModuleManagement.IndexModel
 
 @{
-    ViewData["Title"] = "Admin Page - Module List";
+    ViewData["Title"] = "Staff Page - Services List";
 }
 
 
@@ -15,7 +15,7 @@
 </head>
 <body>
 
-    <h1 style="text-align:center">Admin Page : List of Modules</h1>
+    <h1 style="text-align:center">Staff Page - Services List</h1>
     <hr />
 
 
@@ -23,16 +23,16 @@
         <thead class="thead-dark">
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.Modules[0].ModCode)
+                    @Html.DisplayNameFor(model => model.Services[0].ServiceCode)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Modules[0].ModName)
+                    @Html.DisplayNameFor(model => model.Services[0].ServiceName)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Modules[0].ModLevel)
+                    @Html.DisplayNameFor(model => model.Services[0].ServiceDuration)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Modules[0].ModSemester)
+                    @Html.DisplayNameFor(model => model.Services[0].ServicePrice)
                 </th>
                 <th>
                    Action
@@ -41,20 +41,20 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in Model.Modules)
+            @foreach (var item in Model.Services)
             {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.ModCode)
+                        @Html.DisplayFor(modelItem => item.ServiceCode)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.ModName)
+                        @Html.DisplayFor(modelItem => item.ServiceName)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.ModLevel)
+                        @Html.DisplayFor(modelItem => item.ServiceDuration)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.ModSemester)
+                        @Html.DisplayFor(modelItem => item.ServicePrice)
                     </td>
                     <td>
                         <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
@@ -67,8 +67,8 @@
     </table>
 
     <p>
-        <a asp-page="Create">Create a New Module</a> |
-        <a asp-page="/AdminPage/Index" asp-page-handler="OnGetLogout">Admin Homepage</a>|
+        <a asp-page="Create">Add a New Service</a> |
+        <a asp-page="/AdminPage/Index" asp-page-handler="OnGetLogout">Staff Homepage</a>|
         <a asp-page="/AdminPage/AdminLogout">Logout</a>
     </p>
 </body>

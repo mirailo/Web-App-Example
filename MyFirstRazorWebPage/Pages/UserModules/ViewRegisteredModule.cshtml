@@ -1,7 +1,7 @@
 ﻿@page
-@model MyFirstRazorWebPage.Pages.UserModules.ViewRegisteredModuleModel
+@model MyFirstRazorWebPage.Pages.UserServices.ViewRegisteredModuleModel
 @{
-    ViewData["Title"] = "View Module";
+    ViewData["Title"] = "View Appointments";
 }
 
 <!DOCTYPE html>
@@ -9,12 +9,12 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>View Modules</title>
+    <title>View Services</title>
 </head>
 <body>
 
     <div>
-        <h4>View Module for @Model.UserName</h4>
+        <h4>View Booked Appointments for @Model.UserName</h4>
         <hr />
     </div>
 
@@ -25,40 +25,40 @@
                 <thead>
                     <tr>
                         <th>
-                            @Html.DisplayNameFor(model => model.Modules[0].ModCode)
+                            @Html.DisplayNameFor(model => model.Services[0].ServiceCode)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.Modules[0].ModName)
+                            @Html.DisplayNameFor(model => model.Services[0].ServiceName)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.Modules[0].ModLevel)
+                            @Html.DisplayNameFor(model => model.Services[0].ServiceDuration)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.Modules[0].ModSemester)
+                            @Html.DisplayNameFor(model => model.Services[0].ServicePrice)
                         </th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    @for (int i = 0; i < Model.Modules.Count(); i++)
+                    @for (int i = 0; i < Model.Services.Count(); i++)
                     {
                         <tr>
                             <td>
                                 
-                                @Model.Modules[i].ModCode
+                                @Model.Services[i].ServiceCode
                             </td>
                             <td>
                              
-                                @Model.Modules[i].ModName
+                                @Model.Services[i].ServiceName
 
                             </td>
                             <td>
                              
-                                @Model.Modules[i].ModLevel
+                                @Model.Services[i].ServiceDuration
                             </td>
                             <td>
                                 
-                                @Model.Modules[i].ModSemester
+                                @Model.Services[i].ServicePrice
                             </td>
                            
                         </tr>
@@ -70,18 +70,18 @@
 
     <div>
         @{
-            if (Model.Modules.Count==0)
+            if (Model.Services.Count==0)
             {
-                @: The student does not have any module registered.
+                @: Dear customer, you do not currently have any upcoming appointment services booked with us!
             }
         }
 
     </div>
 
     <div>
-        <a asp-page="/UserLoggedIn/SuccessLogIn">User Homepage</a>|
-        <a asp-page="/UserModules/RegisterModules">Register Modules</a>|
-        <a asp-page="/UserModules/DeregisterModule">De-Register Modules</a>|
+        <a asp-page="/UserLoggedIn/SuccessLogIn">Customer Homepage</a>|
+        <a asp-page="/UserServices/RegisterServices">Book an appointment!</a>|
+        <a asp-page="/UserServices/DeregisterModule">Cancel your appointment</a>|
         <a asp-page="/UserLoggedIn/UserLogout">Logout</a>
     </div>
 </body>

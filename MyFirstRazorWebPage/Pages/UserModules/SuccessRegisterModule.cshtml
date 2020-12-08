@@ -1,5 +1,5 @@
 ﻿@page
-@model MyFirstRazorWebPage.Pages.UserModules.SuccessRegisterModuleModel
+@model MyFirstRazorWebPage.Pages.UserServices.SuccessRegisterModuleModel
 @{
     ViewData["Title"] = "Success Register Module";
 }
@@ -10,12 +10,12 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Register Modules</title>
+    <title>Register Services</title>
 </head>
 <body>
 
     <div>
-        <h4>Modules Registration Successful</h4>
+        <h4>Services Registration Successful</h4>
         <hr />
     </div>
 
@@ -25,16 +25,16 @@
             <thead>
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model => model.RegMod[0].ModCode)
+                        @Html.DisplayNameFor(model => model.RegMod[0].ServiceCode)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.RegMod[0].ModName)
+                        @Html.DisplayNameFor(model => model.RegMod[0].ServiceName)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.RegMod[0].ModLevel)
+                        @Html.DisplayNameFor(model => model.RegMod[0].ServiceDuration)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.RegMod[0].ModSemester)
+                        @Html.DisplayNameFor(model => model.RegMod[0].ServicePrice)
                     </th>
                     
                     <th></th>
@@ -46,20 +46,20 @@
                     <tr>
                         <td>
                         
-                            @Model.RegMod[0].ModCode
+                            @Model.RegMod[0].ServiceCode
                         </td>
                         <td>
                            
-                            @Model.RegMod[0].ModName
+                            @Model.RegMod[0].ServiceName
 
                         </td>
                         <td>
                            
-                            @Model.RegMod[0].ModLevel
+                            @Model.RegMod[0].ServiceDuration
                         </td>
                         <td>
                            
-                            @Model.RegMod[0].ModSemester
+                            @Model.RegMod[0].ServicePrice
                         </td>
                        
                     </tr>
@@ -74,7 +74,7 @@
     <div>
 
         <a asp-page="/UserLoggedIn/SuccessLogIn">User Homepage</a>|
-        <a asp-page="/UserModules/ViewRegisteredModule">View Registered Modules</a>|
+        <a asp-page="/UserServices/ViewRegisteredModule">View Registered Services</a>|
         <a asp-page="/UserLoggedIn/UserLogout">Logout</a>
     </div>
 </body>

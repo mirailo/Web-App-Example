@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using MyFirstRazorWebPage.Models;
 using MyFirstRazorWebPage.Pages.DatabaseConnection;
 
-namespace MyFirstRazorWebPage.Pages.UserModules
+namespace MyFirstRazorWebPage.Pages.UserServices
 {
     public class UserProfileModel : PageModel
     {

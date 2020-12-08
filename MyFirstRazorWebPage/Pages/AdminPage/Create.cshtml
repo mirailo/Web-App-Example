@@ -2,7 +2,7 @@
 @model MyFirstRazorWebPage.Pages.AdminPage.CreateModel
 
 @{
-    ViewData["Title"] = "Admin Page - Admin User Creation";
+    ViewData["Title"] = "Staff Page - New Staff Creation";
 }
 
 
@@ -42,14 +42,14 @@
                     <span asp-validation-for="AdminUser.AdminPassword" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <input type="submit" value="Create" class="btn btn-primary" />
+                    <input type="submit" value="Add new Staff" class="btn btn-primary" />
                 </div>
             </form>
         </div>
     </div>
 
     <div>
-        <a asp-page="Index">Back to List</a>
+        <a asp-page="Index">Back to Staff List</a>
     </div>
 
     @section Scripts {

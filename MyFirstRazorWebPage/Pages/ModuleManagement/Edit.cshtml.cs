@@ -20,7 +20,7 @@ namespace MyFirstRazorWebPage.Pages.ModuleManagement
         }
 
         [BindProperty]
-        public Modules Modules { get; set; }
+        public Services Services { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -29,9 +29,9 @@ namespace MyFirstRazorWebPage.Pages.ModuleManagement
                 return NotFound();
             }
 
-            Modules = await _context.Modules.FirstOrDefaultAsync(m => m.ID == id);
+            Services = await _context.Services.FirstOrDefaultAsync(m => m.ID == id);
 
-            if (Modules == null)
+            if (Services == null)
             {
                 return NotFound();
             }
@@ -47,7 +47,7 @@ namespace MyFirstRazorWebPage.Pages.ModuleManagement
                 return Page();
             }
 
-            _context.Attach(Modules).State = EntityState.Modified;
+            _context.Attach(Services).State = EntityState.Modified;
 
             try
             {
@@ -55,7 +55,7 @@ namespace MyFirstRazorWebPage.Pages.ModuleManagement
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ModulesExists(Modules.ID))
+                if (!ServicesExists(Services.ID))
                 {
                     return NotFound();
                 }
@@ -68,9 +68,9 @@ namespace MyFirstRazorWebPage.Pages.ModuleManagement
             return RedirectToPage("./Index");
         }
 
-        private bool ModulesExists(int id)
+        private bool ServicesExists(int id)
         {
-            return _context.Modules.Any(e => e.ID == id);
+            return _context.Services.Any(e => e.ID == id);
         }
     }
 }

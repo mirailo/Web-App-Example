@@ -18,32 +18,32 @@
     <h1 style="text-align:center">Admin Page : Edit Module</h1>
     <hr />
 
-    <h4>Modules</h4>
+    <h4>Services</h4>
     <hr />
     <div class="row">
         <div class="col-md-4">
             <form method="post">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <input type="hidden" asp-for="Modules.ID" />
+                <input type="hidden" asp-for="Services.ID" />
                 <div class="form-group">
-                    <label asp-for="Modules.ModCode" class="control-label"></label>
-                    <input asp-for="Modules.ModCode" class="form-control" />
-                    <span asp-validation-for="Modules.ModCode" class="text-danger"></span>
+                    <label asp-for="Services.ServiceCode" class="control-label"></label>
+                    <input asp-for="Services.ServiceCode" class="form-control" />
+                    <span asp-validation-for="Services.ServiceCode" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Modules.ModName" class="control-label"></label>
-                    <input asp-for="Modules.ModName" class="form-control" />
-                    <span asp-validation-for="Modules.ModName" class="text-danger"></span>
+                    <label asp-for="Services.ServiceName" class="control-label"></label>
+                    <input asp-for="Services.ServiceName" class="form-control" />
+                    <span asp-validation-for="Services.ServiceName" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Modules.ModLevel" class="control-label"></label>
-                    <input asp-for="Modules.ModLevel" class="form-control" />
-                    <span asp-validation-for="Modules.ModLevel" class="text-danger"></span>
+                    <label asp-for="Services.ServiceDuration" class="control-label"></label>
+                    <input asp-for="Services.ServiceDuration" class="form-control" />
+                    <span asp-validation-for="Services.ServiceDuration" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Modules.ModSemester" class="control-label"></label>
-                    <input asp-for="Modules.ModSemester" class="form-control" />
-                    <span asp-validation-for="Modules.ModSemester" class="text-danger"></span>
+                    <label asp-for="Services.ServicePrice" class="control-label"></label>
+                    <input asp-for="Services.ServicePrice" class="form-control" />
+                    <span asp-validation-for="Services.ServicePrice" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <input type="submit" value="Save" class="btn btn-primary" />

@@ -24,19 +24,15 @@ namespace MyFirstRazorWebPage.Pages.ModuleManagement
         }
 
         [BindProperty]
-        public Modules Modules { get; set; }
+        public Services Services { get; set; }
 
 
        
-        public int[] Levels = { 3, 4, 5, 6, 7 };
+        public int[] Levels = { 15, 30, 45, 60, 75, 90, 120 };
 
 
-        public int[] Sem = {1,2};
+        public double[] Sem = { 5 , 7.50, 10, 12.50, 15, 17.50, 20, 25, 30, 35, 40, 50 };
 
-
-
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
@@ -44,7 +40,7 @@ namespace MyFirstRazorWebPage.Pages.ModuleManagement
                 return Page();
             }
 
-            _context.Modules.Add(Modules);
+            _context.Services.Add(Services);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

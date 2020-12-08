@@ -1,5 +1,5 @@
 ﻿@page
-@model MyFirstRazorWebPage.Pages.UserModules.UserProfileModel
+@model MyFirstRazorWebPage.Pages.UserServices.UserProfileModel
 @{
     ViewData["Title"] = "User Profile";
 }
@@ -48,9 +48,9 @@
     <div>
 
         <a asp-page="/UserLoggedIn/SuccessLogIn">User Homepage</a>|
-        <a asp-page="/UserModules/ViewRegisteredModule">View Registered Modules</a>|
-        <a asp-page="/UserModules/RegisterModules">Register Modules</a>|
-        <a asp-page="/UserModules/DeregisteredModules">De-Register Modules</a>|
+        <a asp-page="/UserServices/ViewRegisteredModule">View Registered Services</a>|
+        <a asp-page="/UserServices/RegisterServices">Register Services</a>|
+        <a asp-page="/UserServices/DeregisteredServices">De-Register Services</a>|
         <a asp-page="/UserLoggedIn/UserLogout">Logout</a>
     </div>
 </body>

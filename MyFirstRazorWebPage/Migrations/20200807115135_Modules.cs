@@ -2,7 +2,7 @@
 
 namespace MyFirstRazorWebPage.Migrations
 {
-    public partial class Modules : Migration
+    public partial class Services : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,26 +13,26 @@ namespace MyFirstRazorWebPage.Migrations
                 name: "UserAccessData");
 
             migrationBuilder.CreateTable(
-                name: "Modules",
+                name: "Services",
                 columns: table => new
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    ModCode = table.Column<string>(nullable: false),
-                    ModName = table.Column<string>(nullable: false),
-                    ModLevel = table.Column<int>(nullable: false),
-                    ModSemester = table.Column<int>(nullable: false)
+                    ServiceCode = table.Column<string>(nullable: false),
+                    ServiceName = table.Column<string>(nullable: false),
+                    ServiceDuration = table.Column<int>(nullable: false),
+                    ServicePrice = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Modules", x => x.ID);
+                    table.PrimaryKey("PK_Services", x => x.ID);
                 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Modules");
+                name: "Services");
 
             migrationBuilder.CreateTable(
                 name: "Module",

@@ -9,7 +9,7 @@ using Microsoft.Data.Sqlite;
 using MyFirstRazorWebPage.Models;
 using MyFirstRazorWebPage.Pages.DatabaseConnection;
 
-namespace MyFirstRazorWebPage.Pages.UserModules
+namespace MyFirstRazorWebPage.Pages.UserServices
 {
     public class DeregisterModuleModel : PageModel
     {
@@ -23,13 +23,13 @@ namespace MyFirstRazorWebPage.Pages.UserModules
         public const string SessionKeyName2 = "email";
 
         [BindProperty]
-        public List<Modules> ModRecords { get; set; } = new List<Modules>();
+        public List<Services> ModRecords { get; set; } = new List<Services>();
 
         [BindProperty]
         public List<bool> IsSelect { get; set; } = new List<bool>();
 
         [BindProperty]
-        public List<Modules> DeRegMod { get; set; } = new List<Modules>();
+        public List<Services> DeRegMod { get; set; } = new List<Services>();
 
 
         public IActionResult OnGet()
@@ -46,7 +46,7 @@ namespace MyFirstRazorWebPage.Pages.UserModules
             }
             else
             {
-                Console.WriteLine("Retrieving modules");
+                Console.WriteLine("Retrieving Services");
 
                 var connectionStringBuilder = new SqliteConnectionStringBuilder();
                 DatabaseConnect DBCon = new DatabaseConnect(); // your own class and method in DatabaseConnection folder
@@ -59,7 +59,7 @@ namespace MyFirstRazorWebPage.Pages.UserModules
 
                 var selectCmd = connection.CreateCommand();
 
-                selectCmd.CommandText = @"SELECT ModCode FROM RegisteredModule WHERE StudenEmail=$email ORDER BY ModCode";
+                selectCmd.CommandText = @"SELECT ServiceCode FROM RegisteredModule WHERE StudenEmail=$email ORDER BY ServiceCode";
                 selectCmd.Parameters.AddWithValue("$email", UserEmail);
                 var reader = selectCmd.ExecuteReader();
 
@@ -72,19 +72,19 @@ namespace MyFirstRazorWebPage.Pages.UserModules
 
                 for (int i = 0; i < GetRegMod.Count; i++)
                 {
-                    var ModCode = GetRegMod[i];
+                    var ServiceCode = GetRegMod[i];
                     var selectCmd2 = connection.CreateCommand();
 
-                    selectCmd2.CommandText = @"SELECT ModName FROM Modules WHERE ModCode=$modCode ORDER BY ModCode";
-                    selectCmd2.Parameters.AddWithValue("$modCode", ModCode);
+                    selectCmd2.CommandText = @"SELECT ServiceName FROM Services WHERE ServiceCode=$ServiceCode ORDER BY ServiceCode";
+                    selectCmd2.Parameters.AddWithValue("$ServiceCode", ServiceCode);
                     var reader2 = selectCmd2.ExecuteReader();
 
                     while (reader2.Read())
                     {
-                        Modules rec = new Modules();
+                        Services rec = new Services();
 
-                        rec.ModCode = GetRegMod[i];
-                        rec.ModName = reader2.GetString(0);
+                        rec.ServiceCode = GetRegMod[i];
+                        rec.ServiceName = reader2.GetString(0);
                         ModRecords.Add(rec);
                     }
                     IsSelect.Add(false);
@@ -106,7 +106,7 @@ namespace MyFirstRazorWebPage.Pages.UserModules
             {
                 if (IsSelect[i] == true)
                 {
-                    Console.WriteLine(ModRecords[i].ModCode);
+                    Console.WriteLine(ModRecords[i].ServiceCode);
                     DeRegMod.Add(ModRecords[i]);
                 }
             }
@@ -125,14 +125,14 @@ namespace MyFirstRazorWebPage.Pages.UserModules
             for (int i=0; i< DeRegMod.Count; i++)
             {
                 var selectCmd = connection.CreateCommand();
-                selectCmd.CommandText = @"DELETE FROM RegisteredModule WHERE StudenEmail=$email AND ModCode=$modCode";
+                selectCmd.CommandText = @"DELETE FROM RegisteredModule WHERE StudenEmail=$email AND ServiceCode=$ServiceCode";
                 selectCmd.Parameters.AddWithValue("$email", UserEmail);
-                selectCmd.Parameters.AddWithValue("$modCode", DeRegMod[i].ModCode);
+                selectCmd.Parameters.AddWithValue("$ServiceCode", DeRegMod[i].ServiceCode);
                 selectCmd.Prepare();
                 selectCmd.ExecuteNonQuery();
             }
            
-            return RedirectToPage("/UserModules/ViewRegisteredModule");
+            return RedirectToPage("/UserServices/ViewRegisteredModule");
 
         }
 

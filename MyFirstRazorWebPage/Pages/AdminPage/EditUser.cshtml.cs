@@ -29,13 +29,7 @@ namespace MyFirstRazorWebPage.Pages.AdminPage
         public User User { get; set; }
 
         [BindProperty]
-        public Picture UserPic { get; set; }
-
-        [BindProperty]
         public IFormFile GetFile { get; set; }
-
-        [BindProperty]
-        public string pathPicture { get; set; }
 
         [BindProperty]
         public string FileName { get; set; }
@@ -53,38 +47,6 @@ namespace MyFirstRazorWebPage.Pages.AdminPage
             {
                 return NotFound();
             }
-
-            var connectionStringBuilder = new SqliteConnectionStringBuilder();
-            connectionStringBuilder.DataSource = "/Users/zairulmazwan/Projects/Web-App-Example/MyFirstRazorWebPage/RazorPagesMovieContext-4626ba78-c68f-4200-bc79-dd49c8d85ee3.db";
-            var connection = new SqliteConnection(connectionStringBuilder.ConnectionString);
-
-            connection.Open();
-
-            var selectCmd = connection.CreateCommand();
-            selectCmd.CommandText = @"SELECT PicName FROM Picture WHERE Email=$email";
-            selectCmd.Parameters.AddWithValue("$email", User.EmailAdd);
-
-            var reader = selectCmd.ExecuteReader();
-            var fileName = "";
-
-            while (reader.Read())
-            {
-                fileName = reader.GetString(0);
-            }
-
-            if (string.IsNullOrEmpty(fileName))
-            {
-                pathPicture = "DefaulPic.jpeg";
-                Console.WriteLine("Default pic : " + pathPicture);
-                return Page();
-            }
-
-            pathPicture = fileName;
-
-            Console.WriteLine("File name is : "+fileName);
-            pathPicture = fileName;
-
-     
 
             return Page();
         }

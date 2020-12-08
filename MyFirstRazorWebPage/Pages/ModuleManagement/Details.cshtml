@@ -17,37 +17,37 @@
     <hr />
 
     <div>
-        <h4>Modules</h4>
+        <h4>Services</h4>
         <hr />
         <dl class="row">
             <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Modules.ModCode)
+                @Html.DisplayNameFor(model => model.Services.ServiceCode)
             </dt>
             <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Modules.ModCode)
+                @Html.DisplayFor(model => model.Services.ServiceCode)
             </dd>
             <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Modules.ModName)
+                @Html.DisplayNameFor(model => model.Services.ServiceName)
             </dt>
             <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Modules.ModName)
+                @Html.DisplayFor(model => model.Services.ServiceName)
             </dd>
             <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Modules.ModLevel)
+                @Html.DisplayNameFor(model => model.Services.ServiceDuration)
             </dt>
             <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Modules.ModLevel)
+                @Html.DisplayFor(model => model.Services.ServiceDuration)
             </dd>
             <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Modules.ModSemester)
+                @Html.DisplayNameFor(model => model.Services.ServicePrice)
             </dt>
             <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Modules.ModSemester)
+                @Html.DisplayFor(model => model.Services.ServicePrice)
             </dd>
         </dl>
     </div>
     <div>
-        <a asp-page="./Edit" asp-route-id="@Model.Modules.ID">Edit</a> |
+        <a asp-page="./Edit" asp-route-id="@Model.Services.ID">Edit</a> |
         <a asp-page="./Index">Back to Module List</a>|
         <a asp-page="/AdminPage/AdminLogout">Logout</a>
     </div>

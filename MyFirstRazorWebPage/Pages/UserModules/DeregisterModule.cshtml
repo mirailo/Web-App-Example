@@ -1,7 +1,7 @@
 ﻿@page
-@model MyFirstRazorWebPage.Pages.UserModules.DeregisterModuleModel
+@model MyFirstRazorWebPage.Pages.UserServices.DeregisterModuleModel
 @{
-    ViewData["Title"] = "Deregister Module";
+    ViewData["Title"] = "Cancel Appointment";
 }
 
 
@@ -10,12 +10,12 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Register Modules</title>
+    <title>Cancel Appointment</title>
 </head>
 <body>
 
     <div>
-        <h4>De-Register Modules for @Model.UserEmail</h4>
+        <h4>Cancel Appointment for @Model.UserEmail</h4>
         <hr />
     </div>
 
@@ -26,13 +26,13 @@
                 <thead>
                     <tr>
                         <th>
-                            @Html.DisplayNameFor(model => model.ModRecords[0].ModCode)
+                            @Html.DisplayNameFor(model => model.ModRecords[0].ServiceCode)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.ModRecords[0].ModName)
+                            @Html.DisplayNameFor(model => model.ModRecords[0].ServiceName)
                         </th>
                         <th>
-                            Select Module to De-Register
+                            Select Appointment to Cancel
                         </th>
                         <th></th>
                     </tr>
@@ -47,12 +47,12 @@
                     {
                         <tr>
                             <td>
-                                <input type="hidden" asp-for="@Model.ModRecords[i].ModCode" class="control-label" />
-                                @Model.ModRecords[i].ModCode
+                                <input type="hidden" asp-for="@Model.ModRecords[i].ServiceCode" class="control-label" />
+                                @Model.ModRecords[i].ServiceCode
                             </td>
                             <td>
-                                <input type="hidden" asp-for="@Model.ModRecords[i].ModName" class="control-label" />
-                                @Model.ModRecords[i].ModName
+                                <input type="hidden" asp-for="@Model.ModRecords[i].ServiceName" class="control-label" />
+                                @Model.ModRecords[i].ServiceName
 
                             </td>
                             <td>
@@ -63,15 +63,15 @@
                 </tbody>
             </table>
             <div class="form-group">
-                <input type="submit" value="Register" class="btn btn-primary" />
+                <input type="submit" value="Cancel Appointment" class="btn btn-primary" />
             </div>
         </form>
     </div>
 
     <div>
 
-        <a asp-page="/UserLoggedIn/SuccessLogIn">User Homepage</a>|
-        <a asp-page="/UserModules/ViewRegisteredModule" asp-page-handler="OnGetLogout">View Registered Modules</a>|
+        <a asp-page="/UserLoggedIn/SuccessLogIn">Customer Homepage</a>|
+        <a asp-page="/UserServices/ViewRegisteredModule" asp-page-handler="OnGetLogout">View Booked Appointments</a>|
         <a asp-page="/UserLoggedIn/UserLogout">Logout</a>
     </div>
 </body>

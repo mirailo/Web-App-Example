@@ -10,10 +10,10 @@ using Microsoft.EntityFrameworkCore;
 using MyFirstRazorWebPage.Models;
 using MyFirstRazorWebPage.Pages.DatabaseConnection;
 
-namespace MyFirstRazorWebPage.Pages.UserModules
+namespace MyFirstRazorWebPage.Pages.UserServices
 {
 
-    public class RegisterModulesModel : PageModel
+    public class RegisterServicesModel : PageModel
     {
         [BindProperty]
         public string UserName { get; set; }
@@ -24,13 +24,13 @@ namespace MyFirstRazorWebPage.Pages.UserModules
         public const string SessionKeyName2 = "email";
 
         [BindProperty]
-        public List<Modules> ModRecords { get; set; } = new List<Modules>();
+        public List<Services> ModRecords { get; set; } = new List<Services>();
 
         [BindProperty]
         public List<bool> IsSelect { get; set; } = new List<bool>();
 
         [BindProperty]
-        public List<Modules> GetRegMod { get; set; } 
+        public List<Services> GetRegMod { get; set; } 
 
         public async Task<IActionResult> OnGetAsync()
         {
@@ -45,7 +45,7 @@ namespace MyFirstRazorWebPage.Pages.UserModules
             }
             else
             {
-                Console.WriteLine("Retrieving modules");
+                Console.WriteLine("Retrieving Services");
 
                 var connectionStringBuilder = new SqliteConnectionStringBuilder();
                 DatabaseConnect DBCon = new DatabaseConnect(); // your own class and method in DatabaseConnection folder
@@ -58,19 +58,19 @@ namespace MyFirstRazorWebPage.Pages.UserModules
 
                 var selectCmd = connection.CreateCommand();
 
-                selectCmd.CommandText = @"SELECT * FROM Modules ORDER BY ModLevel";
+                selectCmd.CommandText = @"SELECT * FROM Services ORDER BY ServiceDuration";
                 var reader = selectCmd.ExecuteReader();
 
                 while (reader.Read())
                 {
                    
-                    Modules mod = new Modules();
-                    mod.ModCode = reader.GetString(1);
-                    mod.ModName = reader.GetString(2);
-                    mod.ModLevel = reader.GetInt32(3);
-                    mod.ModSemester = reader.GetInt32(4);
+                    Services ser = new Services();
+                    ser.ServiceCode = reader.GetString(1);
+                    ser.ServiceName = reader.GetString(2);
+                    ser.ServiceDuration = reader.GetInt32(3);
+                    ser.ServicePrice = reader.GetInt32(4);
 
-                    ModRecords.Add(mod);
+                    ModRecords.Add(ser);
                     IsSelect.Add(false);
                    
                 }
@@ -88,7 +88,7 @@ namespace MyFirstRazorWebPage.Pages.UserModules
             {
                 if (IsSelect[i] == true)
                 {
-                    Console.WriteLine(ModRecords[i].ModName);
+                    Console.WriteLine(ModRecords[i].ServiceName);
                     GetRegMod.Add(ModRecords[i]);
                 }
             }
@@ -105,7 +105,7 @@ namespace MyFirstRazorWebPage.Pages.UserModules
             connection.Open();
 
             var selectCmd = connection.CreateCommand();
-            selectCmd.CommandText = @"SELECT ModCode FROM RegisteredModule WHERE StudenEmail=$email";
+            selectCmd.CommandText = @"SELECT ServiceCode FROM RegisteredModule WHERE StudenEmail=$email";
             Console.WriteLine("Email : "+UserEmail);
             selectCmd.Parameters.AddWithValue("$email", UserEmail);
             var reader = selectCmd.ExecuteReader();
@@ -131,19 +131,19 @@ namespace MyFirstRazorWebPage.Pages.UserModules
                 for (int i=0; i< GetRegMod.Count; i++)
                 {
                     var selectCmd2 = connection.CreateCommand();
-                    selectCmd2.CommandText = @"INSERT INTO RegisteredModule (StudenEmail, ModCode, Date) VALUES ($email, $MCode, $Date)";
+                    selectCmd2.CommandText = @"INSERT INTO RegisteredModule (StudenEmail, ServiceCode, Date) VALUES ($email, $MCode, $Date)";
                     Console.WriteLine("Email : " + UserEmail);
-                    Console.WriteLine("Mod Code : " + GetRegMod[i].ModCode);
+                    Console.WriteLine("Service Code : " + GetRegMod[i].ServiceCode);
                     Console.WriteLine("Date : " + date);
                     selectCmd2.Parameters.AddWithValue("$email", UserEmail);
-                    selectCmd2.Parameters.AddWithValue("$MCode", GetRegMod[i].ModCode);
+                    selectCmd2.Parameters.AddWithValue("$MCode", GetRegMod[i].ServiceCode);
                     selectCmd2.Parameters.AddWithValue("$Date", date);
                     selectCmd2.Prepare();
                     selectCmd2.ExecuteNonQuery();
                     Console.WriteLine("A record saved");
                 }
             }
-            else //some modules already registered. Only new modules will be registered
+            else //some Services already registered. Only new Services will be registered
             {
                 for (int i = 0; i < GetRegMod.Count; i++)
                 {
@@ -151,7 +151,7 @@ namespace MyFirstRazorWebPage.Pages.UserModules
                     for (int j = 0; j < CheckModuleCode.Count; j++)
                     {
                         
-                        if (GetRegMod[i].ModCode == CheckModuleCode[j])
+                        if (GetRegMod[i].ServiceCode == CheckModuleCode[j])
                         {
                             valid = false;
                             Console.WriteLine("Registered module found!" + CheckModuleCode[j]);
@@ -160,12 +160,12 @@ namespace MyFirstRazorWebPage.Pages.UserModules
                     if (valid == true)
                     {
                         var selectCmd2 = connection.CreateCommand();
-                        selectCmd2.CommandText = @"INSERT INTO RegisteredModule (StudenEmail, ModCode, Date) VALUES ($email, $MCode, $Date)";
+                        selectCmd2.CommandText = @"INSERT INTO RegisteredModule (StudenEmail, ServiceCode, Date) VALUES ($email, $MCode, $Date)";
                         Console.WriteLine("Email : " + UserEmail);
-                        Console.WriteLine("Mod Code : " + GetRegMod[i].ModCode);
+                        Console.WriteLine("Service Code : " + GetRegMod[i].ServiceCode);
                         Console.WriteLine("Date : " + date);
                         selectCmd2.Parameters.AddWithValue("$email", UserEmail);
-                        selectCmd2.Parameters.AddWithValue("$MCode", GetRegMod[i].ModCode);
+                        selectCmd2.Parameters.AddWithValue("$MCode", GetRegMod[i].ServiceCode);
                         selectCmd2.Parameters.AddWithValue("$Date", date);
                         selectCmd2.Prepare();
                         selectCmd2.ExecuteNonQuery();
@@ -175,7 +175,7 @@ namespace MyFirstRazorWebPage.Pages.UserModules
                 }
             }
             connection.Close();
-            return RedirectToPage("/UserModules/ViewRegisteredModule", GetRegMod);
+            return RedirectToPage("/UserServices/ViewRegisteredModule", GetRegMod);
         }
     }
 }

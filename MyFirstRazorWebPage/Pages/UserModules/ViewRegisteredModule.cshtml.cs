@@ -9,15 +9,15 @@ using Microsoft.Data.Sqlite;
 using MyFirstRazorWebPage.Models;
 using MyFirstRazorWebPage.Pages.DatabaseConnection;
 
-namespace MyFirstRazorWebPage.Pages.UserModules
+namespace MyFirstRazorWebPage.Pages.UserServices
 {
     public class ViewRegisteredModuleModel : PageModel
     {
         [BindProperty]
-        public List<Modules> Modules { get; set; } = new List<Modules>();
+        public List<Services> Services { get; set; } = new List<Services>();
 
         [BindProperty]
-        public List<string> ModCode { get; set; } = new List<string>();
+        public List<string> ServiceCode { get; set; } = new List<string>();
 
         [BindProperty]
         public User User { get; set; }
@@ -50,34 +50,35 @@ namespace MyFirstRazorWebPage.Pages.UserModules
             connection.Open();
 
             var selectCmd = connection.CreateCommand();
-            selectCmd.CommandText = @"SELECT ModCode FROM RegisteredModule WHERE StudenEmail=$email ORDER BY ModCode";
+            selectCmd.CommandText = @"SELECT ServiceCode FROM RegisteredModule WHERE StudenEmail=$email ORDER BY ServiceCode";
             selectCmd.Parameters.AddWithValue("$email", UserEmail);
             var reader = selectCmd.ExecuteReader();
 
             while (reader.Read())
             {
-                string modCode = reader.GetString(0); //temporary variable used to get the module codes
-                Console.WriteLine("Module found : "+ modCode);
-                ModCode.Add(modCode); //keep it to the list for future use
+      
+                string serviceCode = reader.GetString(0); //temporary variable used to get the module codes
+                Console.WriteLine("Appointment found : "+ ServiceCode);
+                ServiceCode.Add(serviceCode); //keep it to the list for future use
             }
 
             //for loop is used because student might have more than 1 module registered
-            for (int i=0; i< ModCode.Count; i++)
+            for (int i=0; i< ServiceCode.Count; i++)
             {
                 var selectCmd2 = connection.CreateCommand();
-                selectCmd2.CommandText = @"SELECT * FROM Modules WHERE ModCode=$modCode ORDER BY ModCode";
-                selectCmd2.Parameters.AddWithValue("$modCode", ModCode[i]);
+                selectCmd2.CommandText = @"SELECT * FROM Services WHERE ServiceCode=$ServiceCode ORDER BY ServiceCode";
+                selectCmd2.Parameters.AddWithValue("$ServiceCode", ServiceCode[i]);
                 var reader2 = selectCmd2.ExecuteReader();
 
                 while (reader2.Read())
                 {
 
-                    Modules mod = new Modules(); //temporary variable used to hold the record found
-                    mod.ModCode = reader2.GetString(1); //start from 1 because we dont want ID field from the db
-                    mod.ModName = reader2.GetString(2);
-                    mod.ModLevel = reader2.GetInt32(3);
-                    mod.ModSemester = reader2.GetInt32(4);
-                    Modules.Add(mod); //the record now saved to the global variable
+                    Services ser = new Services(); //temporary variable used to hold the record found
+                    ser.ServiceCode = reader2.GetString(1); //start from 1 because we dont want ID field from the db
+                    ser.ServiceName = reader2.GetString(2);
+                    ser.ServiceDuration = reader2.GetInt32(3);
+                    ser.ServicePrice = reader2.GetInt32(4);
+                    Services.Add(ser); //the record now saved to the global variable
                 }
             }
 

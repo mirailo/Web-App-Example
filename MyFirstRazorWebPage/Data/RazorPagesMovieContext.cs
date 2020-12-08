@@ -7,7 +7,6 @@ using MyFirstRazorWebPage.Models;
 
     public class RazorPagesMovieContext : DbContext
     {
-    internal object Picture;
 
     public RazorPagesMovieContext (DbContextOptions<RazorPagesMovieContext> options)
             : base(options)
@@ -18,13 +17,9 @@ using MyFirstRazorWebPage.Models;
 
         public DbSet<MyFirstRazorWebPage.Models.User> User { get; set; }
 
-        //public DbSet<MyFirstRazorWebPage.Models.Picture> Picture { get; set; }
-
         public DbSet<MyFirstRazorWebPage.Models.AdminUser> AdminUser { get; set; }
 
-        //public DbSet<MyFirstRazorWebPage.Models.Picture> Picture { get; set; }
-
-        public DbSet<MyFirstRazorWebPage.Models.Modules> Modules { get; set; }
+        public DbSet<MyFirstRazorWebPage.Models.Services> Services { get; set; }
 
         //public DbSet<MyFirstRazorWebPage.Models.UserAccessData> UserAccessData { get; set; }
 

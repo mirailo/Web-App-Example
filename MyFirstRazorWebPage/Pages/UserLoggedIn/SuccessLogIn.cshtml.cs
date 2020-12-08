@@ -31,11 +31,6 @@ namespace MyFirstRazorWebPage.Pages.UserLoggedIn
         public string SessionID;
         public const string SessionKeyName3 = "sessionID";
 
-        [BindProperty]
-        public string pathPicture { get; set; }
-
-        [BindProperty]
-        public string FileName { get; set; }
 
         public IActionResult OnGet()
         {
@@ -56,41 +51,9 @@ namespace MyFirstRazorWebPage.Pages.UserLoggedIn
             }
             else
             {
-                var connectionStringBuilder = new SqliteConnectionStringBuilder();
-                DatabaseConnect DBCon = new DatabaseConnect();
-                string dbStringConnection = DBCon.DBStringConnection(); //getting the connection string from this class
-
-
-                connectionStringBuilder.DataSource = dbStringConnection;
-                var connection = new SqliteConnection(connectionStringBuilder.ConnectionString);
-
-                connection.Open();
-
-                var selectCmd = connection.CreateCommand();
-                selectCmd.CommandText = @"SELECT PicName FROM Picture WHERE Email=$email";
-                selectCmd.Parameters.AddWithValue("$email", UserEmail);
-
-                var reader = selectCmd.ExecuteReader();
-                var fileName = "";
-
-                while (reader.Read())
-                {
-                    fileName = reader.GetString(0);
-                }
-
-                if (string.IsNullOrEmpty(fileName))
-                {
-                    pathPicture = "DefaulPic.jpeg";
-                    Console.WriteLine("Default pic : " + pathPicture);
-                    return Page();
-                }
-
-                pathPicture = fileName;
-
-                Console.WriteLine("File name is : " + fileName);
-                pathPicture = fileName;
 
                 return Page();
+                
             }
 
         }

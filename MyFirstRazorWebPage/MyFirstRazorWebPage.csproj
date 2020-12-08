@@ -5,6 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="TxtFiles\**" />
+    <Content Remove="TxtFiles\**" />
+    <EmbeddedResource Remove="TxtFiles\**" />
+    <None Remove="TxtFiles\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="sqlite" Version="3.13.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.8" />
@@ -17,20 +24,16 @@
     <PackageReference Include="Microsoft.AspNet.WebHelpers" Version="3.2.7" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\" />
     <Folder Include="Pages\Users\" />
     <Folder Include="Pages\AdminPage\" />
     <Folder Include="Pages\UserLoggedIn\" />
-    <Folder Include="Pages\BrowsePicture\" />
-    <Folder Include="ImageData\" />
-    <Folder Include="TxtFiles\" />
     <Folder Include="wwwroot\Images\" />
     <Folder Include="Pages\ModuleManagement\" />
-    <Folder Include="Pages\UserModules\" />
+    <Folder Include="Pages\UserServices\" />
     <Folder Include="Pages\DatabaseConnection\" />
+    <Folder Include="wwwroot\js\" />
     <Folder Include="wwwroot\WelcomeMessage\" />
     <Folder Include="wwwroot\Videos\" />
-    <Folder Include="Pages\GoogleMap\" />
     <Folder Include="Video\" />
   </ItemGroup>
   <ItemGroup>

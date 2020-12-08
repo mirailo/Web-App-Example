@@ -2,7 +2,7 @@
 @model MyFirstRazorWebPage.Pages.AdminPage.DeleteModel
 
 @{
-    ViewData["Title"] = "Admin Page - Admin User Deletion";
+    ViewData["Title"] = "Staff Page - Current Staff Removal";
 }
 
 <!DOCTYPE html>
@@ -10,11 +10,11 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Delete</title>
+    <title>Remove Staff</title>
 </head>
 <body>
 
-    <h3>Are you sure you want to delete this?</h3>
+    <h3>Are you sure you want to remove this staff?</h3>
     <div>
         <h4>AdminUser</h4>
         <hr />
@@ -47,8 +47,8 @@
 
         <form method="post">
             <input type="hidden" asp-for="AdminUser.ID" />
-            <input type="submit" value="Delete" class="btn btn-danger" /> |
-            <a asp-page="./Index">Back to List</a>
+            <input type="submit" value="Remove Staff" class="btn btn-danger" /> |
+            <a asp-page="./Index">Back to Staff List</a>
         </form>
     </div>
 </body>

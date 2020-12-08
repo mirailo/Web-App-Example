@@ -7,8 +7,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MyFirstRazorWebPage.Migrations
 {
     [DbContext(typeof(RazorPagesMovieContext))]
-    [Migration("20200807115135_Modules")]
-    partial class Modules
+    [Migration("20200807115135_Services")]
+    partial class Services
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -43,29 +43,29 @@ namespace MyFirstRazorWebPage.Migrations
                     b.ToTable("AdminUser");
                 });
 
-            modelBuilder.Entity("MyFirstRazorWebPage.Models.Modules", b =>
+            modelBuilder.Entity("MyFirstRazorWebPage.Models.Services", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("ModCode")
+                    b.Property<string>("ServiceCode")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("ModLevel")
+                    b.Property<int>("ServiceDuration")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("ModName")
+                    b.Property<string>("ServiceName")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("ModSemester")
+                    b.Property<int>("ServicePrice")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("ID");
 
-                    b.ToTable("Modules");
+                    b.ToTable("Services");
                 });
 
             modelBuilder.Entity("MyFirstRazorWebPage.Models.User", b =>
