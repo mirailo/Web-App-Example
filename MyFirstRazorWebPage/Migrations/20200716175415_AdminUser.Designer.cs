@@ -8,8 +8,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MyFirstRazorWebPage.Migrations
 {
     [DbContext(typeof(HairSalonApptContext))]
-    [Migration("20200716175415_AdminUser")]
-    partial class AdminUser
+    [Migration("20200716175415_StaffUser")]
+    partial class StaffUser
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -17,17 +17,17 @@ namespace MyFirstRazorWebPage.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.6");
 
-            modelBuilder.Entity("MyFirstRazorWebPage.Models.AdminUser", b =>
+            modelBuilder.Entity("MyFirstRazorWebPage.Models.StaffUser", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("AdminPassword")
+                    b.Property<string>("StaffPassword")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("AdminUserName")
+                    b.Property<string>("StaffUserName")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
@@ -41,7 +41,7 @@ namespace MyFirstRazorWebPage.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("AdminUser");
+                    b.ToTable("StaffUser");
                 });
 
             modelBuilder.Entity("MyFirstRazorWebPage.Models.Movie", b =>

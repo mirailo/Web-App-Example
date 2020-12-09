@@ -18,7 +18,6 @@ namespace MyFirstRazorWebPage.Pages
         private readonly HairSalonApptContext _context;
         private readonly IWebHostEnvironment _env;
 
-        public string Message { get; set; }
 
         public IndexModel(ILogger<IndexModel> logger, HairSalonApptContext context, IWebHostEnvironment env)
         {
@@ -29,26 +28,6 @@ namespace MyFirstRazorWebPage.Pages
 
         public IActionResult OnGet()
         {
-            string WelcomeFile = "Welcome.txt";
-            var FileLocation = Path.Combine(_env.WebRootPath, "WelcomeMessage", WelcomeFile);
-            Console.WriteLine("Message file location : "+FileLocation);
-
-            try
-            {   // Open the text file using a stream reader.
-                using (StreamReader sr = new StreamReader(FileLocation))
-                {
-                    // Read the stream to a string, and write the string to the console.
-                    String line = sr.ReadToEnd();
-                    Console.WriteLine(line);
-                    Message = line;
-                }
-            }
-            catch (IOException e)
-            {
-                Console.WriteLine("The file could not be read:");
-                Console.WriteLine(e.Message);
-            }
-
 
             return Page();
 

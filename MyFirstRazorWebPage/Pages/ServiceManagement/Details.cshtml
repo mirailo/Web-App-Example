@@ -2,7 +2,7 @@
 @model MyFirstRazorWebPage.Pages.ModuleManagement.DetailsModel
 
 @{
-    ViewData["Title"] = "Admin Page - Module Detail";
+    ViewData["Title"] = "Staff Page - Module Detail";
 }
 <!DOCTYPE html>
 
@@ -13,7 +13,7 @@
 </head>
 <body>
 
-    <h1 style="text-align:center">Admin Page : Module Detail</h1>
+    <h1 style="text-align:center">Staff Page : Module Detail</h1>
     <hr />
 
     <div>
@@ -49,7 +49,7 @@
     <div>
         <a asp-page="./Edit" asp-route-id="@Model.Services.ID">Edit</a> |
         <a asp-page="./Index">Back to Module List</a>|
-        <a asp-page="/AdminPage/AdminLogout">Logout</a>
+        <a asp-page="/StaffPage/AdminLogout">Logout</a>
     </div>
 </body>
 </html>

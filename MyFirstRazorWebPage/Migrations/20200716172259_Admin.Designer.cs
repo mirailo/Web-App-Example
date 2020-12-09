@@ -9,7 +9,7 @@ namespace MyFirstRazorWebPage.Migrations
 {
     [DbContext(typeof(HairSalonApptContext))]
     [Migration("20200716172259_Admin")]
-    partial class Admin
+    partial class Staff
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

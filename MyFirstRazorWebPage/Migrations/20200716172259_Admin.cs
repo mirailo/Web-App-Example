@@ -2,7 +2,7 @@
 
 namespace MyFirstRazorWebPage.Migrations
 {
-    public partial class Admin : Migration
+    public partial class Staff : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

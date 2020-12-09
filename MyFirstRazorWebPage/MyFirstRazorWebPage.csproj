@@ -7,12 +7,16 @@
   <ItemGroup>
     <Compile Remove="Pages\CustomerServices\**" />
     <Compile Remove="TxtFiles\**" />
+    <Compile Remove="wwwroot\WelcomeMessage\**" />
     <Content Remove="Pages\CustomerServices\**" />
     <Content Remove="TxtFiles\**" />
+    <Content Remove="wwwroot\WelcomeMessage\**" />
     <EmbeddedResource Remove="Pages\CustomerServices\**" />
     <EmbeddedResource Remove="TxtFiles\**" />
+    <EmbeddedResource Remove="wwwroot\WelcomeMessage\**" />
     <None Remove="Pages\CustomerServices\**" />
     <None Remove="TxtFiles\**" />
+    <None Remove="wwwroot\WelcomeMessage\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -29,12 +33,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Pages\Customers\" />
-    <Folder Include="Pages\AdminPage\" />
     <Folder Include="Pages\UserLoggedIn\" />
     <Folder Include="wwwroot\Images\" />
     <Folder Include="Pages\DatabaseConnection\" />
     <Folder Include="wwwroot\js\" />
-    <Folder Include="wwwroot\WelcomeMessage\" />
     <Folder Include="wwwroot\Videos\" />
   </ItemGroup>
   <ItemGroup>

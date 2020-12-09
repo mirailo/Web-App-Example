@@ -46,7 +46,7 @@ namespace MyFirstRazorWebPage.Pages.UserLoggedIn
             if (string.IsNullOrEmpty(UserName))
             {
                 Console.WriteLine("Session ended");
-                return RedirectToPage("/Users/UserLogin");
+                return RedirectToPage("/Customers/UserLogin");
 
             }
             else

@@ -17,7 +17,7 @@ using MyFirstRazorWebPage.Models;
 
         public DbSet<MyFirstRazorWebPage.Models.User> User { get; set; }
 
-        public DbSet<MyFirstRazorWebPage.Models.AdminUser> AdminUser { get; set; }
+        public DbSet<MyFirstRazorWebPage.Models.StaffUser> StaffUser { get; set; }
 
         public DbSet<MyFirstRazorWebPage.Models.Services> Services { get; set; }
 

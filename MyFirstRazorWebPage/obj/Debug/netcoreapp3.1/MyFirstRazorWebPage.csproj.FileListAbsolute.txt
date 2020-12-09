@@ -213,3 +213,7 @@ C:\Users\nusay\source\repos\Web-App-Example\MyFirstRazorWebPage\obj\Debug\netcor
 C:\Users\nusay\source\repos\Web-App-Example\MyFirstRazorWebPage\obj\Debug\netcoreapp3.1\Razor\Pages\StaffPage\UserCreation.cshtml.g.cs
 C:\Users\nusay\source\repos\Web-App-Example\MyFirstRazorWebPage\obj\Debug\netcoreapp3.1\Razor\Pages\StaffPage\UserDetails.cshtml.g.cs
 C:\Users\nusay\source\repos\Web-App-Example\MyFirstRazorWebPage\obj\Debug\netcoreapp3.1\Razor\Pages\StaffPage\UserProfile.cshtml.g.cs
+C:\Users\nusay\source\repos\Web-App-Example\MyFirstRazorWebPage\obj\Debug\netcoreapp3.1\Razor\Pages\StaffPage\WelcomePage.cshtml.g.cs
+C:\Users\nusay\source\repos\Web-App-Example\MyFirstRazorWebPage\obj\Debug\netcoreapp3.1\Razor\Pages\About\Ldn.cshtml.g.cs
+C:\Users\nusay\source\repos\Web-App-Example\MyFirstRazorWebPage\obj\Debug\netcoreapp3.1\Razor\Pages\About\Leeds.cshtml.g.cs
+C:\Users\nusay\source\repos\Web-App-Example\MyFirstRazorWebPage\obj\Debug\netcoreapp3.1\Razor\Pages\About\York.cshtml.g.cs

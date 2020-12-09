@@ -1,0 +1,46 @@
+﻿@page
+@model MyFirstRazorWebPage.Pages.StaffPage.WelcomePageModel
+@{
+    ViewData["Title"] = "Staff Page - Manage Welcome Page";
+}
+
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Manage Welcome Page</title>
+</head>
+<body>
+    <h1 style="text-align:center">Staff Page : Manage Welcome Page</h1>
+    <hr>
+
+    <div class="row">
+        <div class="col-md-4">
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group">
+                    <label asp-for="@Model.Msg" class="control-label">Welcome Message</label>
+                    <textarea type="text" asp-for="@Model.Msg" class="form-control" style="height: 250px; width: 600px">@Model.Msg</textarea><br>
+                    <span asp-validation-for="@Model.Msg" class="text-danger"></span>
+
+                    <label asp-for="@Model.dateUpdate" class="control-label"></label>
+                    <input type="text" asp-for="@Model.dateUpdate" value="@DateTime.Now" class="form-control" disabled /><br>
+                    <span asp-validation-for="@Model.dateUpdate" class="text-danger"></span>
+
+                    <div class="form-group">
+                        <input type="submit" value="Submit" class="btn btn-primary" />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div>
+        <a asp-page="/StaffPage/Index">Back to Admin Page</a> |
+        <a asp-page="/StaffPage/AdminLogout">Logout</a>
+    </div>
+</body>
+</html>
