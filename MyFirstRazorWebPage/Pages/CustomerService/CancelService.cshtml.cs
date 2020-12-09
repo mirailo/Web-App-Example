@@ -23,13 +23,16 @@ namespace MyFirstRazorWebPage.Pages.CustomerService
         public const string SessionKeyName2 = "email";
 
         [BindProperty]
+        public List<Services> GetBookedServices { get; set; }
+
+        [BindProperty]
         public List<Services> ServiceRecords { get; set; } = new List<Services>();
 
         [BindProperty]
         public List<bool> IsSelect { get; set; } = new List<bool>();
 
         [BindProperty]
-        public List<Services> CancelService{ get; set; } = new List<Services>();
+        public List<Services> CancelledService{ get; set; } = new List<Services>();
 
 
         public IActionResult OnGet()
@@ -46,10 +49,10 @@ namespace MyFirstRazorWebPage.Pages.CustomerService
             }
             else
             {
-                Console.WriteLine("Retrieving Services");
+                Console.WriteLine("Getting Booked Appointments:");
 
                 var connectionStringBuilder = new SqliteConnectionStringBuilder();
-                DatabaseConnect DBCon = new DatabaseConnect(); // your own class and method in DatabaseConnection folder
+                DatabaseConnect DBCon = new DatabaseConnect(); 
                 string dbStringConnection = DBCon.DBStringConnection();
 
                 connectionStringBuilder.DataSource = dbStringConnection;
@@ -107,7 +110,7 @@ namespace MyFirstRazorWebPage.Pages.CustomerService
                 if (IsSelect[i] == true)
                 {
                     Console.WriteLine(ServiceRecords[i].ServiceCode);
-                    CancelService.Add(ServiceRecords[i]);
+                    CancelledService.Add(ServiceRecords[i]);
                 }
             }
 
@@ -120,16 +123,33 @@ namespace MyFirstRazorWebPage.Pages.CustomerService
 
             connection.Open();
 
+            DateTime dd = DateTime.Now;
+            string date = dd.ToString("dd/MM/yyyy");
 
 
-            for (int i=0; i< CancelService.Count; i++)
+            for (int i=0; i< CancelledService.Count; i++)
             {
                 var selectCmd = connection.CreateCommand();
                 selectCmd.CommandText = @"DELETE FROM BookedService WHERE Email=$email AND ServiceCode=$SCode";
                 selectCmd.Parameters.AddWithValue("$email", UserEmail);
-                selectCmd.Parameters.AddWithValue("$SCode", CancelService[i].ServiceCode);
+                selectCmd.Parameters.AddWithValue("$SCode", CancelledService[i].ServiceCode);
                 selectCmd.Prepare();
                 selectCmd.ExecuteNonQuery();
+            }
+
+            for (int i=0; i< CancelledService.Count; i++)
+            {
+                var selectCmd2 = connection.CreateCommand();
+                selectCmd2.CommandText = @"INSERT INTO CancelledService (Email, ServiceCode, Date) VALUES ($email, $SCode, $Date)";
+                Console.WriteLine("Email : " + UserEmail);
+                Console.WriteLine("Service Code : " + CancelledService[i].ServiceCode);
+                Console.WriteLine("Date : " + date);
+                selectCmd2.Parameters.AddWithValue("$email", UserEmail);
+                selectCmd2.Parameters.AddWithValue("$SCode", CancelledService[i].ServiceCode);
+                selectCmd2.Parameters.AddWithValue("$Date", date);
+                selectCmd2.Prepare();
+                selectCmd2.ExecuteNonQuery();
+                Console.WriteLine("A record saved");
             }
            
             return RedirectToPage("/CustomerService/ViewBookedService");
