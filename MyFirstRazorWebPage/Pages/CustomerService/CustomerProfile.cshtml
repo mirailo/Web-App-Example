@@ -1,0 +1,57 @@
+﻿@page
+@model MyFirstRazorWebPage.Pages.CustomerService.CustomerProfileModel
+@{
+    ViewData["Title"] = "Customer Profile";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Customer Details</title>
+</head>
+<body>
+
+    <div>
+        <h4>Customer Profile</h4>
+        <hr />
+     </div>
+
+    <div>
+
+        <dl class="row">
+            <dt class="col-sm-2">
+                First Name :
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.UserName)
+            </dd>
+            <dt class="col-sm-2">
+                Email Address :
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.EmailAdd)
+            </dd>
+            <dt class="col-sm-2">
+                Password :
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Pwd)
+            </dd>
+        </dl>
+
+    </div>
+
+
+
+    <div>
+
+        <a asp-page="/UserLoggedIn/SuccessLogIn">User Homepage</a>|
+        <a asp-page="/CustomerService/ViewBookedService">View Booked Appointments</a>|
+        <a asp-page="/CustomerService/BookService">Book An Appointment</a>|
+        <a asp-page="/CustomerService/CancelService">Cancel Your Appointment</a>|
+        <a asp-page="/UserLoggedIn/UserLogout">Logout</a>
+    </div>
+</body>
+</html>

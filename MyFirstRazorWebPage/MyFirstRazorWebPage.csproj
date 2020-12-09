@@ -5,9 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Pages\CustomerServices\**" />
     <Compile Remove="TxtFiles\**" />
+    <Content Remove="Pages\CustomerServices\**" />
     <Content Remove="TxtFiles\**" />
+    <EmbeddedResource Remove="Pages\CustomerServices\**" />
     <EmbeddedResource Remove="TxtFiles\**" />
+    <None Remove="Pages\CustomerServices\**" />
     <None Remove="TxtFiles\**" />
   </ItemGroup>
 
@@ -24,17 +28,14 @@
     <PackageReference Include="Microsoft.AspNet.WebHelpers" Version="3.2.7" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Pages\Users\" />
+    <Folder Include="Pages\Customers\" />
     <Folder Include="Pages\AdminPage\" />
     <Folder Include="Pages\UserLoggedIn\" />
     <Folder Include="wwwroot\Images\" />
-    <Folder Include="Pages\ModuleManagement\" />
-    <Folder Include="Pages\UserServices\" />
     <Folder Include="Pages\DatabaseConnection\" />
     <Folder Include="wwwroot\js\" />
     <Folder Include="wwwroot\WelcomeMessage\" />
     <Folder Include="wwwroot\Videos\" />
-    <Folder Include="Video\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="Pages\Login\Login.cshtml" />
@@ -50,5 +51,10 @@
     <None Remove="RazorPagesMovieContext-4626ba78-c68f-4200-bc79-dd49c8d85ee3.db-shm" />
     <None Remove="RazorPagesMovieContext-4626ba78-c68f-4200-bc79-dd49c8d85ee3.db-wal" />
     <None Remove="RazorPagesMovieContext-4626ba78-c68f-4200-bc79-dd49c8d85ee3.db-shm" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Pages\CustomerServices\CancelService - Copy.cshtml.cs">
+      <DependentUpon>CancelService.cshtml.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
 </Project>

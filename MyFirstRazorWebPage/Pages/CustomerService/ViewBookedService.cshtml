@@ -1,0 +1,88 @@
+﻿@page
+@model MyFirstRazorWebPage.Pages.CustomerService.ViewBookedServiceModel
+@{
+    ViewData["Title"] = "View Appointments";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>View Services</title>
+</head>
+<body>
+
+    <div>
+        <h4>View Booked Appointments for @Model.UserName</h4>
+        <hr />
+    </div>
+
+    <div>
+       
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Services[0].ServiceCode)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Services[0].ServiceName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Services[0].ServiceDuration)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Services[0].ServicePrice)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < Model.Services.Count(); i++)
+                    {
+                        <tr>
+                            <td>
+                                
+                                @Model.Services[i].ServiceCode
+                            </td>
+                            <td>
+                             
+                                @Model.Services[i].ServiceName
+
+                            </td>
+                            <td>
+                             
+                                @Model.Services[i].ServiceDuration
+                            </td>
+                            <td>
+                                
+                                @Model.Services[i].ServicePrice
+                            </td>
+                           
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            
+    </div>
+
+    <div>
+        @{
+            if (Model.Services.Count==0)
+            {
+                @: Dear customer, you do not currently have any upcoming appointment services booked with us!
+            }
+        }
+
+    </div>
+
+    <div>
+        <a asp-page="/UserLoggedIn/SuccessLogIn">Customer Homepage</a>|
+        <a asp-page="/CustomerService/BookService">Book an appointment!</a>|
+        <a asp-page="/CustomerService/CancelService">Cancel your appointment</a>|
+        <a asp-page="/UserLoggedIn/UserLogout">Logout</a>
+    </div>
+</body>
+</html>

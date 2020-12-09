@@ -18,7 +18,6 @@ namespace MyFirstRazorWebPage.Pages
         private readonly RazorPagesMovieContext _context;
         private readonly IWebHostEnvironment _env;
 
-        //public WelcomPage WPage { get; set; }
         public string Message { get; set; }
 
         public IndexModel(ILogger<IndexModel> logger, RazorPagesMovieContext context, IWebHostEnvironment env)

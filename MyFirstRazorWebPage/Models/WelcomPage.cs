@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MyFirstRazorWebPage.Models
 {
-    public class WelcomPage
+    public class WelcomePage
     {
         [Required]
         public int ID { get; set; }

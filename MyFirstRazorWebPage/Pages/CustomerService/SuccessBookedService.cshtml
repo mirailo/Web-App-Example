@@ -1,0 +1,81 @@
+﻿@page
+@model MyFirstRazorWebPage.Pages.CustomerService.SuccessBookedServiceModel
+@{
+    ViewData["Title"] = "Successfully Booked Service!";
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Booked Services</title>
+</head>
+<body>
+
+    <div>
+        <h4>Services Booking Successful</h4>
+        <hr />
+    </div>
+
+    <div>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.BookedService[0].ServiceCode)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.BookedService[0].ServiceName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.BookedService[0].ServiceDuration)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.BookedService[0].ServicePrice)
+                    </th>
+                    
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.BookedService.Count(); i++)
+                {
+                    <tr>
+                        <td>
+                        
+                            @Model.BookedService[0].ServiceCode
+                        </td>
+                        <td>
+                           
+                            @Model.BookedService[0].ServiceName
+
+                        </td>
+                        <td>
+                           
+                            @Model.BookedService[0].ServiceDuration
+                        </td>
+                        <td>
+                           
+                            @Model.BookedService[0].ServicePrice
+                        </td>
+                       
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+   
+
+
+    <div>
+
+        <a asp-page="/UserLoggedIn/SuccessLogIn">User Homepage</a>|
+        <a asp-page="/CustomerService/ViewBookedService">View Booked Appointments</a>|
+        <a asp-page="/UserLoggedIn/UserLogout">Logout</a>
+    </div>
+</body>
+</html>

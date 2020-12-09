@@ -17,11 +17,11 @@ namespace MyFirstRazorWebPage.Models
         public string FirstName { get; set; }
 
         [Required]
-        [Display(Name = "Admin User Name")]
+        [Display(Name = " Staff Username")]
         public string AdminUserName { get; set; }
 
         [Required]
-        [Display(Name = "Admin Password")]
+        [Display(Name = "Staff Password")]
         public string AdminPassword { get; set; }
     }
 }

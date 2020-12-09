@@ -1,0 +1,94 @@
+﻿@page
+@model MyFirstRazorWebPage.Pages.CustomerService.BookServiceModel
+@{
+    ViewData["Title"] = "Book Appointment";
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Book Appointment</title>
+</head>
+<body>
+
+    <div>
+        <h4>Book Appointment for @Model.UserEmail</h4>
+        <hr />
+    </div>
+
+    <div>
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ServiceRecords[0].ServiceCode)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ServiceRecords[0].ServiceName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ServiceRecords[0].ServiceDuration)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ServiceRecords[0].ServicePrice)
+                        </th>
+                        <th>
+                            Select Service
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <input type="hidden" asp-for="@Model.UserEmail" class="control-label" />
+                        </td>
+                    </tr>
+                    @for (int i = 0; i < Model.ServiceRecords.Count(); i++)
+                    {
+                        <tr>
+                            <td>
+                                <input type="hidden" asp-for="@Model.ServiceRecords[i].ServiceCode" class="control-label" />
+                                @Model.ServiceRecords[i].ServiceCode
+                            </td>
+                            <td>
+                                <input type="hidden" asp-for="@Model.ServiceRecords[i].ServiceName" class="control-label" />
+                                @Model.ServiceRecords[i].ServiceName
+
+                            </td>
+                            <td>
+                                <input type="hidden" asp-for=" @Model.ServiceRecords[i].ServiceDuration" class="control-label" />
+                                @Model.ServiceRecords[i].ServiceDuration
+                            </td>
+                            <td>
+                                <input type="hidden" asp-for="@Model.ServiceRecords[i].ServicePrice" class="control-label" />
+                                @Model.ServiceRecords[i].ServicePrice
+                            </td>
+                            <td>
+                                @Html.CheckBoxFor(checkbox => checkbox.IsSelect[i], new { @class = "form-control" })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <div class="form-group">
+                <input type="submit" value="Book Appointment" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+
+
+
+    <div>
+
+        <a asp-page="/UserLoggedIn/SuccessLogIn">Customer Homepage</a>|
+        <a asp-page="/CustomerService/ViewBookedService" asp-page-handler="OnGetLogout">View Booked Appointments</a>|
+        <a asp-page="/UserLoggedIn/UserLogout">Logout</a>
+    </div>
+</body>
+</html>

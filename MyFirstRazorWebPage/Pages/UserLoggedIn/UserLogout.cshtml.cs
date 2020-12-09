@@ -12,7 +12,7 @@ namespace MyFirstRazorWebPage.Pages.UserLoggedIn
 {
     public class UserLogoutModel : PageModel
     {
-        public string UserName;
+        public string Username;
         public const string SessionKeyName1 = "username";
 
         public string UserEmail;
@@ -20,7 +20,7 @@ namespace MyFirstRazorWebPage.Pages.UserLoggedIn
 
         public void OnGet()
         {
-            UserName = HttpContext.Session.GetString(SessionKeyName1);
+            Username = HttpContext.Session.GetString(SessionKeyName1);
             UserEmail = HttpContext.Session.GetString(SessionKeyName2);
 
             
@@ -32,11 +32,11 @@ namespace MyFirstRazorWebPage.Pages.UserLoggedIn
             var connection = new SqliteConnection(connectionStringBuilder.ConnectionString);
             connection.Open();
 
-            Console.WriteLine("Username : "+UserName);
+            Console.WriteLine("Username : "+Username);
 
             var selectCmd2 = connection.CreateCommand();
-            selectCmd2.CommandText = @"DELETE FROM UserSession WHERE Username=$userName";
-            selectCmd2.Parameters.AddWithValue("$userName", UserName);
+            selectCmd2.CommandText = @"DELETE FROM UserSession WHERE Username=$username";
+            selectCmd2.Parameters.AddWithValue("$username", Username);
             selectCmd2.Prepare();
             selectCmd2.ExecuteNonQuery();
 
