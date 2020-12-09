@@ -11,9 +11,9 @@ namespace MyFirstRazorWebPage.Pages.Customers
 {
     public class CreateModel : PageModel
     {
-        private readonly RazorPagesMovieContext _context; //this is your data file in Data folder
+        private readonly HairSalonApptContext _context; //this is your data file in Data folder
 
-        public CreateModel(RazorPagesMovieContext context)
+        public CreateModel(HairSalonApptContext context)
         {
             _context = context;
         }

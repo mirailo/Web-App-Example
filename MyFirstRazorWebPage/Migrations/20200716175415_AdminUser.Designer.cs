@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MyFirstRazorWebPage.Migrations
 {
-    [DbContext(typeof(RazorPagesMovieContext))]
+    [DbContext(typeof(HairSalonApptContext))]
     [Migration("20200716175415_AdminUser")]
     partial class AdminUser
     {

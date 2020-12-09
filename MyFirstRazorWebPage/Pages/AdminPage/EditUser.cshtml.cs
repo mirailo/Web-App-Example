@@ -16,10 +16,10 @@ namespace MyFirstRazorWebPage.Pages.AdminPage
 {
     public class EditUserModel : PageModel
     {
-        private readonly RazorPagesMovieContext _context;
+        private readonly HairSalonApptContext _context;
         private readonly IWebHostEnvironment _env;
 
-        public EditUserModel(RazorPagesMovieContext context, IWebHostEnvironment env)
+        public EditUserModel(HairSalonApptContext context, IWebHostEnvironment env)
         {
             _context = context;
             _env = env;

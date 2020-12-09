@@ -19,7 +19,7 @@ namespace MyFirstRazorWebPage.Pages.AdminPage
     public class Index2Model : PageModel
     {
 
-        private readonly RazorPagesMovieContext _context;
+        private readonly HairSalonApptContext _context;
 
         public string UserName;
         public const string SessionKeyName1 = "username";
@@ -37,7 +37,7 @@ namespace MyFirstRazorWebPage.Pages.AdminPage
         public string Msg { get; set; }
 
       
-        public Index2Model(RazorPagesMovieContext context)
+        public Index2Model(HairSalonApptContext context)
         {
             _context = context;
         }

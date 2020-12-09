@@ -63,27 +63,27 @@ namespace MyFirstRazorWebPage.Pages.CustomerService
                 selectCmd.Parameters.AddWithValue("$email", UserEmail);
                 var reader = selectCmd.ExecuteReader();
 
-                List<String> GetRegMod = new List<string>(); //to get module that registered by the student
+                List<String> GetBookedService = new List<string>(); 
 
                 while (reader.Read())
                 {
-                    GetRegMod.Add(reader.GetString(0));
+                    GetBookedService.Add(reader.GetString(0));
                 }
 
-                for (int i = 0; i < GetRegMod.Count; i++)
+                for (int i = 0; i < GetBookedService.Count; i++)
                 {
-                    var ServiceCode = GetRegMod[i];
+                    var ServiceCode = GetBookedService[i];
                     var selectCmd2 = connection.CreateCommand();
 
-                    selectCmd2.CommandText = @"SELECT ServiceName FROM Services WHERE ServiceCode=$ServiceCode ORDER BY ServiceCode";
-                    selectCmd2.Parameters.AddWithValue("$ServiceCode", ServiceCode);
+                    selectCmd2.CommandText = @"SELECT ServiceName FROM Services WHERE ServiceCode=$SCode ORDER BY ServiceCode";
+                    selectCmd2.Parameters.AddWithValue("$SCode", ServiceCode);
                     var reader2 = selectCmd2.ExecuteReader();
 
                     while (reader2.Read())
                     {
                         Services rec = new Services();
 
-                        rec.ServiceCode = GetRegMod[i];
+                        rec.ServiceCode = GetBookedService[i];
                         rec.ServiceName = reader2.GetString(0);
                         ServiceRecords.Add(rec);
                     }
@@ -125,9 +125,9 @@ namespace MyFirstRazorWebPage.Pages.CustomerService
             for (int i=0; i< CancelService.Count; i++)
             {
                 var selectCmd = connection.CreateCommand();
-                selectCmd.CommandText = @"DELETE FROM BookedService WHERE Email=$email AND ServiceCode=$ServiceCode";
+                selectCmd.CommandText = @"DELETE FROM BookedService WHERE Email=$email AND ServiceCode=$SCode";
                 selectCmd.Parameters.AddWithValue("$email", UserEmail);
-                selectCmd.Parameters.AddWithValue("$ServiceCode", CancelService[i].ServiceCode);
+                selectCmd.Parameters.AddWithValue("$SCode", CancelService[i].ServiceCode);
                 selectCmd.Prepare();
                 selectCmd.ExecuteNonQuery();
             }

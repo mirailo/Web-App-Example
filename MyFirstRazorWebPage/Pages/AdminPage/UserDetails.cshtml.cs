@@ -12,9 +12,9 @@ namespace MyFirstRazorWebPage.Pages.AdminPage
 {
     public class UserDetailsModel : PageModel
     {
-        private readonly RazorPagesMovieContext _context;
+        private readonly HairSalonApptContext _context;
 
-        public UserDetailsModel(RazorPagesMovieContext context)
+        public UserDetailsModel(HairSalonApptContext context)
         {
             _context = context;
         }

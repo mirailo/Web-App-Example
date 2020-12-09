@@ -110,14 +110,14 @@ namespace MyFirstRazorWebPage.Pages.CustomerService
             selectCmd.Parameters.AddWithValue("$email", UserEmail);
             var reader = selectCmd.ExecuteReader();
 
-            List<string> CheckModuleCode = new List<string>(); //a variable use be assigned for the CodeModule registered found
+            List<string> CheckServiceCode = new List<string>(); 
 
             while (reader.Read())
             {
-                CheckModuleCode.Add(reader.GetString(0));
+                CheckServiceCode.Add(reader.GetString(0));
             }
 
-            Console.WriteLine("No of appointments found : " + CheckModuleCode.Count);
+            Console.WriteLine("No of appointments found : " + CheckServiceCode.Count);
 
             connection.Open();
 
@@ -125,18 +125,18 @@ namespace MyFirstRazorWebPage.Pages.CustomerService
             string date = dd.ToString("dd/MM/yyyy");
 
 
-            if (CheckModuleCode.Count == 0)
+            if (CheckServiceCode.Count == 0)
             {
 
                 for (int i = 0; i < GetBookedServices.Count; i++)
                 {
                     var selectCmd2 = connection.CreateCommand();
-                    selectCmd2.CommandText = @"INSERT INTO BookedService (Email, ServiceCode, Date) VALUES ($email, $MCode, $Date)";
+                    selectCmd2.CommandText = @"INSERT INTO BookedService (Email, ServiceCode, Date) VALUES ($email, $SCode, $Date)";
                     Console.WriteLine("Email : " + UserEmail);
                     Console.WriteLine("Service Code : " + GetBookedServices[i].ServiceCode);
                     Console.WriteLine("Date : " + date);
                     selectCmd2.Parameters.AddWithValue("$email", UserEmail);
-                    selectCmd2.Parameters.AddWithValue("$MCode", GetBookedServices[i].ServiceCode);
+                    selectCmd2.Parameters.AddWithValue("$SCode", GetBookedServices[i].ServiceCode);
                     selectCmd2.Parameters.AddWithValue("$Date", date);
                     selectCmd2.Prepare();
                     selectCmd2.ExecuteNonQuery();
@@ -148,24 +148,24 @@ namespace MyFirstRazorWebPage.Pages.CustomerService
                 for (int i = 0; i < GetBookedServices.Count; i++)
                 {
                     bool valid = true;
-                    for (int j = 0; j < CheckModuleCode.Count; j++)
+                    for (int j = 0; j < CheckServiceCode.Count; j++)
                     {
 
-                        if (GetBookedServices[i].ServiceCode == CheckModuleCode[j])
+                        if (GetBookedServices[i].ServiceCode == CheckServiceCode[j])
                         {
                             valid = false;
-                            Console.WriteLine("Booked appointment found!" + CheckModuleCode[j]);
+                            Console.WriteLine("Booked appointment found!" + CheckServiceCode[j]);
                         }
                     }
                     if (valid == true)
                     {
                         var selectCmd2 = connection.CreateCommand();
-                        selectCmd2.CommandText = @"INSERT INTO BookedService (Email, ServiceCode, Date) VALUES ($email, $MCode, $Date)";
+                        selectCmd2.CommandText = @"INSERT INTO BookedService (Email, ServiceCode, Date) VALUES ($email, $SCode, $Date)";
                         Console.WriteLine("Email : " + UserEmail);
                         Console.WriteLine("Service Code : " + GetBookedServices[i].ServiceCode);
                         Console.WriteLine("Date : " + date);
                         selectCmd2.Parameters.AddWithValue("$email", UserEmail);
-                        selectCmd2.Parameters.AddWithValue("$MCode", GetBookedServices[i].ServiceCode);
+                        selectCmd2.Parameters.AddWithValue("$SCode", GetBookedServices[i].ServiceCode);
                         selectCmd2.Parameters.AddWithValue("$Date", date);
                         selectCmd2.Prepare();
                         selectCmd2.ExecuteNonQuery();

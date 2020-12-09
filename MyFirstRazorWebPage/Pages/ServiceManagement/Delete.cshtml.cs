@@ -11,9 +11,9 @@ namespace MyFirstRazorWebPage.Pages.ModuleManagement
 {
     public class DeleteModel : PageModel
     {
-        private readonly RazorPagesMovieContext _context;
+        private readonly HairSalonApptContext _context;
 
-        public DeleteModel(RazorPagesMovieContext context)
+        public DeleteModel(HairSalonApptContext context)
         {
             _context = context;
         }

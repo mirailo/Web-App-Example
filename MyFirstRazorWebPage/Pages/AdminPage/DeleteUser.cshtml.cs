@@ -11,9 +11,9 @@ namespace MyFirstRazorWebPage.Pages.AdminPage
 {
     public class DeleteUserModel : PageModel
     {
-        private readonly RazorPagesMovieContext _context;
+        private readonly HairSalonApptContext _context;
 
-        public DeleteUserModel(RazorPagesMovieContext context)
+        public DeleteUserModel(HairSalonApptContext context)
         {
             _context = context;
         }

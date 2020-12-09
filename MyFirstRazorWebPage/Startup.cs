@@ -26,8 +26,8 @@ namespace MyFirstRazorWebPage
         {
             services.AddRazorPages();
 
-            services.AddDbContext<RazorPagesMovieContext>(options =>
-                    options.UseSqlite(Configuration.GetConnectionString("RazorPagesMovieContext")));
+            services.AddDbContext<HairSalonApptContext>(options =>
+                    options.UseSqlite(Configuration.GetConnectionString("HairSalonApptContext")));
 
             services.AddDistributedMemoryCache();
 

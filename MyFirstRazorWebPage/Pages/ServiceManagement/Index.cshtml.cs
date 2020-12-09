@@ -12,9 +12,9 @@ namespace MyFirstRazorWebPage.Pages.ModuleManagement
 {
     public class IndexModel : PageModel
     {
-        private readonly RazorPagesMovieContext _context;
+        private readonly HairSalonApptContext _context;
 
-        public IndexModel(RazorPagesMovieContext context)
+        public IndexModel(HairSalonApptContext context)
         {
             _context = context;
         }

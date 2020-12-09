@@ -15,12 +15,12 @@ namespace MyFirstRazorWebPage.Pages
     {
 
         private readonly ILogger<IndexModel> _logger;
-        private readonly RazorPagesMovieContext _context;
+        private readonly HairSalonApptContext _context;
         private readonly IWebHostEnvironment _env;
 
         public string Message { get; set; }
 
-        public IndexModel(ILogger<IndexModel> logger, RazorPagesMovieContext context, IWebHostEnvironment env)
+        public IndexModel(ILogger<IndexModel> logger, HairSalonApptContext context, IWebHostEnvironment env)
         {
             _logger = logger;
             _context = context;

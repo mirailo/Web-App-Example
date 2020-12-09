@@ -1,6 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\MyFirstRazorWebPage",
+    "\\MyFirstRazorWebPage\\Pages"
   ],
+  "SelectedNode": "\\MyFirstRazorWebPage.sln",
   "PreviewInSolutionExplorer": false
 }

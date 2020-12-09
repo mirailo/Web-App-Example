@@ -11,9 +11,9 @@ namespace MyFirstRazorWebPage.Pages.AdminPage
 {
     public class UserProfileModel : PageModel
     {
-        private readonly RazorPagesMovieContext _context;
+        private readonly HairSalonApptContext _context;
 
-        public UserProfileModel(RazorPagesMovieContext context)
+        public UserProfileModel(HairSalonApptContext context)
         {
             _context = context;
         }

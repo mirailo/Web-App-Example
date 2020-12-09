@@ -14,9 +14,9 @@ namespace MyFirstRazorWebPage.Pages.CustomerService
 {
     public class CustomerProfileModel : PageModel
     {
-        private readonly RazorPagesMovieContext _context;
+        private readonly HairSalonApptContext _context;
 
-        public CustomerProfileModel(RazorPagesMovieContext context)
+        public CustomerProfileModel(HairSalonApptContext context)
         {
             _context = context;
         }
