@@ -39,7 +39,12 @@
     }
 </script>
 
-<p> Existing customers can login to track current appointments, create new appointments and to cancel appointments. New customers can create an account.</p>
+<h3> Current News and Updates:</h3>
+
+<div>
+    <p asp-for="@Model.Message" style="word-wrap: break-word; text-align: justify;
+         text-justify: inter-word;" class="control-label">@Model.Message</p>
+    </div>
 
 
   

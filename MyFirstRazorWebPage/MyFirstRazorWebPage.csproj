@@ -7,19 +7,16 @@
   <ItemGroup>
     <Compile Remove="Pages\CustomerServices\**" />
     <Compile Remove="TxtFiles\**" />
-    <Compile Remove="wwwroot\WelcomeMessage\**" />
     <Content Remove="Pages\CustomerServices\**" />
     <Content Remove="TxtFiles\**" />
-    <Content Remove="wwwroot\WelcomeMessage\**" />
     <EmbeddedResource Remove="Pages\CustomerServices\**" />
     <EmbeddedResource Remove="TxtFiles\**" />
-    <EmbeddedResource Remove="wwwroot\WelcomeMessage\**" />
     <None Remove="Pages\CustomerServices\**" />
     <None Remove="TxtFiles\**" />
-    <None Remove="wwwroot\WelcomeMessage\**" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="PdfSharpCore" Version="1.2.10" />
     <PackageReference Include="sqlite" Version="3.13.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.8" />
