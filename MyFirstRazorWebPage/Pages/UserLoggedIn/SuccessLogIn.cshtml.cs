@@ -24,13 +24,17 @@ namespace MyFirstRazorWebPage.Pages.UserLoggedIn
         public string UserName;
         public const string SessionKeyName1 = "username";
 
-        
         public string UserEmail;
         public const string SessionKeyName2 = "email";
 
         public string SessionID;
         public const string SessionKeyName3 = "sessionID";
 
+        [BindProperty]
+        public string pathPicture { get; set; }
+
+        [BindProperty]
+        public string FileName { get; set; }
 
         public IActionResult OnGet()
         {
@@ -39,21 +43,53 @@ namespace MyFirstRazorWebPage.Pages.UserLoggedIn
             UserEmail = HttpContext.Session.GetString(SessionKeyName2);
             SessionID = HttpContext.Session.GetString(SessionKeyName3);
 
-            
+
             Console.WriteLine("Current session: " + UserName);
             Console.WriteLine("Current session ID: " + SessionID);
 
             if (string.IsNullOrEmpty(UserName))
             {
                 Console.WriteLine("Session ended");
-                return RedirectToPage("/Customers/UserLogin");
+                return RedirectToPage("/Users/UserLogin");
 
             }
             else
             {
+                var connectionStringBuilder = new SqliteConnectionStringBuilder();
+                DatabaseConnect DBCon = new DatabaseConnect();
+                string dbStringConnection = DBCon.DBStringConnection(); //getting the connection string from this class
+
+
+                connectionStringBuilder.DataSource = dbStringConnection;
+                var connection = new SqliteConnection(connectionStringBuilder.ConnectionString);
+
+                connection.Open();
+
+                var selectCmd = connection.CreateCommand();
+                selectCmd.CommandText = @"SELECT PicName FROM Picture WHERE Email=$email";
+                selectCmd.Parameters.AddWithValue("$email", UserEmail);
+
+                var reader = selectCmd.ExecuteReader();
+                var fileName = "";
+
+                while (reader.Read())
+                {
+                    fileName = reader.GetString(0);
+                }
+
+                if (string.IsNullOrEmpty(fileName))
+                {
+                    pathPicture = "DefaulPic.jpeg";
+                    Console.WriteLine("Default pic : " + pathPicture);
+                    return Page();
+                }
+
+                pathPicture = fileName;
+
+                Console.WriteLine("File name is : " + fileName);
+                pathPicture = fileName;
 
                 return Page();
-                
             }
 
         }

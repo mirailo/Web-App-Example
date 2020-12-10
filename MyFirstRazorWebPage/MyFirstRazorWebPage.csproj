@@ -29,11 +29,12 @@
     <PackageReference Include="Microsoft.AspNet.WebHelpers" Version="3.2.7" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Pages\Customers\" />
+    <Folder Include="ImageData\" />
     <Folder Include="Pages\UserLoggedIn\" />
     <Folder Include="wwwroot\Images\" />
     <Folder Include="Pages\DatabaseConnection\" />
     <Folder Include="wwwroot\js\" />
+    <Folder Include="wwwroot\Files\" />
     <Folder Include="wwwroot\Videos\" />
   </ItemGroup>
   <ItemGroup>

@@ -217,3 +217,10 @@ C:\Users\nusay\source\repos\Web-App-Example\MyFirstRazorWebPage\obj\Debug\netcor
 C:\Users\nusay\source\repos\Web-App-Example\MyFirstRazorWebPage\obj\Debug\netcoreapp3.1\Razor\Pages\About\Ldn.cshtml.g.cs
 C:\Users\nusay\source\repos\Web-App-Example\MyFirstRazorWebPage\obj\Debug\netcoreapp3.1\Razor\Pages\About\Leeds.cshtml.g.cs
 C:\Users\nusay\source\repos\Web-App-Example\MyFirstRazorWebPage\obj\Debug\netcoreapp3.1\Razor\Pages\About\York.cshtml.g.cs
+C:\Users\nusay\source\repos\Web-App-Example\MyFirstRazorWebPage\bin\Debug\netcoreapp3.1\PdfSharpCore.dll
+C:\Users\nusay\source\repos\Web-App-Example\MyFirstRazorWebPage\bin\Debug\netcoreapp3.1\SixLabors.Fonts.dll
+C:\Users\nusay\source\repos\Web-App-Example\MyFirstRazorWebPage\bin\Debug\netcoreapp3.1\SixLabors.ImageSharp.dll
+C:\Users\nusay\source\repos\Web-App-Example\MyFirstRazorWebPage\bin\Debug\netcoreapp3.1\de\PdfSharpCore.resources.dll
+C:\Users\nusay\source\repos\Web-App-Example\MyFirstRazorWebPage\obj\Debug\netcoreapp3.1\Razor\Pages\BrowsePicture\Index.cshtml.g.cs
+C:\Users\nusay\source\repos\Web-App-Example\MyFirstRazorWebPage\obj\Debug\netcoreapp3.1\Razor\Pages\StaffPage\DeletePicture.cshtml.g.cs
+C:\Users\nusay\source\repos\Web-App-Example\MyFirstRazorWebPage\obj\Debug\netcoreapp3.1\Razor\Pages\Customers\UploadPicture.cshtml.g.cs

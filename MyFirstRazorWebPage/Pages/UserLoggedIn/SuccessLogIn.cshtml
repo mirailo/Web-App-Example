@@ -17,8 +17,28 @@
 
 <body>
 
-   
+
     <h1 style="text-align:center">Welcome @Model.UserName</h1>
+
+    <div>
+        <img id="displayImg" src="~/Images/@Model.pathPicture" alt="Image not found" style=" max-width:180px;" class="rounded" /><br>
+        <p>
+            @{
+
+                if (Model.pathPicture == "DefaulPic.jpeg")
+                {
+                    var text = "Customer, you do not have a set recommended hair product yet. Please contact staff if you have already had your first hair consultation, or require a consultation.";
+                    Console.WriteLine(text);
+                    @: @text
+
+
+                    Model.pathPicture = "DefaulPic.jpeg";
+                    Console.WriteLine("After defaultted : " + Model.pathPicture);
+                }
+
+            }
+        </p>
+    </div>
 
     <div>
         <a asp-page="/CustomerService/CustomerProfile">View/Update Customer Profile</a>|
