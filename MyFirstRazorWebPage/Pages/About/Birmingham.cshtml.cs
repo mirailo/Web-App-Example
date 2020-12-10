@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace MyFirstRazorWebPage.Pages.About
 {
-    public class LeedsModel : PageModel
+    public class BirminghamModel : PageModel
     {
         public void OnGet()
         {
