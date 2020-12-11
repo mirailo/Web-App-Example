@@ -10,6 +10,7 @@ using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using MyFirstRazorWebPage.Models;
 using System.IO;
+using MyFirstRazorWebPage.Pages.DatabaseConnection;
 
 
 namespace MyFirstRazorWebPage.Pages.StaffPage
@@ -56,7 +57,10 @@ namespace MyFirstRazorWebPage.Pages.StaffPage
             }
 
             var connectionStringBuilder = new SqliteConnectionStringBuilder();
-            connectionStringBuilder.DataSource = "/Users/nusay/source/repos/Web-App-Example/MyFirstRazorWebPage/RazorPagesMovieContext-4626ba78-c68f-4200-bc79-dd49c8d85ee3.db";
+            DatabaseConnect DBCon = new DatabaseConnect();
+            string dbStringConnection = DBCon.DBStringConnection();
+
+            connectionStringBuilder.DataSource = dbStringConnection;
             var connection = new SqliteConnection(connectionStringBuilder.ConnectionString);
 
             connection.Open();
@@ -90,8 +94,7 @@ namespace MyFirstRazorWebPage.Pages.StaffPage
             return Page();
         }
 
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://aka.ms/RazorPagesCRUD.
+
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
