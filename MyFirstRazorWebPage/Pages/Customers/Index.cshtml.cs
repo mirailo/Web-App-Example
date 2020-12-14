@@ -25,11 +25,11 @@ namespace MyFirstRazorWebPage.Pages.Customers
         public const string SessionKeyName = "username";
        
 
-        public IList<User> User { get;set; }
+        public IList<Customer> Customer { get;set; }
 
         public async Task<IActionResult> OnGetAsync()
         {
-            User = await _context.User.ToListAsync();
+            Customer = await _context.Customer.ToListAsync();
 
             try
             {
@@ -40,7 +40,7 @@ namespace MyFirstRazorWebPage.Pages.Customers
             }
             catch
             {
-                return RedirectToPage("/Users/UserLogin");
+                return RedirectToPage("/Customers/CustomerLogin");
                 throw;
             }
         }

@@ -87,7 +87,7 @@ namespace MyFirstRazorWebPage.Migrations
                     b.ToTable("Promotion");
                 });
 
-            modelBuilder.Entity("MyFirstRazorWebPage.Models.User", b =>
+            modelBuilder.Entity("MyFirstRazorWebPage.Models.Customer", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -105,7 +105,7 @@ namespace MyFirstRazorWebPage.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("User");
+                    b.ToTable("Customer");
                 });
 #pragma warning restore 612, 618
         }

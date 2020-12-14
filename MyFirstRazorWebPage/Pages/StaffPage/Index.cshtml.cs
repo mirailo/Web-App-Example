@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using MyFirstRazorWebPage.Models;
-using MyFirstRazorWebPage.Pages.UserLoggedIn;
+using MyFirstRazorWebPage.Pages.CustomerLoggedIn;
 
 namespace MyFirstRazorWebPage.Pages.StaffPage
 {
@@ -44,8 +44,8 @@ namespace MyFirstRazorWebPage.Pages.StaffPage
 
                 //UserName = HttpContext.Request.Cookies[SessionKeyName];
 
-                Console.WriteLine("User session : "+UserName);
-                Console.WriteLine("User session ID : "+ SessionID);
+                Console.WriteLine("Customer session : "+UserName);
+                Console.WriteLine("Customer session ID : "+ SessionID);
 
 
             if (string.IsNullOrEmpty(UserName))

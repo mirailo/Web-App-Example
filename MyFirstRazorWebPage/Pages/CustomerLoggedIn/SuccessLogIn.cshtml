@@ -1,0 +1,56 @@
+﻿@page
+@model MyFirstRazorWebPage.Pages.CustomerLoggedIn.SuccessLogInModel
+
+
+@{
+    ViewData["Title"] = "Customer Page";
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Customer Page</title>
+</head>
+
+<body>
+
+
+    <h1 style="text-align:center">Welcome @Model.UserName</h1>
+
+    <div>
+        <img id="displayImg" src="~/Images/@Model.pathPicture" alt="Image not found" style=" max-width:180px;" class="rounded" /><br>
+        <p>
+            @{
+
+                if (Model.pathPicture == "DefaultPic.jpeg")
+                {
+                    var text = "Customer, you do not have a set recommended hair product yet. Please contact staff if you have already had your first hair consultation, or require a consultation.";
+                    Console.WriteLine(text);
+                    @: @text
+
+
+                    Model.pathPicture = "DefaultPic.jpeg";
+                    Console.WriteLine("After defaultted : " + Model.pathPicture);
+                }
+
+            }
+        </p>
+
+    </div>
+    <p>
+        If you would like to change your customer profile details, email us at: customerservice@StyleX.com, and we'll be happy to help :)
+    </p>
+    <div>
+        <a asp-page="/CustomerService/CustomerProfile">View Customer Profile</a>|
+        <a asp-page="/CustomerService/ViewBookedService">View Booked Appointments</a>|
+        <a asp-page="/CustomerService/BookService">Book An Appointment</a>|
+        <a asp-page="/CustomerService/CancelService">Cancel Appointment</a>|
+        <a asp-page="/CustomerLoggedIn/CustomerLogout">Logout</a>
+    </div>
+
+</body>
+
+</html>

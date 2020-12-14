@@ -20,7 +20,7 @@ namespace MyFirstRazorWebPage.Pages.CustomerService
         public List<string> ServiceCode { get; set; } = new List<string>();
 
         [BindProperty]
-        public User User { get; set; }
+        public Customer Customer { get; set; }
 
 
         [BindProperty]

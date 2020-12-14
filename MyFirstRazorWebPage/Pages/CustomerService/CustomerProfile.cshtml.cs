@@ -21,7 +21,7 @@ namespace MyFirstRazorWebPage.Pages.CustomerService
             _context = context;
         }
 
-        public User User { get; set; }
+        public Customer Customer { get; set; }
 
         public string UserName;
         public const string SessionKeyName1 = "username";
@@ -48,7 +48,7 @@ namespace MyFirstRazorWebPage.Pages.CustomerService
             if (string.IsNullOrEmpty(UserName))
             {
                 Console.WriteLine("Session ended");
-                return RedirectToPage("/Users/UserLogin");
+                return RedirectToPage("/Customers/CustomerLogin");
             }
             else
             {
@@ -64,7 +64,7 @@ namespace MyFirstRazorWebPage.Pages.CustomerService
                 connection.Open();
 
                 var selectCmd = connection.CreateCommand();
-                selectCmd.CommandText = @"SELECT EmailAdd, Password FROM User WHERE FirstName=$userName";
+                selectCmd.CommandText = @"SELECT EmailAdd, Password FROM Customer WHERE FirstName=$userName";
                 selectCmd.Parameters.AddWithValue("$userName", UserName);
 
                 var reader = selectCmd.ExecuteReader();

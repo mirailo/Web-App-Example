@@ -24,7 +24,7 @@ namespace MyFirstRazorWebPage.Pages.Customers
         }
 
         [BindProperty]
-        public User User { get; set; }
+        public Customer Customer { get; set; }
 
         public async Task<IActionResult> OnPostAsync()
         {
@@ -33,7 +33,7 @@ namespace MyFirstRazorWebPage.Pages.Customers
                 return Page();
             }
 
-            _context.User.Add(User);
+            _context.Customer.Add(Customer);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("CreationSuccessful");

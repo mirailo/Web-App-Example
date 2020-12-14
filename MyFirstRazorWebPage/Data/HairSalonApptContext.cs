@@ -14,7 +14,7 @@ using MyFirstRazorWebPage.Models;
         }
 
         
-        public DbSet<MyFirstRazorWebPage.Models.User> User { get; set; }
+        public DbSet<MyFirstRazorWebPage.Models.Customer> Customer { get; set; }
 
         //public DbSet<MyFirstRazorWebPage.Models.Picture> Picture { get; set; }
 

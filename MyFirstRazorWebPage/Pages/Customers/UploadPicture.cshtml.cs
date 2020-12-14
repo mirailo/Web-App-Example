@@ -21,11 +21,11 @@ namespace MyFirstRazorWebPage.Pages.Customers
         }
 
         [BindProperty]
-        public IList<User> Users { get; set; }
+        public IList<Customer> Users { get; set; }
 
         public async Task<IActionResult> OnGetAsync()
         {
-            Users = await _context.User.ToListAsync();
+            Users = await _context.Customer.ToListAsync();
 
             return Page();
 

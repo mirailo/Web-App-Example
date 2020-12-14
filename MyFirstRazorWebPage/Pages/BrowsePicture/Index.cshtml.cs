@@ -37,13 +37,13 @@ namespace MyFirstRazorWebPage.Pages.BrowsePicture
         public Picture PicData { get; set; }
 
         [BindProperty]
-        public User UserRec { get; set; }
+        public Customer UserRec { get; set; }
 
 
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            UserRec = await _context.User.FirstOrDefaultAsync(m => m.ID == id);
+            UserRec = await _context.Customer.FirstOrDefaultAsync(m => m.ID == id);
 
             //Console.WriteLine(EmailAddress);
 
@@ -57,7 +57,7 @@ namespace MyFirstRazorWebPage.Pages.BrowsePicture
             connection.Open();
 
             var selectCmd = connection.CreateCommand();
-            selectCmd.CommandText = @"SELECT FirstName FROM User WHERE EmailAdd=$email";
+            selectCmd.CommandText = @"SELECT FirstName FROM Customer WHERE EmailAdd=$email";
             selectCmd.Parameters.AddWithValue("$email", UserRec.EmailAdd);
 
             var reader = selectCmd.ExecuteReader();
@@ -80,7 +80,7 @@ namespace MyFirstRazorWebPage.Pages.BrowsePicture
 
         public async Task<IActionResult> OnPostAsync(int? id)
         {
-            UserRec = await _context.User.FirstOrDefaultAsync(m => m.ID == id);
+            UserRec = await _context.Customer.FirstOrDefaultAsync(m => m.ID == id);
 
             Boolean check = CheckPic(UserRec.FirstName, UserRec.EmailAdd);
 
@@ -119,7 +119,7 @@ namespace MyFirstRazorWebPage.Pages.BrowsePicture
                 selectCmd2.Prepare();
                 selectCmd2.ExecuteNonQuery();
 
-                return RedirectToPage("/StaffPage/UserDetails");
+                return RedirectToPage("/StaffPage/CustomerDetails");
 
             }
             else

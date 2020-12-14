@@ -20,7 +20,7 @@ namespace MyFirstRazorWebPage.Pages.Customers
         }
 
         [BindProperty]
-        public User User { get; set; }
+        public Customer Customer { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -29,9 +29,9 @@ namespace MyFirstRazorWebPage.Pages.Customers
                 return NotFound();
             }
 
-            User = await _context.User.FirstOrDefaultAsync(m => m.ID == id);
+            Customer = await _context.Customer.FirstOrDefaultAsync(m => m.ID == id);
 
-            if (User == null)
+            if (Customer == null)
             {
                 return NotFound();
             }
@@ -47,7 +47,7 @@ namespace MyFirstRazorWebPage.Pages.Customers
                 return Page();
             }
 
-            _context.Attach(User).State = EntityState.Modified;
+            _context.Attach(Customer).State = EntityState.Modified;
 
             try
             {
@@ -55,7 +55,7 @@ namespace MyFirstRazorWebPage.Pages.Customers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!UserExists(User.ID))
+                if (!UserExists(Customer.ID))
                 {
                     return NotFound();
                 }
@@ -70,7 +70,7 @@ namespace MyFirstRazorWebPage.Pages.Customers
 
         private bool UserExists(int id)
         {
-            return _context.User.Any(e => e.ID == id);
+            return _context.Customer.Any(e => e.ID == id);
         }
     }
 }

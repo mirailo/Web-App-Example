@@ -14,31 +14,31 @@
 <body>
 
     <div>
-        <h4>User</h4>
+        <h4>Customer</h4>
         <hr />
         <dl class="row">
             <dt class="col-sm-2">
-               @Html.DisplayNameFor(model => model.User.FirstName)
+               @Html.DisplayNameFor(model => model.Customer.FirstName)
             </dt>
             <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.User.FirstName)
+                @Html.DisplayFor(model => model.Customer.FirstName)
             </dd>
             <dt class="col-sm-2">
-                <!--@Html.DisplayNameFor(model => model.User.EmailAdd)-->Email Address
+                <!--@Html.DisplayNameFor(model => model.Customer.EmailAdd)-->Email Address
             </dt>
             <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.User.EmailAdd)
+                @Html.DisplayFor(model => model.Customer.EmailAdd)
             </dd>
             <dt class="col-sm-2">
-                <!--@Html.DisplayNameFor(model => model.User.Password)-->Password
+                <!--@Html.DisplayNameFor(model => model.Customer.Password)-->Password
             </dt>
             <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.User.Password)
+                @Html.DisplayFor(model => model.Customer.Password)
             </dd>
         </dl>
     </div>
     <div>
-        <a asp-page="./Edit" asp-route-id="@Model.User.ID">Edit</a> |
+        <a asp-page="./Edit" asp-route-id="@Model.Customer.ID">Edit</a> |
         <a asp-page="./Index">Back to List</a>
     </div>
 </body>

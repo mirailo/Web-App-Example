@@ -25,7 +25,7 @@ namespace MyFirstRazorWebPage.Pages.StaffPage
         }
 
         [BindProperty]
-        public User User { get; set; }
+        public Customer Customer { get; set; }
 
         [BindProperty]
         public Picture Picture { get; set; }
@@ -40,10 +40,10 @@ namespace MyFirstRazorWebPage.Pages.StaffPage
                 return NotFound();
             }
 
-            User = await _context.User.FirstOrDefaultAsync(m => m.ID == id); //getting data from table User
-            var UserEmail = User.EmailAdd;
+            Customer = await _context.Customer.FirstOrDefaultAsync(m => m.ID == id); //getting data from table Customer
+            var UserEmail = Customer.EmailAdd;
 
-            if (User == null)
+            if (Customer == null)
             {
                 return NotFound();
             }
@@ -61,7 +61,7 @@ namespace MyFirstRazorWebPage.Pages.StaffPage
 
             var selectCmd = connection.CreateCommand();
             selectCmd.CommandText = @"SELECT PicName, Id FROM Picture WHERE Email=$email";
-            selectCmd.Parameters.AddWithValue("$email", User.EmailAdd);
+            selectCmd.Parameters.AddWithValue("$email", Customer.EmailAdd);
 
             var reader = selectCmd.ExecuteReader();
 
@@ -87,7 +87,7 @@ namespace MyFirstRazorWebPage.Pages.StaffPage
 
             Console.WriteLine("OnPost is performed");
 
-            User = await _context.User.FindAsync(id);
+            Customer = await _context.Customer.FindAsync(id);
 
             var connectionStringBuilder = new SqliteConnectionStringBuilder();
 
@@ -101,7 +101,7 @@ namespace MyFirstRazorWebPage.Pages.StaffPage
 
             var selectCmd = connection.CreateCommand();
             selectCmd.CommandText = @"SELECT PicName, Id FROM Picture WHERE Email=$email";
-            selectCmd.Parameters.AddWithValue("$email", User.EmailAdd);
+            selectCmd.Parameters.AddWithValue("$email", Customer.EmailAdd);
 
             var reader = selectCmd.ExecuteReader();
 
@@ -115,10 +115,10 @@ namespace MyFirstRazorWebPage.Pages.StaffPage
             Console.WriteLine("Pic name onpost : " + PicName);
             if (!string.IsNullOrEmpty(PicName))
             {
-                deletePicture(PicName, User.EmailAdd);
+                deletePicture(PicName, Customer.EmailAdd);
             }
 
-            return RedirectToPage("/StaffPage/UserDetails");
+            return RedirectToPage("/StaffPage/CustomerDetails");
         }
 
 

@@ -9,7 +9,7 @@ namespace MyFirstRazorWebPage.Migrations
 {
     [DbContext(typeof(HairSalonApptContext))]
     [Migration("20200713151941_User")]
-    partial class User
+    partial class Customer
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -40,7 +40,7 @@ namespace MyFirstRazorWebPage.Migrations
                     b.ToTable("Movie");
                 });
 
-            modelBuilder.Entity("MyFirstRazorWebPage.Models.User", b =>
+            modelBuilder.Entity("MyFirstRazorWebPage.Models.Customer", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -57,7 +57,7 @@ namespace MyFirstRazorWebPage.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("User");
+                    b.ToTable("Customer");
                 });
 #pragma warning restore 612, 618
         }

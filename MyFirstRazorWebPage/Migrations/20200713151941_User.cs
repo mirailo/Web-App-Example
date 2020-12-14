@@ -3,12 +3,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MyFirstRazorWebPage.Migrations
 {
-    public partial class User : Migration
+    public partial class Customer : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "User",
+                name: "Customer",
                 columns: table => new
                 {
                     ID = table.Column<int>(nullable: false)
@@ -26,7 +26,7 @@ namespace MyFirstRazorWebPage.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "User");
+                name: "Customer");
         }
     }
 }

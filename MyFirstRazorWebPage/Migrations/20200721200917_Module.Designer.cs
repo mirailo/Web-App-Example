@@ -66,7 +66,7 @@ namespace MyFirstRazorWebPage.Migrations
                     b.ToTable("Module");
                 });
 
-            modelBuilder.Entity("MyFirstRazorWebPage.Models.User", b =>
+            modelBuilder.Entity("MyFirstRazorWebPage.Models.Customer", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -85,7 +85,7 @@ namespace MyFirstRazorWebPage.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("User");
+                    b.ToTable("Customer");
                 });
 
             modelBuilder.Entity("MyFirstRazorWebPage.Models.UserAccessData", b =>
