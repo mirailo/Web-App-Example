@@ -25,6 +25,7 @@
       "MyFirstRazorWebPage/1.0.0": {
         "dependencies": {
           "DocumentFormat.OpenXml": "2.11.3",
+          "HtmlRendererCore.PdfSharpCore": "1.0.1",
           "Microsoft.AspNet.WebHelpers": "3.2.7",
           "Microsoft.EntityFrameworkCore.SqlServer": "3.1.8",
           "Microsoft.EntityFrameworkCore.Sqlite": "3.1.8",
@@ -33,7 +34,11 @@
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "3.1.4",
           "PDFsharp-MigraDoc-gdi": "1.50.5147",
           "PdfSharpCore": "1.2.10",
+          "PdfSharpCore.Charting": "0.1.0",
           "Xamarin.Forms": "4.8.0.1687",
+          "com.pdfsharpcore": "1.0.0",
+          "com.pdfsharpcore.migradoccore.documentobjectmodel": "1.1.0",
+          "com.pdfsharpcore.migradoccore.rendering": "1.1.0",
           "SQLite": "3.13.0",
           "Microsoft.AspNetCore.Antiforgery": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions": "3.1.0.0",
@@ -310,6 +315,60 @@
           "MyFirstRazorWebPage.dll": {}
         }
       },
+      "com.pdfsharpcore/1.0.0": {
+        "dependencies": {
+          "SixLabors.ImageSharp": "1.0.0"
+        }
+      },
+      "com.pdfsharpcore.charting/1.1.0": {
+        "dependencies": {
+          "System.Collections.NonGeneric": "4.3.0",
+          "com.pdfsharpcore": "1.0.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/PdfSharpCore.Charting.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/PdfSharpCore.Charting.dll": {}
+        }
+      },
+      "com.pdfsharpcore.migradoccore.documentobjectmodel/1.1.0": {
+        "dependencies": {
+          "System.Collections.NonGeneric": "4.3.0",
+          "System.Reflection.TypeExtensions": "4.3.0",
+          "com.pdfsharpcore": "1.0.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/MigraDocCore.DocumentObjectModel.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/MigraDocCore.DocumentObjectModel.dll": {}
+        }
+      },
+      "com.pdfsharpcore.migradoccore.rendering/1.1.0": {
+        "dependencies": {
+          "System.Diagnostics.Debug": "4.3.0",
+          "System.Diagnostics.Tracing": "4.3.0",
+          "com.pdfsharpcore": "1.0.0",
+          "com.pdfsharpcore.charting": "1.1.0",
+          "com.pdfsharpcore.migradoccore.documentobjectmodel": "1.1.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/MigraDocCore.Rendering.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/MigraDocCore.Rendering.dll": {}
+        }
+      },
       "DocumentFormat.OpenXml/2.11.3": {
         "dependencies": {
           "System.IO.Packaging": "4.7.0"
@@ -322,6 +381,32 @@
         },
         "compile": {
           "lib/netstandard2.0/DocumentFormat.OpenXml.dll": {}
+        }
+      },
+      "HtmlRendererCore/1.0.1": {
+        "runtime": {
+          "lib/netcoreapp2.0/HtmlRendererCore.dll": {
+            "assemblyVersion": "1.0.1.0",
+            "fileVersion": "1.0.1.0"
+          }
+        },
+        "compile": {
+          "lib/netcoreapp2.0/HtmlRendererCore.dll": {}
+        }
+      },
+      "HtmlRendererCore.PdfSharpCore/1.0.1": {
+        "dependencies": {
+          "HtmlRendererCore": "1.0.1",
+          "PdfSharpCore": "1.2.10"
+        },
+        "runtime": {
+          "lib/netcoreapp2.0/HtmlRendererCore.PdfSharpCore.dll": {
+            "assemblyVersion": "1.0.1.0",
+            "fileVersion": "1.0.1.0"
+          }
+        },
+        "compile": {
+          "lib/netcoreapp2.0/HtmlRendererCore.PdfSharpCore.dll": {}
         }
       },
       "Microsoft.AspNet.Razor/3.2.7": {
@@ -1424,6 +1509,12 @@
         },
         "compile": {
           "lib/netstandard2.0/PdfSharpCore.dll": {}
+        }
+      },
+      "PdfSharpCore.Charting/0.1.0": {
+        "dependencies": {
+          "PdfSharpCore": "1.2.10",
+          "System.Collections.NonGeneric": "4.3.0"
         }
       },
       "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {},
@@ -4275,12 +4366,54 @@
       "serviceable": false,
       "sha512": ""
     },
+    "com.pdfsharpcore/1.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-iJnM2jdRylWEUgCGxOZC4mXtiEo0w5uftb31uKuCe7Sav0wNuvboYPAZDSnv+SI+kXFn/FVs2JMv7Tx8d5LGmQ==",
+      "path": "com.pdfsharpcore/1.0.0",
+      "hashPath": "com.pdfsharpcore.1.0.0.nupkg.sha512"
+    },
+    "com.pdfsharpcore.charting/1.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Z2g1CW11Bpd6fVRWTGcdoyeF6CM4c7v0xcS4VRiEl+EYOvvJQ/Z8JjXBzTBgEHy+vBu53ryGqfSjBSYf8+CPaQ==",
+      "path": "com.pdfsharpcore.charting/1.1.0",
+      "hashPath": "com.pdfsharpcore.charting.1.1.0.nupkg.sha512"
+    },
+    "com.pdfsharpcore.migradoccore.documentobjectmodel/1.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ak50+mlzfoMhfy5rUrymM79teamWR2iyd5+fQ5EtCvAxMD2jqbvxlcnwoO60jPEvAtLB4yiG/yTCkXaNmEJmPw==",
+      "path": "com.pdfsharpcore.migradoccore.documentobjectmodel/1.1.0",
+      "hashPath": "com.pdfsharpcore.migradoccore.documentobjectmodel.1.1.0.nupkg.sha512"
+    },
+    "com.pdfsharpcore.migradoccore.rendering/1.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-zYv+ipDiUTSMxpj5ZNByP/BpsfCn48oJgTg1sqvX7rjRJEzbEJPmktzcbNjCClkjVHwR9gd3iBtQhJEOuTB6sQ==",
+      "path": "com.pdfsharpcore.migradoccore.rendering/1.1.0",
+      "hashPath": "com.pdfsharpcore.migradoccore.rendering.1.1.0.nupkg.sha512"
+    },
     "DocumentFormat.OpenXml/2.11.3": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-dCugN386ka+LwcOHnxi4gUHbiDeIw0/GEYw1sXFhYiErGFbJpRpscRcn5b12dywUReFCOgGNJ/l16zG5udkC/A==",
       "path": "documentformat.openxml/2.11.3",
       "hashPath": "documentformat.openxml.2.11.3.nupkg.sha512"
+    },
+    "HtmlRendererCore/1.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-M/ZaNTJqnvc5+52SYXkz/IqXXrC40ZsdWC1xDmgp2x65qvFIAhdiuPRdUO3iIIU9TVl5JRENe4LVN9CgMiDiZA==",
+      "path": "htmlrenderercore/1.0.1",
+      "hashPath": "htmlrenderercore.1.0.1.nupkg.sha512"
+    },
+    "HtmlRendererCore.PdfSharpCore/1.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-7qUGA059kT1gP7RXYnMdCoij6TyuuJtCy6zUHAGQmYmA6ZSmku0dNs1toAy4Qs7eLgoGPMAI5kloFG6uS/xulA==",
+      "path": "htmlrenderercore.pdfsharpcore/1.0.1",
+      "hashPath": "htmlrenderercore.pdfsharpcore.1.0.1.nupkg.sha512"
     },
     "Microsoft.AspNet.Razor/3.2.7": {
       "type": "package",
@@ -4750,6 +4883,13 @@
       "sha512": "sha512-oMInLILYYO6GJhwY58cNcsZasN3CO7G51Tcg/pEJCGNp+H2puH4st5ogQ/uEgbpxtPMaWtS9v2cA4cQWowaRkQ==",
       "path": "pdfsharpcore/1.2.10",
       "hashPath": "pdfsharpcore.1.2.10.nupkg.sha512"
+    },
+    "PdfSharpCore.Charting/0.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-8Oi7JvG37INCPHXCWVrAoCXLZ31IX69QoUJpKjjiEUlT/vWnSDb8wwYPWGg6+b+iVKPGod2ZIOFmJ/pINLhS+A==",
+      "path": "pdfsharpcore.charting/0.1.0",
+      "hashPath": "pdfsharpcore.charting.0.1.0.nupkg.sha512"
     },
     "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
       "type": "package",

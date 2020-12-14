@@ -16,9 +16,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="com.pdfsharpcore" Version="1.0.0" />
+    <PackageReference Include="com.pdfsharpcore.migradoccore.documentobjectmodel" Version="1.1.0" />
+    <PackageReference Include="com.pdfsharpcore.migradoccore.rendering" Version="1.1.0" />
     <PackageReference Include="DocumentFormat.OpenXml" Version="2.11.3" />
+    <PackageReference Include="HtmlRendererCore.PdfSharpCore" Version="1.0.1" />
     <PackageReference Include="PDFsharp-MigraDoc-gdi" Version="1.50.5147" />
     <PackageReference Include="PdfSharpCore" Version="1.2.10" />
+    <PackageReference Include="PdfSharpCore.Charting" Version="0.1.0" />
     <PackageReference Include="sqlite" Version="3.13.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.8" />
@@ -42,6 +47,7 @@
     <Content Remove="Pages\Login\Login.cshtml" />
     <Content Remove="Pages\Promotions\Delete.cshtml" />
     <Content Remove="Pages\UsersAccessData\Edit.cshtml" />
+    <Content Remove="wwwroot\Images\DefaultPic.png" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="HairSalonApptContext-4626ba78-c68f-4200-bc79-dd49c8d85ee3.db-shm" />
@@ -52,6 +58,9 @@
     <None Remove="HairSalonApptContext-4626ba78-c68f-4200-bc79-dd49c8d85ee3.db-shm" />
     <None Remove="HairSalonApptContext-4626ba78-c68f-4200-bc79-dd49c8d85ee3.db-wal" />
     <None Remove="HairSalonApptContext-4626ba78-c68f-4200-bc79-dd49c8d85ee3.db-shm" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="wwwroot\Images\DefaultPic.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Pages\CustomerServices\CancelService - Copy.cshtml.cs">

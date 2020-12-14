@@ -221,7 +221,6 @@ C:\Users\nusay\source\repos\Web-App-Example\MyFirstRazorWebPage\obj\Debug\netcor
 C:\Users\nusay\source\repos\Web-App-Example\MyFirstRazorWebPage\obj\Debug\netcoreapp3.1\Razor\Pages\CustomerLoggedIn\SuccessLogIn.cshtml.g.cs
 C:\Users\nusay\source\repos\Web-App-Example\MyFirstRazorWebPage\obj\Debug\netcoreapp3.1\Razor\Pages\Customers\CustomerLogin.cshtml.g.cs
 C:\Users\nusay\source\repos\Web-App-Example\MyFirstRazorWebPage\obj\Debug\netcoreapp3.1\Razor\Pages\StaffPage\CustomerCreation.cshtml.g.cs
-C:\Users\nusay\source\repos\Web-App-Example\MyFirstRazorWebPage\obj\Debug\netcoreapp3.1\Razor\Pages\StaffPage\CustomerDetails.cshtml.g.cs
 C:\Users\nusay\source\repos\Web-App-Example\MyFirstRazorWebPage\obj\Debug\netcoreapp3.1\Razor\Pages\StaffPage\CustomerProfile.cshtml.g.cs
 C:\Users\nusay\source\repos\Web-App-Example\MyFirstRazorWebPage\obj\Debug\netcoreapp3.1\Razor\Pages\StaffPage\DeleteCustomer.cshtml.g.cs
 C:\Users\nusay\source\repos\Web-App-Example\MyFirstRazorWebPage\obj\Debug\netcoreapp3.1\Razor\Pages\StaffPage\EditCustomer.cshtml.g.cs
@@ -241,3 +240,8 @@ C:\Users\nusay\source\repos\Web-App-Example\MyFirstRazorWebPage\bin\Debug\netcor
 C:\Users\nusay\source\repos\Web-App-Example\MyFirstRazorWebPage\bin\Debug\netcoreapp3.1\de\PdfSharp-gdi.resources.dll
 C:\Users\nusay\source\repos\Web-App-Example\MyFirstRazorWebPage\bin\Debug\netcoreapp3.1\de\PdfSharp.Charting-gdi.resources.dll
 C:\Users\nusay\source\repos\Web-App-Example\MyFirstRazorWebPage\obj\Debug\netcoreapp3.1\Razor\Pages\StaffPage\CustomerDetails1.cshtml.g.cs
+C:\Users\nusay\source\repos\Web-App-Example\MyFirstRazorWebPage\bin\Debug\netcoreapp3.1\PdfSharpCore.Charting.dll
+C:\Users\nusay\source\repos\Web-App-Example\MyFirstRazorWebPage\bin\Debug\netcoreapp3.1\MigraDocCore.DocumentObjectModel.dll
+C:\Users\nusay\source\repos\Web-App-Example\MyFirstRazorWebPage\bin\Debug\netcoreapp3.1\MigraDocCore.Rendering.dll
+C:\Users\nusay\source\repos\Web-App-Example\MyFirstRazorWebPage\bin\Debug\netcoreapp3.1\HtmlRendererCore.dll
+C:\Users\nusay\source\repos\Web-App-Example\MyFirstRazorWebPage\bin\Debug\netcoreapp3.1\HtmlRendererCore.PdfSharpCore.dll

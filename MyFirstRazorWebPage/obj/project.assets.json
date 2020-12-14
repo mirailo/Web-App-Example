@@ -2,6 +2,61 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v3.1": {
+      "com.pdfsharpcore/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "SixLabors.ImageSharp": "1.0.0-beta0006"
+        },
+        "compile": {
+          "lib/netstandard2.0/PdfSharpCore.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/PdfSharpCore.dll": {}
+        }
+      },
+      "com.pdfsharpcore.charting/1.1.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections.NonGeneric": "4.3.0",
+          "com.pdfsharpcore": "1.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/PdfSharpCore.Charting.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/PdfSharpCore.Charting.dll": {}
+        }
+      },
+      "com.pdfsharpcore.migradoccore.documentobjectmodel/1.1.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections.NonGeneric": "4.3.0",
+          "System.Reflection.TypeExtensions": "4.3.0",
+          "com.pdfsharpcore": "1.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/MigraDocCore.DocumentObjectModel.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/MigraDocCore.DocumentObjectModel.dll": {}
+        }
+      },
+      "com.pdfsharpcore.migradoccore.rendering/1.1.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Diagnostics.Debug": "4.3.0",
+          "System.Diagnostics.Tracing": "4.3.0",
+          "com.pdfsharpcore": "1.0.0",
+          "com.pdfsharpcore.charting": "1.1.0",
+          "com.pdfsharpcore.migradoccore.documentobjectmodel": "1.1.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/MigraDocCore.Rendering.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/MigraDocCore.Rendering.dll": {}
+        }
+      },
       "DocumentFormat.OpenXml/2.11.3": {
         "type": "package",
         "dependencies": {
@@ -12,6 +67,28 @@
         },
         "runtime": {
           "lib/netstandard2.0/DocumentFormat.OpenXml.dll": {}
+        }
+      },
+      "HtmlRendererCore/1.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp2.0/HtmlRendererCore.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp2.0/HtmlRendererCore.dll": {}
+        }
+      },
+      "HtmlRendererCore.PdfSharpCore/1.0.1": {
+        "type": "package",
+        "dependencies": {
+          "HtmlRendererCore": "1.0.1",
+          "PdfSharpCore": "1.0.0"
+        },
+        "compile": {
+          "lib/netcoreapp2.0/HtmlRendererCore.PdfSharpCore.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp2.0/HtmlRendererCore.PdfSharpCore.dll": {}
         }
       },
       "Microsoft.AspNet.Razor/3.2.7": {
@@ -1086,6 +1163,19 @@
           }
         }
       },
+      "PdfSharpCore.Charting/0.1.0": {
+        "type": "package",
+        "dependencies": {
+          "PdfSharpCore": "0.1.0",
+          "System.Collections.NonGeneric": "4.3.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/PdfSharpCore.Charting.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/PdfSharpCore.Charting.dll": {}
+        }
+      },
       "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
         "type": "package",
         "runtimeTargets": {
@@ -1520,7 +1610,7 @@
           "System.Threading": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.3/_._": {}
+          "ref/netstandard1.3/System.Collections.NonGeneric.dll": {}
         },
         "runtime": {
           "lib/netstandard1.3/System.Collections.NonGeneric.dll": {}
@@ -2264,7 +2354,7 @@
           "System.Runtime": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.5/_._": {}
+          "ref/netstandard1.5/System.Reflection.TypeExtensions.dll": {}
         },
         "runtime": {
           "lib/netstandard1.5/System.Reflection.TypeExtensions.dll": {}
@@ -2978,6 +3068,58 @@
     }
   },
   "libraries": {
+    "com.pdfsharpcore/1.0.0": {
+      "sha512": "iJnM2jdRylWEUgCGxOZC4mXtiEo0w5uftb31uKuCe7Sav0wNuvboYPAZDSnv+SI+kXFn/FVs2JMv7Tx8d5LGmQ==",
+      "type": "package",
+      "path": "com.pdfsharpcore/1.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "com.pdfsharpcore.1.0.0.nupkg.sha512",
+        "com.pdfsharpcore.nuspec",
+        "lib/netstandard1.3/PdfSharpCore.dll",
+        "lib/netstandard2.0/PdfSharpCore.dll"
+      ]
+    },
+    "com.pdfsharpcore.charting/1.1.0": {
+      "sha512": "Z2g1CW11Bpd6fVRWTGcdoyeF6CM4c7v0xcS4VRiEl+EYOvvJQ/Z8JjXBzTBgEHy+vBu53ryGqfSjBSYf8+CPaQ==",
+      "type": "package",
+      "path": "com.pdfsharpcore.charting/1.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "com.pdfsharpcore.charting.1.1.0.nupkg.sha512",
+        "com.pdfsharpcore.charting.nuspec",
+        "lib/netstandard1.3/PdfSharpCore.Charting.dll",
+        "lib/netstandard2.0/PdfSharpCore.Charting.dll"
+      ]
+    },
+    "com.pdfsharpcore.migradoccore.documentobjectmodel/1.1.0": {
+      "sha512": "ak50+mlzfoMhfy5rUrymM79teamWR2iyd5+fQ5EtCvAxMD2jqbvxlcnwoO60jPEvAtLB4yiG/yTCkXaNmEJmPw==",
+      "type": "package",
+      "path": "com.pdfsharpcore.migradoccore.documentobjectmodel/1.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "com.pdfsharpcore.migradoccore.documentobjectmodel.1.1.0.nupkg.sha512",
+        "com.pdfsharpcore.migradoccore.documentobjectmodel.nuspec",
+        "lib/netstandard1.3/MigraDocCore.DocumentObjectModel.dll",
+        "lib/netstandard2.0/MigraDocCore.DocumentObjectModel.dll"
+      ]
+    },
+    "com.pdfsharpcore.migradoccore.rendering/1.1.0": {
+      "sha512": "zYv+ipDiUTSMxpj5ZNByP/BpsfCn48oJgTg1sqvX7rjRJEzbEJPmktzcbNjCClkjVHwR9gd3iBtQhJEOuTB6sQ==",
+      "type": "package",
+      "path": "com.pdfsharpcore.migradoccore.rendering/1.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "com.pdfsharpcore.migradoccore.rendering.1.1.0.nupkg.sha512",
+        "com.pdfsharpcore.migradoccore.rendering.nuspec",
+        "lib/netstandard1.3/MigraDocCore.Rendering.dll",
+        "lib/netstandard2.0/MigraDocCore.Rendering.dll"
+      ]
+    },
     "DocumentFormat.OpenXml/2.11.3": {
       "sha512": "dCugN386ka+LwcOHnxi4gUHbiDeIw0/GEYw1sXFhYiErGFbJpRpscRcn5b12dywUReFCOgGNJ/l16zG5udkC/A==",
       "type": "package",
@@ -2998,6 +3140,30 @@
         "lib/netstandard1.3/DocumentFormat.OpenXml.xml",
         "lib/netstandard2.0/DocumentFormat.OpenXml.dll",
         "lib/netstandard2.0/DocumentFormat.OpenXml.xml"
+      ]
+    },
+    "HtmlRendererCore/1.0.1": {
+      "sha512": "M/ZaNTJqnvc5+52SYXkz/IqXXrC40ZsdWC1xDmgp2x65qvFIAhdiuPRdUO3iIIU9TVl5JRENe4LVN9CgMiDiZA==",
+      "type": "package",
+      "path": "htmlrenderercore/1.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "htmlrenderercore.1.0.1.nupkg.sha512",
+        "htmlrenderercore.nuspec",
+        "lib/netcoreapp2.0/HtmlRendererCore.dll"
+      ]
+    },
+    "HtmlRendererCore.PdfSharpCore/1.0.1": {
+      "sha512": "7qUGA059kT1gP7RXYnMdCoij6TyuuJtCy6zUHAGQmYmA6ZSmku0dNs1toAy4Qs7eLgoGPMAI5kloFG6uS/xulA==",
+      "type": "package",
+      "path": "htmlrenderercore.pdfsharpcore/1.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "htmlrenderercore.pdfsharpcore.1.0.1.nupkg.sha512",
+        "htmlrenderercore.pdfsharpcore.nuspec",
+        "lib/netcoreapp2.0/HtmlRendererCore.PdfSharpCore.dll"
       ]
     },
     "Microsoft.AspNet.Razor/3.2.7": {
@@ -4653,6 +4819,19 @@
         "lib/netstandard2.0/de/PdfSharpCore.resources.dll",
         "pdfsharpcore.1.2.10.nupkg.sha512",
         "pdfsharpcore.nuspec"
+      ]
+    },
+    "PdfSharpCore.Charting/0.1.0": {
+      "sha512": "8Oi7JvG37INCPHXCWVrAoCXLZ31IX69QoUJpKjjiEUlT/vWnSDb8wwYPWGg6+b+iVKPGod2ZIOFmJ/pINLhS+A==",
+      "type": "package",
+      "path": "pdfsharpcore.charting/0.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard1.3/PdfSharpCore.Charting.dll",
+        "lib/netstandard2.0/PdfSharpCore.Charting.dll",
+        "pdfsharpcore.charting.0.1.0.nupkg.sha512",
+        "pdfsharpcore.charting.nuspec"
       ]
     },
     "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
@@ -9661,6 +9840,7 @@
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
       "DocumentFormat.OpenXml >= 2.11.3",
+      "HtmlRendererCore.PdfSharpCore >= 1.0.1",
       "Microsoft.AspNet.WebHelpers >= 3.2.7",
       "Microsoft.EntityFrameworkCore.SqlServer >= 3.1.8",
       "Microsoft.EntityFrameworkCore.Sqlite >= 3.1.8",
@@ -9669,7 +9849,11 @@
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 3.1.4",
       "PDFsharp-MigraDoc-gdi >= 1.50.5147",
       "PdfSharpCore >= 1.2.10",
+      "PdfSharpCore.Charting >= 0.1.0",
       "Xamarin.Forms >= 4.8.0.1687",
+      "com.pdfsharpcore >= 1.0.0",
+      "com.pdfsharpcore.migradoccore.documentobjectmodel >= 1.1.0",
+      "com.pdfsharpcore.migradoccore.rendering >= 1.1.0",
       "sqlite >= 3.13.0"
     ]
   },
@@ -9716,6 +9900,10 @@
             "target": "Package",
             "version": "[2.11.3, )"
           },
+          "HtmlRendererCore.PdfSharpCore": {
+            "target": "Package",
+            "version": "[1.0.1, )"
+          },
           "Microsoft.AspNet.WebHelpers": {
             "target": "Package",
             "version": "[3.2.7, )"
@@ -9750,9 +9938,25 @@
             "target": "Package",
             "version": "[1.2.10, )"
           },
+          "PdfSharpCore.Charting": {
+            "target": "Package",
+            "version": "[0.1.0, )"
+          },
           "Xamarin.Forms": {
             "target": "Package",
             "version": "[4.8.0.1687, )"
+          },
+          "com.pdfsharpcore": {
+            "target": "Package",
+            "version": "[1.0.0, )"
+          },
+          "com.pdfsharpcore.migradoccore.documentobjectmodel": {
+            "target": "Package",
+            "version": "[1.1.0, )"
+          },
+          "com.pdfsharpcore.migradoccore.rendering": {
+            "target": "Package",
+            "version": "[1.1.0, )"
           },
           "sqlite": {
             "target": "Package",

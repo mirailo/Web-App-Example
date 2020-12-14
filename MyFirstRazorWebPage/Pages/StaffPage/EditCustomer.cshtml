@@ -23,7 +23,7 @@
         <p>
             File Name : @{
 
-                if (Model.pathPicture != "DefaultPic.jpeg")
+                if (Model.pathPicture != "DefaultPic.png")
                 {
                     @Model.pathPicture
                 }
@@ -33,7 +33,7 @@
                     Console.WriteLine(text);
                     @: @text
 
-                    Model.pathPicture = "DefaultPic.jpeg";
+                    Model.pathPicture = "DefaultPic.png";
                     Console.WriteLine("After defaultted : " + Model.pathPicture);
                 }
 
@@ -77,7 +77,7 @@
     <div>
         @{
 
-            if (Model.pathPicture == "DefaultPic.jpeg")
+            if (Model.pathPicture == "DefaultPic.png")
             {
 
                 <a asp-page="/BrowsePicture/Index" asp-route-id="@Model.Customer.ID">Upload Picture of Hair Product</a>

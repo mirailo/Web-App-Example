@@ -52,7 +52,7 @@ namespace MyFirstRazorWebPage.Pages.StaffPage
                 await _context.SaveChangesAsync();
             }
 
-            return RedirectToPage("/StaffPage/CustomerDetails");
+            return RedirectToPage("/StaffPage/CustomerDetails1");
         }
     }
 }

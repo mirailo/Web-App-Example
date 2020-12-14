@@ -119,7 +119,7 @@ namespace MyFirstRazorWebPage.Pages.BrowsePicture
                 selectCmd2.Prepare();
                 selectCmd2.ExecuteNonQuery();
 
-                return RedirectToPage("/StaffPage/CustomerDetails");
+                return RedirectToPage("/StaffPage/CustomerDetails1");
 
             }
             else

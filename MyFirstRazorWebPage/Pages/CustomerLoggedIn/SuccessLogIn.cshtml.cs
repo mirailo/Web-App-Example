@@ -79,7 +79,7 @@ namespace MyFirstRazorWebPage.Pages.CustomerLoggedIn
 
                 if (string.IsNullOrEmpty(fileName))
                 {
-                    pathPicture = "DefaultPic.jpeg";
+                    pathPicture = "DefaultPic.png";
                     Console.WriteLine("Default pic : " + pathPicture);
                     return Page();
                 }

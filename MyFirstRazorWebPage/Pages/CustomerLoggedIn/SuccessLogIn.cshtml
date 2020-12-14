@@ -25,14 +25,14 @@
         <p>
             @{
 
-                if (Model.pathPicture == "DefaultPic.jpeg")
+                if (Model.pathPicture == "DefaultPic.png")
                 {
                     var text = "Customer, you do not have a set recommended hair product yet. Please contact staff if you have already had your first hair consultation, or require a consultation.";
                     Console.WriteLine(text);
                     @: @text
 
 
-                    Model.pathPicture = "DefaultPic.jpeg";
+                    Model.pathPicture = "DefaultPic.png";
                     Console.WriteLine("After defaultted : " + Model.pathPicture);
                 }
 

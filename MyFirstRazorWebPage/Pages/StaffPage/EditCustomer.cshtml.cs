@@ -79,7 +79,7 @@ namespace MyFirstRazorWebPage.Pages.StaffPage
 
             if (string.IsNullOrEmpty(fileName))
             {
-                pathPicture = "DefaultPic.jpeg";
+                pathPicture = "DefaultPic.png";
                 Console.WriteLine("Default pic : " + pathPicture);
                 return Page();
             }
@@ -120,7 +120,7 @@ namespace MyFirstRazorWebPage.Pages.StaffPage
                 }
             }
 
-            return RedirectToPage("./CustomerDetails");
+            return RedirectToPage("./CustomerDetails1");
         }
 
         private bool UserExists(int id)

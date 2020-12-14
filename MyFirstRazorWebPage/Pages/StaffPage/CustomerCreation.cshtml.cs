@@ -36,7 +36,7 @@ namespace MyFirstRazorWebPage.Pages.StaffPage
             _context.Customer.Add(Customer);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("/StaffPage/CustomerDetails");
+            return RedirectToPage("/StaffPage/CustomerDetails1");
         }
     }
     

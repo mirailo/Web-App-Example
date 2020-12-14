@@ -8,13 +8,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using PdfSharpCore;
-using MigraDoc.DocumentObjectModel;
-using MigraDoc.DocumentObjectModel.Tables;
-using MigraDoc.Rendering;
+using MigraDocCore.DocumentObjectModel;
+using MigraDocCore.Rendering;
 using MyFirstRazorWebPage.Models;
 using MyFirstRazorWebPage.Pages.DatabaseConnection;
-
-
+using MigraDocCore.DocumentObjectModel.Tables;
 
 namespace MyFirstRazorWebPage.Pages.StaffPage
 {
@@ -96,12 +94,14 @@ namespace MyFirstRazorWebPage.Pages.StaffPage
                 Column col = tab.AddColumn(Unit.FromCentimeter(1.5));
                 col.Format.Alignment = ParagraphAlignment.Justify;
                 tab.AddColumn(Unit.FromCentimeter(3));
-                tab.AddColumn(Unit.FromCentimeter(3));
+                tab.AddColumn(Unit.FromCentimeter(4));
                 tab.AddColumn(Unit.FromCentimeter(2));
 
                 //Row
                 Row row = tab.AddRow();
                 row.Shading.Color = Colors.Coral;//select your preference colour!
+
+
 
                 //Cell for header
                 Cell cell = new Cell();
@@ -114,10 +114,27 @@ namespace MyFirstRazorWebPage.Pages.StaffPage
                 cell = row.Cells[3];
                 cell.AddParagraph("Password");
 
-                tab.SetEdge(0, 0, 3,(Customer.Count + 1), Edge.Box, BorderStyle.Single, 1.5, Colors.Black);
+                //Add data to table
+
+                for (int i = 0; i < Customer.Count; i++)
+
+                {
+                    row = tab.AddRow();
+                    cell = row.Cells[0];
+                    cell.AddParagraph(Convert.ToString(i + 1));
+                    cell = row.Cells[1];
+                    cell.AddParagraph(Customer[i].FirstName);
+                    cell = row.Cells[2];
+                    cell.AddParagraph(Customer[i].EmailAdd);
+                    cell = row.Cells[3];
+                    cell.AddParagraph(Customer[i].Password);
+                }
+
+                tab.SetEdge(0, 0, 4,(Customer.Count + 1), Edge.Box, BorderStyle.Single, 1.5, Colors.Black);
                 sec.Add(tab);
 
                 //Rendering
+
                 PdfDocumentRenderer pdfRen = new PdfDocumentRenderer();
                 pdfRen.Document = doc;
                 pdfRen.RenderDocument();
@@ -125,13 +142,8 @@ namespace MyFirstRazorWebPage.Pages.StaffPage
                 //Create a memory stream
                 MemoryStream stream = new MemoryStream();
                 pdfRen.PdfDocument.Save(stream); //saving the file into the stream
-
-                Response.Headers.Add("content-disposition", new[] { "inline; filename = ListofUser.pdf" });
+                Response.Headers.Add("content-disposition", new[] { "inline; filename = ListofUser.pdf" }); // a new tab
                 return File(stream, "application/pdf");
-
-
-
-
 
             }
 
