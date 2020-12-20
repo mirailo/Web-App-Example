@@ -66,8 +66,6 @@ namespace MyFirstRazorWebPage.Pages.StaffPage
                 Customer.Add(Row);
             }
 
-
-            //PDF code here!
             if (pdf == "1")
             {
                 //Create an object for pdf document
@@ -77,7 +75,7 @@ namespace MyFirstRazorWebPage.Pages.StaffPage
 
                 para.Format.Font.Name = "Arial";
                 para.Format.Font.Size = 14;
-                para.Format.Font.Color = Color.FromCmyk(0, 0, 0, 100); //black colour
+                para.Format.Font.Color = Color.FromCmyk(0, 0, 0, 100);
                 para.AddFormattedText("List of Users", TextFormat.Bold);
                 para.Format.SpaceAfter = "1.0cm";
 

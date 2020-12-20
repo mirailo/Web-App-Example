@@ -118,7 +118,7 @@ namespace MyFirstRazorWebPage.Pages.StaffPage
                 deletePicture(PicName, Customer.EmailAdd);
             }
 
-            return RedirectToPage("/StaffPage/CustomerDetails");
+            return RedirectToPage("/StaffPage/CustomerDetails1");
         }
 
 

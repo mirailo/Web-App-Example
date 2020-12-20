@@ -17,7 +17,7 @@ namespace MyFirstRazorWebPage.Pages.CustomerService
         {
 
             //RegMod = ModRecords;
-            Console.WriteLine("Reg Module : "+ GetBookedService.Count());
+            Console.WriteLine("Booked Services : "+ GetBookedService.Count());
             return Page();
         }
     }
